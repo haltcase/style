@@ -1,0 +1,100 @@
+{
+	"name": "@haltcase/style",
+	"version": "1.0.0",
+	"description": "haltcase's web ecosystem style guide & configurations",
+	"keywords": [
+		"eslint",
+		"prettier",
+		"typescript",
+		"style",
+		"eslint-config"
+	],
+	"homepage": "https://github.com/haltcase/style#readme",
+	"bugs": "https://github.com/haltcase/style/issues",
+	"repository": "https://github.com/haltcase/style.git",
+	"license": "MPL-2.0",
+	"author": "Bo Lingen <bo@lingen.life> (https://bolingen.me)",
+	"exports": {
+		"typescript/base": "./typescript/tsconfig.base.json",
+		"typescript/bundler": "./typescript/tsconfig.bundler.json",
+		"typescript/next": "./typescript/tsconfig.next.json",
+		"typescript/node": "./typescript/tsconfig.node.json",
+		"typescript/node18": "./typescript/tsconfig.node18.json",
+		"typescript/node20": "./typescript/tsconfig.node20.json",
+		"typescript/web": "./typescript/tsconfig.web.json"
+	},
+	"files": [
+		"eslint",
+		"prettier",
+		"typescript"
+	],
+	"scripts": {
+		"eslint-check": "eslint --max-warnings=0 .",
+		"format": "eslint --fix . && prettier --write .",
+		"prepare": "husky install",
+		"prettier-check": "prettier --check .",
+		"semantic-release": "semantic-release",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"prettier": "./prettier",
+	"dependencies": {
+		"@babel/core": "^7.22.1",
+		"@babel/eslint-parser": "^7.21.8",
+		"@rushstack/eslint-patch": "^1.3.0",
+		"@typescript-eslint/eslint-plugin": "^5.59.9",
+		"@typescript-eslint/parser": "^5.59.9",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-import-resolver-alias": "^1.1.2",
+		"eslint-import-resolver-typescript": "^3.5.5",
+		"eslint-plugin-eslint-comments": "^3.2.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-jest": "^27.2.1",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-playwright": "^0.12.0",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-simple-import-sort": "^10.0.0",
+		"eslint-plugin-testing-library": "^5.11.0",
+		"eslint-plugin-tsdoc": "^0.2.17",
+		"eslint-plugin-unicorn": "^47.0.0",
+		"prettier-plugin-packagejson": "^2.4.3"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.6.5",
+		"@commitlint/config-conventional": "^17.6.5",
+		"@semantic-release/git": "^10.0.1",
+		"eslint": "^8.42.0",
+		"husky": "^8.0.3",
+		"prettier": "^2.8.8",
+		"pretty-quick": "^3.1.3",
+		"semantic-release": "^19.0.5",
+		"typescript": "^5.1.3"
+	},
+	"peerDependencies": {
+		"@next/eslint-plugin-next": "^13.4.4",
+		"eslint": "^8.42.0",
+		"prettier": "^2.8.8",
+		"typescript": "^5.1.3"
+	},
+	"peerDependenciesMeta": {
+		"@next/eslint-plugin-next": {
+			"optional": true
+		},
+		"eslint": {
+			"optional": true
+		},
+		"prettier": {
+			"optional": true
+		},
+		"typescript": {
+			"optional": true
+		}
+	},
+	"packageManager": "^pnpm@8.6.1",
+	"engines": {
+		"node": ">=16"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
