@@ -1,5 +1,7 @@
 // @ts-check
-const pkgJson = require("../../package.json");
+"use strict";
+
+const packageJson = require("../../package.json");
 
 /**
  * @returns {string} The name of the package manager.
@@ -22,6 +24,8 @@ module.exports = (configName, packageName) => {
 			packageManager === "yarn" || packageManager === "pnpm"
 				? "add"
 				: "install";
+
+		// eslint-disable-next-line unicorn/prevent-abbreviations
 		const dev = packageManager === "yarn" ? "--dev" : "--save-dev";
 
 		/* eslint-disable no-console */
@@ -31,10 +35,10 @@ module.exports = (configName, packageName) => {
 		console.error();
 		console.error("To install it, run:");
 		console.error(
-			`- ${packageManager} ${command} ${dev} ${packageName}@${pkgJson.peerDependencies[packageName]}`
+			`- ${packageManager} ${command} ${dev} ${packageName}@${packageJson.peerDependencies[packageName]}`
 		);
 		/* eslint-enable no-console */
 
-		process.exit(1);
+		throw new Error(`Missing dependency encountered: ${packageName}`);
 	}
 };

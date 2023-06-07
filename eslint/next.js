@@ -1,3 +1,5 @@
+"use strict";
+
 const { javascriptFiles } = require("./constants");
 const checkForPackage = require("./utils/require-package");
 
@@ -8,7 +10,7 @@ const babelOptions = {
 		try {
 			require.resolve("next/babel");
 			return ["next/babel"];
-		} catch (e) {
+		} catch {
 			return [];
 		}
 	})()

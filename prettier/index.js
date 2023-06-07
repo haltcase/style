@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Some of Prettier's defaults can be overridden by an EditorConfig file. We
  * define those here to ensure that doesn't happen.

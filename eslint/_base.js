@@ -1,3 +1,5 @@
+"use strict";
+
 const { ecmaVersion, javascriptFiles } = require("./constants");
 
 // see https://github.com/eslint/eslint/issues/3458

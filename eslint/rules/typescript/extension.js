@@ -1,8 +1,11 @@
+"use strict";
+
 const {
 	levels: { error }
 } = require("../constants");
 
 // These share identical configuration options, so we want to keep them in sync.
+// eslint-disable-next-line unicorn/prevent-abbreviations
 const noUnusedVarsConfig = require("../variables").rules["no-unused-vars"];
 
 module.exports = {

@@ -1,3 +1,5 @@
+"use strict";
+
 const { typescriptFiles } = require("./constants");
 const checkForPackage = require("./utils/require-package");
 

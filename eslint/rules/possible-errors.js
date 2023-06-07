@@ -1,3 +1,5 @@
+"use strict";
+
 const {
 	levels: { error }
 } = require("../constants");
