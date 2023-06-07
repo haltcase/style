@@ -7,7 +7,7 @@ This project uses [pnpm](https://pnpm.io).
 To get started, run:
 
 ```sh
-corepack enable
+corepack enable && pnpm setup
 ```
 
 Then, run:
