@@ -36,7 +36,7 @@ module.exports = {
 	},
 	// Global parser options.
 	parserOptions: {
-		ecmaVersion: ecmaVersion,
+		ecmaVersion,
 		sourceType: "module"
 	},
 	overrides: [
