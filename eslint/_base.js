@@ -21,7 +21,6 @@ module.exports = {
 		require.resolve("./rules/unicorn"),
 		require.resolve("./rules/variables")
 	],
-	plugins: ["simple-import-sort"],
 	env: {
 		[`es${ecmaVersion}`]: true
 	},

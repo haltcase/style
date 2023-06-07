@@ -3,6 +3,7 @@ const {
 } = require("../constants");
 
 module.exports = {
+	plugins: ["simple-import-sort"],
 	rules: {
 		/**
 		 * Enforce export sort order.
