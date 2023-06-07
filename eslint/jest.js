@@ -1,4 +1,7 @@
-const { typescriptFiles } = require("./constants");
+const {
+	levels: { off, error },
+	typescriptFiles
+} = require("./constants");
 
 module.exports = {
 	plugins: ["testing-library"],

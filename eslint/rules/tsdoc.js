@@ -1,5 +1,5 @@
 const {
-	levels: { warn, error }
+	levels: { error }
 } = require("../constants");
 
 module.exports = {
