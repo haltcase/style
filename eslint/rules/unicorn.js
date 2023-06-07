@@ -70,14 +70,11 @@ module.exports = {
 		/**
 		 * Require consistent filename case for all linted files.
 		 *
+		 * Disabled because too many variations are currently needed for React and Next.js projects.
+		 *
 		 * 🚫 Not fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/filename-case.md
 		 */
-		"unicorn/filename-case": [
-			error,
-			{
-				case: "kebabCase"
-			}
-		],
+		"unicorn/filename-case": off,
 		/**
 		 * Enforce specific import styles per module.
 		 *
