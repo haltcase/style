@@ -4,8 +4,14 @@ const {
 	levels: { warn, error }
 } = require("../constants");
 
+const commentsRules = {
+	"eslint-comments/disable-enable-pair": [error, { allowWholeFile: true }]
+};
+
 module.exports = {
 	rules: {
+		...commentsRules,
+
 		/**
 		 * Require return statements in array methods callbacks.
 		 *
