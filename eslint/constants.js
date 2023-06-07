@@ -6,5 +6,6 @@ module.exports = {
 	},
 	ecmaVersion: 2021,
 	javascriptFiles: ["*.js?(x)", "*.mjs"],
+	commonJsFiles: ["*.?(c)js"],
 	typescriptFiles: ["*.ts?(x)"]
 };
