@@ -2,7 +2,7 @@
 
 const {
 	levels: { off }
-} = require("../constants");
+} = require("../../constants");
 
 const disabledRules = {
 	// This is disabled as we feel that checking empty strings is a valid use

@@ -2,7 +2,7 @@
 
 const {
 	levels: { off }
-} = require("../constants");
+} = require("../../constants");
 
 /**
  * These are enabled by `import/recommended`, but are better handled by

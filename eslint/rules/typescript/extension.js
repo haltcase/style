@@ -2,7 +2,7 @@
 
 const {
 	levels: { error }
-} = require("../constants");
+} = require("../../constants");
 
 // These share identical configuration options, so we want to keep them in sync.
 // eslint-disable-next-line unicorn/prevent-abbreviations

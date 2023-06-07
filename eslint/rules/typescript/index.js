@@ -2,7 +2,7 @@
 
 const {
 	levels: { warn, error }
-} = require("../constants");
+} = require("../../constants");
 
 module.exports = {
 	rules: {
