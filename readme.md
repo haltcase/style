@@ -188,13 +188,39 @@ module.exports = {
 
 ### TypeScript
 
-To use the shared TypeScript config, set the following in `tsconfig.json`.
+Several Typescript configs are available to cover various scenarios:
+
+| Name                                 | Description                                                                                          |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| `@haltcase/style/typescript/base`    | Baseline config, intended to be extended from.                                                       |
+| `@haltcase/style/typescript/bundler` | For use in bundled projects, most commonly [Vite](https://vitejs.dev/) + [React](https://react.dev). |
+| `@haltcase/style/typescript/next`    | For use in [Next.js](https://nextjs.org/) projects.                                                  |
+| `@haltcase/style/typescript/node`    | Default Node config, currently targeting Node 20.                                                    |
+| `@haltcase/style/typescript/node18`  | For projects targeting Node 18.                                                                      |
+| `@haltcase/style/typescript/node20`  | For projects targeting Node 20.                                                                      |
+| `@haltcase/style/typescript/web`     | For use in web projects.                                                                             |
+
+Typically, you'll only need to extend from one of these:
 
 ```json
 {
-	"extends": "@haltcase/style/typescript"
+	"extends": "@haltcase/style/typescript/next"
 }
 ```
+
+You could also combine them with an `extends` array in [Typescript 5+](https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-rc/#supporting-multiple-configuration-files-in-extends):
+
+```json
+{
+	"extends": [
+		"@haltcase/style/typescript/node",
+		"@haltcase/style/typescript/web"
+	]
+}
+```
+
+> **Note**
+> Run `tsc --showConfig` to see the result of the combined configs.
 
 ## contributing
 
