@@ -1,6 +1,11 @@
 "use strict";
 
-const { javascriptFiles } = require("./constants");
+const {
+	javascriptFiles,
+	levels: { off },
+	nextJsPageFiles,
+	nextJsApiRoutes
+} = require("./constants");
 const checkForPackage = require("./utils/require-package");
 
 checkForPackage("next", "@next/eslint-plugin-next");
@@ -22,6 +27,12 @@ module.exports = {
 		{
 			files: javascriptFiles,
 			parserOptions: { babelOptions }
+		},
+		{
+			files: [...nextJsPageFiles, ...nextJsApiRoutes],
+			rules: {
+				"import/no-default-export": off
+			}
 		}
 	]
 };
