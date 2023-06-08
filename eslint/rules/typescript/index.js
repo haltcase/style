@@ -26,7 +26,14 @@ module.exports = {
 		 *
 		 * 🚫 Not fixable - https://typescript-eslint.io/rules/explicit-function-return-type/
 		 */
-		"@typescript-eslint/explicit-function-return-type": warn,
+		"@typescript-eslint/explicit-function-return-type": [
+			warn,
+			{
+				allowExpressions: true,
+				allowFunctionsWithoutTypeParameters: true,
+				allowTypedFunctionExpressions: true
+			}
+		],
 		/**
 		 * Require using function property types in method signatures.
 		 *
