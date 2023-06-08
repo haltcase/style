@@ -176,9 +176,11 @@ module.exports = {
 		/**
 		 * Disallow identifiers starting with `new` or `class`.
 		 *
+		 * Disabled because it isn't that impactful, and is annoying in React projects.
+		 *
 		 * 🚫 Not fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-keyword-prefix.md
 		 */
-		"unicorn/no-keyword-prefix": error,
+		"unicorn/no-keyword-prefix": off,
 		/**
 		 * Disallow `if` statements as the only statement in `if` blocks without `else`.
 		 *
