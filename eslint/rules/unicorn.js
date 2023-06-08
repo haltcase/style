@@ -616,7 +616,20 @@ module.exports = {
 		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prevent-abbreviations.md
 		 */
-		"unicorn/prevent-abbreviations": error,
+		"unicorn/prevent-abbreviations": [
+			error,
+			{
+				replacements: {
+					args: false,
+
+					// DX improvements particularly for React projects
+					prop: false,
+					props: false,
+					ref: false,
+					refs: false
+				}
+			}
+		],
 		/**
 		 * Enforce consistent relative URL style.
 		 *
