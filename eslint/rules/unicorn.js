@@ -214,9 +214,11 @@ module.exports = {
 		/**
 		 * Disallow the use of the `null` literal.
 		 *
+		 * Disabled because I run into `null` too much to pretend it doesn't exist... ship has sailed.
+		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-null.md
 		 */
-		"unicorn/no-null": error,
+		"unicorn/no-null": off,
 		/**
 		 * Disallow the use of objects as default parameters.
 		 *
