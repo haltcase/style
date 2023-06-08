@@ -13,7 +13,7 @@ module.exports = {
 	typescriptFiles: ["*.ts?(x)"],
 
 	configFiles: ["**/*.config.{m,}{js,ts}"],
-	scriptFiles: [["**/scripts/*", "**/prisma/*"]],
+	scriptFiles: ["**/scripts/*", "**/prisma/*"],
 
 	nextJsPageFiles: ["**/{pages,app}/**/*.{m,}{js,ts}x"],
 	nextJsApiRoutes: ["**/{pages,app}/api/**/*.{m,}{js,ts}"]
