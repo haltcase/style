@@ -8,9 +8,12 @@ module.exports = {
 	},
 	ecmaVersion: 2021,
 
-	javascriptFiles: ["*.js?(x)", "*.mjs"],
 	commonJsFiles: ["*.?(c)js"],
+	javascriptFiles: ["*.js?(x)", "*.mjs"],
 	typescriptFiles: ["*.ts?(x)"],
+
+	configFiles: ["**/*.config.{m,}{js,ts}"],
+	scriptFiles: [["**/scripts/*", "**/prisma/*"]],
 
 	nextJsPageFiles: ["**/{pages,app}/**/*.{m,}{js,ts}x"],
 	nextJsApiRoutes: ["**/{pages,app}/api/**/*.{m,}{js,ts}"]

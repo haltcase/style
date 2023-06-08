@@ -1,6 +1,12 @@
 "use strict";
 
-const { ecmaVersion, javascriptFiles } = require("./constants");
+const {
+	configFiles,
+	ecmaVersion,
+	javascriptFiles,
+	levels: { off },
+	scriptFiles
+} = require("./constants");
 
 // see https://github.com/eslint/eslint/issues/3458
 require("@rushstack/eslint-patch/modern-module-resolution");
@@ -46,6 +52,24 @@ module.exports = {
 			parser: "@babel/eslint-parser",
 			parserOptions: {
 				requireConfigFile: false
+			}
+		},
+
+		// config files for third-party tools likely require default exports
+		// (e.g., next.config.mjs)
+		{
+			files: configFiles,
+			rules: {
+				"import/no-default-export": off
+			}
+		},
+
+		// development-only helper scripts & prisma database scripts
+		{
+			files: scriptFiles,
+			rules: {
+				"no-console": "off",
+				"unicorn/no-process-exit": "off"
 			}
 		}
 	]
