@@ -619,6 +619,10 @@ module.exports = {
 		"unicorn/prevent-abbreviations": [
 			error,
 			{
+				ignore: [
+					// e.g., `next-env.d.ts` filename
+					/.+-env\.d/
+				],
 				replacements: {
 					args: false,
 
