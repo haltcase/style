@@ -67,6 +67,22 @@ module.exports = {
 			}
 		],
 		/**
+		 * Disallow Promises in places not designed to handle them.
+		 *
+		 * Function arguments and JSX attributes are allowed.
+		 *
+		 * 🚫 Not fixable - https://typescript-eslint.io/rules/no-misused-promises
+		 */
+		"@typescript-eslint/no-misused-promises": [
+			error,
+			{
+				checksVoidReturn: {
+					arguments: false,
+					attributes: false
+				}
+			}
+		],
+		/**
 		 * Disallow members of unions and intersections that do nothing or override type information.
 		 *
 		 * 🚫 Not fixable - https://typescript-eslint.io/rules/no-redundant-type-constituents/
