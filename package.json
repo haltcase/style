@@ -16,7 +16,7 @@
 		"url": "https://github.com/haltcase/style.git"
 	},
 	"license": "MPL-2.0",
-	"author": "Bo Lingen <bo@lingen.life> (https://bolingen.me)",
+	"author": "Bo Lingen <bo@haltcase.dev> (https://haltcase.dev)",
 	"exports": {
 		"./eslint/rules/*": "./eslint/rules/*.js",
 		"./eslint/rules/*.js": "./eslint/rules/*.js",
