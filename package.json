@@ -11,7 +11,10 @@
 	],
 	"homepage": "https://github.com/haltcase/style#readme",
 	"bugs": "https://github.com/haltcase/style/issues",
-	"repository": "https://github.com/haltcase/style.git",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/haltcase/style.git"
+	},
 	"license": "MPL-2.0",
 	"author": "Bo Lingen <bo@lingen.life> (https://bolingen.me)",
 	"exports": {
