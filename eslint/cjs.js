@@ -13,7 +13,7 @@ module.exports = {
 				sourceType: "script"
 			},
 			rules: {
-				strict: error,
+				strict: [error, "global"],
 				"unicorn/prefer-module": off
 			}
 		}

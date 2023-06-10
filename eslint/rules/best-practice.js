@@ -236,6 +236,12 @@ module.exports = {
 		 */
 		"prefer-regex-literals": error,
 		/**
+		 * Disallow the `"use strict"` directive (we assume ESM by default).
+		 *
+		 * 🔧 Fixable - https://eslint.org/docs/latest/rules/strict
+		 */
+		strict: [error, "never"],
+		/**
 		 * Disallow "Yoda conditions".
 		 *
 		 * 🔧 Fixable - https://eslint.org/docs/rules/yoda
