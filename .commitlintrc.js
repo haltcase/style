@@ -7,27 +7,29 @@ module.exports = {
 			2,
 			"always",
 			[
-				// Changes that affect the build system or dependency-only changes
+				// Change that affects the build system or dependencies
 				"build",
-				// Changes to CI workflows
+				// Change to project metadata or tooling
+				"chore",
+				// Change to CI workflows
 				"ci",
-				// Documentation-only changes
+				// Change that only affects documentation
 				"docs",
-				// A new feature
+				// New feature
 				"feat",
-				//A bug fix
+				// Bug fix
 				"fix",
-				// A code change that improves performance
+				// Code change that improves performance
 				"perf",
-				// A code change that neither fixes a bug nor adds a feature
+				// Code change that neither fixes a bug nor adds a feature
 				"refactor",
-				// A commit that reverts a previous commit
+				// Commit that reverts a previous commit
 				"revert",
-				// Changes that do not affect the meaning of the code
+				// Change that does not affect the meaning of the code
 				"style",
-				// Adding missing tests or correcting existing tests
+				// Addition of missing tests or corrections for existing tests
 				"test",
-				// Used for automated releases-only
+				// For automated releases only
 				"release"
 			]
 		],
@@ -35,16 +37,14 @@ module.exports = {
 			2,
 			"always",
 			[
-				// Dependency-related changes
+				// Dependency related changes
 				"deps",
-				// ESLint-related changes
+				// ESLint related changes
 				"eslint",
-				// Prettier-related changes
+				// Prettier related changes
 				"prettier",
-				// TypeScript-related changes
-				"typescript",
-				// Go-related changes
-				"golang"
+				// TypeScript related changes
+				"typescript"
 			]
 		],
 		"scope-empty": [1, "never"]
