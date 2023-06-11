@@ -66,6 +66,7 @@ Start with at least one of these base configs, which should always be first in `
 
 The following additional configs are available:
 
+- `@haltcase/style/eslint/cjs`
 - `@haltcase/style/eslint/jest`
 - `@haltcase/style/eslint/next` (requires `@next/eslint-plugin-next` to be installed at the same version as `next`)
 - `@haltcase/style/eslint/playwright-test`
