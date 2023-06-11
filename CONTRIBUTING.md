@@ -10,6 +10,8 @@ To get started, run:
 corepack enable && pnpm setup
 ```
 
+> More on [Node.js Corepack](https://nodejs.org/api/corepack.html)
+
 Then, run:
 
 ```sh
@@ -18,26 +20,62 @@ pnpm i
 
 ## Before creating a pull request
 
-Before creating a pull request, please raise an issue.
+It's generally advised to create an issue before opening a pull request so the
+changes can be considered and receive feedback. Pull requests should never
+target `main`, but instead should typically target `canary` (or possibly
+another pre-release branch).
 
-After an issue is created, we generally wait 2-4 weeks before implementing
-any changes. This provides ample time for engineers to share feedback on
-proposed changes.
-
-### Milestones and pre-releases
+## Release pipeline
 
 The default branch for this repository is `canary`. Each relevant commit into
-`canary` triggers a pre-release. Merging `canary` into `main` will trigger a
-release.
+`canary` triggers a pre-release publish to npm on the `canary` dist-tag.
 
-We try to group changes together, when possible, as monthly [milestones](https://github.com/haltcase/style/milestones).
-This results in less major version changes than if every commit was merged to
-`main` directly.
+These releases can be previewed:
+
+```sh
+# install latest `canary` release
+pnpm add --save-dev @haltcase/style@canary
+```
+
+```sh
+# install specific `canary` version
+pnpm add --save-dev @haltcase/style@2.0.0-canary.1
+```
+
+Once changes are ready for mainline release, merging `canary` &rarr; `main`
+will trigger a publish to npm on the `latest` dist-tag. See below for workflow details.
+
+Multiple changes will be grouped together when possible to reduce the
+number of version increments made to official releases.
+
+## Workflow
+
+### Collaborators
+
+Once changes are approved to merge into `main`, it's important **not** to merge
+using the GitHub pull request UI. Instead, always use the dedicated GitHub
+action as follows.
+
+1. Create a new branch, e.g., `feat/prettier-recipe`
+2. Once ready, open a pull request to merge your branch into `canary`
+3. After the review cycle, when `canary` is ready to be mainlined, open a pull request from `canary` &rarr; `main`
+4. Use the [Release](https://github.com/haltcase/style/actions/workflows/release.yml) action to merge `canary` into `main`
+
+   ![Release workflow](.github/media/release-workflow.png)
+
+### External contributors
+
+1. Fork the repository
+2. Create a new branch, e.g., `feat/tsconfig-fridge`
+3. Make changes, then open a pull request to merge your branch into `canary`
+
+From here, your changes will flow through the collaborator workflow and
+eventually end up in a release. :tada:
 
 ## Commits and release versioning
 
 This repository uses [Standard Release](https://semantic-release.gitbook.io/semantic-release/)
-to automate releases - included versioning and release note generation.
+to automate releases &mdash; including versioning and release note generation.
 
 Commit standards are based on [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/blob/master/%40commitlint/config-conventional).
 
@@ -54,7 +92,7 @@ Resolves #1
 The scope should be included most of the time, and all allowed types and scopes
 are documented here:
 
-- https://github.com/haltcase/style/blob/main/.commitlintrc.js
+https://github.com/haltcase/style/blob/main/.commitlintrc.js
 
 ### How commits affect versions
 
