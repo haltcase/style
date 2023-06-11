@@ -39,7 +39,7 @@ module.exports = async ({ github, context }) => {
 
 	await github.rest.actions.createWorkflowDispatch({
 		owner: context.repo.owner,
-		repo: context.repo.name,
+		repo: context.repo.repo,
 		workflow_id: workflowToTrigger,
 		ref: headRef,
 		inputs: {
