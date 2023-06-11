@@ -1,21 +1,12 @@
 "use strict";
 
-const {
-	commonJsFiles,
-	levels: { error, off }
-} = require("./constants");
+const { commonJsFiles, commonJsOverrides } = require("./constants");
 
 module.exports = {
 	overrides: [
 		{
 			files: commonJsFiles,
-			parserOptions: {
-				sourceType: "script"
-			},
-			rules: {
-				strict: [error, "global"],
-				"unicorn/prefer-module": off
-			}
+			...commonJsOverrides
 		}
 	]
 };

@@ -16,5 +16,15 @@ module.exports = {
 	scriptFiles: ["**/scripts/*", "**/prisma/*"],
 
 	nextJsPageFiles: ["**/{pages,app}/**/*.{m,}{js,ts}x"],
-	nextJsApiRoutes: ["**/{pages,app}/api/**/*.{m,}{js,ts}"]
+	nextJsApiRoutes: ["**/{pages,app}/api/**/*.{m,}{js,ts}"],
+
+	commonJsOverrides: {
+		parserOptions: {
+			sourceType: "script"
+		},
+		rules: {
+			strict: ["error", "global"],
+			"unicorn/prefer-module": "off"
+		}
+	}
 };

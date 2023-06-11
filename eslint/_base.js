@@ -5,7 +5,8 @@ const {
 	ecmaVersion,
 	javascriptFiles,
 	levels: { off },
-	scriptFiles
+	scriptFiles,
+	commonJsOverrides
 } = require("./constants");
 
 // see https://github.com/eslint/eslint/issues/3458
@@ -71,6 +72,11 @@ module.exports = {
 				"no-console": "off",
 				"unicorn/no-process-exit": "off"
 			}
+		},
+
+		{
+			files: ["**/*.cjs"],
+			...commonJsOverrides
 		}
 	]
 };
