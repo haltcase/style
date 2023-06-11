@@ -12,13 +12,13 @@ module.exports = async ({ github, context }) => {
 		repo: context.repo.repo
 	};
 
-	const { data: pr } = await github.pulls.get({
+	const { data: pr } = await github.rest.pulls.get({
 		...scope,
 		pull_number: context.issue.number
 	});
 
 	if (pr.head.ref !== headRef || pr.base.ref !== baseRef) {
-		await github.issues.createComment({
+		await github.rest.issues.createComment({
 			...scope,
 			issue_number: context.issue.number,
 			body: `Releases can only be triggered when merging \`${headRef}\` → \`${baseRef}\``
@@ -28,7 +28,7 @@ module.exports = async ({ github, context }) => {
 	}
 
 	if (!pr.mergeable || !pr.merge_commit_sha) {
-		await github.issues.createComment({
+		await github.rest.issues.createComment({
 			...scope,
 			issue_number: context.issue.number,
 			body: "This PR cannot be merged. Please fix any conflicts and try again."
