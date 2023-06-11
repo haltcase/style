@@ -59,9 +59,13 @@ action as follows.
 1. Create a new branch, e.g., `feat/prettier-recipe`
 2. Once ready, open a pull request to merge your branch into `canary`
 3. After the review cycle, when `canary` is ready to be mainlined, open a pull request from `canary` &rarr; `main`
-4. Use the [Release](https://github.com/haltcase/style/actions/workflows/release.yml) action to merge `canary` into `main`
+4. Comment on the PR with `!release this` to start merging `canary` into `main`
 
-   ![Release workflow](.github/media/release-workflow.png)
+> The [Release workflow](https://github.com/haltcase/style/actions/workflows/release.yml)
+> can also be triggered manually to merge `canary` into `main` (the PR comment
+> method uses it behind the scenes).
+>
+> ![Release workflow](.github/media/release-workflow.png)
 
 ### External contributors
 
