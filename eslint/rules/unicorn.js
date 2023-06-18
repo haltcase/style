@@ -624,9 +624,18 @@ module.exports = {
 					/.+-env\.d/
 				],
 				replacements: {
+					// revise default abbreviations for reserved words/keywords
+					// (because I think the default hanging underscores look nasty)
 					args: false,
+					fn: false,
+					func: {
+						fn: true,
+						function: false
+					},
+					mod: false,
+					pkg: false,
 
-					// DX improvements particularly for React projects
+					// allow commonly used abbreviations in React projects
 					prop: false,
 					props: false,
 					ref: false,
