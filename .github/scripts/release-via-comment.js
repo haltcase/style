@@ -189,7 +189,7 @@ ${message}
 	}
 
 	try {
-		const execGit = (args) => exec("git", args, execOptions);
+		const execGit = (args) => exec.exec("git", args, execOptions);
 
 		await fastForward(execGit, {
 			pr
