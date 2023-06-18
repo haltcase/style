@@ -36,7 +36,9 @@ const fastForward = async (execGit, { pr }) => {
 
 		await execGit(["pull", "--ff-only", pr.head.repo.clone_url, pr.head.ref]);
 	} else {
-		await execGit(["merge", "--ff-only", pr.head.ref]);
+		// prefix the branch name with `origin/` to ensure this works with
+		// slash-having branch names like `feat/add-rule`
+		await execGit(["merge", "--ff-only", `origin/${pr.head.ref}`]);
 	}
 
 	await execGit(["push", "origin", `${pr.base.ref}`]);
