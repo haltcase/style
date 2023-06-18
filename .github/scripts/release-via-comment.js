@@ -101,7 +101,7 @@ const getIsMergeAllowed = async ({ pr }) => {
 	return false;
 };
 
-const createAddComment = (scope, pullNumber) => (body) =>
+const createAddComment = (github, scope, pullNumber) => (body) =>
 	github.rest.issues.createComment({
 		...scope,
 		issue_number: pullNumber,
@@ -125,7 +125,7 @@ module.exports = async ({ context, core, exec, github }) => {
 
 	console.log(`Found associated pull request #${pr.number} ${pr.title}`);
 
-	const addComment = createAddComment(scope, pr.number);
+	const addComment = createAddComment(github, scope, pr.number);
 
 	if (pr.state !== "open" || pr.draft) {
 		await addComment(`
