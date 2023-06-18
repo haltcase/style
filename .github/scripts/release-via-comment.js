@@ -66,7 +66,7 @@ const verifyCheckSuccess = async ({ github, pr }) => {
 			isOk: false,
 			message: `Some workflows for ${
 				pr.head.label
-			} are still in progress: ${JSON.stringify(pending)}`
+			} are still in progress:\n\n${JSON.stringify(pending, undefined, "\t")}`
 		};
 	}
 
@@ -78,9 +78,9 @@ const verifyCheckSuccess = async ({ github, pr }) => {
 	if (blockers.length > 0) {
 		return {
 			isOk: false,
-			message: `Some checks for ${pr.head.label} have failed: ${JSON.stringify(
-				blockers
-			)}`
+			message: `Some checks for ${
+				pr.head.label
+			} have failed:\n\n${JSON.stringify(blockers, undefined, "\t")}`
 		};
 	}
 
@@ -113,6 +113,15 @@ const createAddComment = (github, scope, pullNumber) => (body) =>
 		issue_number: pullNumber,
 		body: `<!-- ffrelease -->\n${body.trim()}`
 	});
+
+const formatSummary = (message, title = "expand for details") =>
+	`<details>
+<summary>${title}</summary>
+
+\`\`\`
+${message}
+\`\`\`
+</details>`;
 
 module.exports = async ({ context, core, exec, github }) => {
 	console.log(
@@ -175,13 +184,7 @@ module.exports = async ({ context, core, exec, github }) => {
 		await addComment(`
 ❌ This pull request cannot be merged while checks are pending or in a failed state.
 
-<details>
-<summary>expand for details</summary>
-
-\`\`\`
-${message}
-\`\`\`
-</details>
+${formatSummary(message)}
 `);
 
 		core.setFailed(message);
@@ -197,5 +200,11 @@ ${message}
 	} catch (error) {
 		console.error(error);
 		core.setFailed(execLogs);
+
+		await addComment(`
+❌ Fast-forward merge attempt was made, but it failed. See logs for more details.
+
+${formatSummary(execLogs)}
+`);
 	}
 };
