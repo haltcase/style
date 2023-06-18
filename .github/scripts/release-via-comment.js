@@ -54,7 +54,12 @@ const verifyCheckSuccess = async ({ github, pr }) => {
 		data: { check_suites: checkSuites }
 	} = await github.rest.checks.listSuitesForRef({ ...scope, ref: pr.head.sha });
 
-	const pending = checkSuites.filter(({ status }) => status !== "completed");
+	// if `latest_check_runs_count == 0`, the suite does not apply
+
+	const pending = checkSuites.filter(
+		({ latest_check_runs_count: count, status }) =>
+			count > 0 && status !== "completed"
+	);
 
 	if (pending.length > 0) {
 		return {
@@ -66,7 +71,8 @@ const verifyCheckSuccess = async ({ github, pr }) => {
 	}
 
 	const blockers = checkSuites.filter(
-		({ conclusion }) => !okConclusions.has(conclusion)
+		({ latest_check_runs_count: count, conclusion }) =>
+			count > 0 && !okConclusions.has(conclusion)
 	);
 
 	if (blockers.length > 0) {
