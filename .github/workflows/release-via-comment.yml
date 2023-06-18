@@ -30,8 +30,11 @@ jobs:
 
       - name: Verify PR and dispatch release workflow
         uses: actions/github-script@v6
+        env:
+          USER_NAME: ${{ env.RELEASE_USER_NAME }}
+          USER_EMAIL: ${{ env.RELEASE_USER_EMAIL }}
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           script: |
             const script = require("./.github/scripts/release-via-comment.js");
-            script({ github, context });
+            await script({ context, core, exec, github });
