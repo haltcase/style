@@ -73,9 +73,13 @@ const fastForward = async (execGit, { pr }) => {
 			pr.head.ref
 		]);
 	} else {
-		// prefix the branch name with `origin/` to ensure this works with
-		// slash-having branch names like `feat/add-rule`
-		await execGit(["merge", "--ff-only", `origin/${pr.head.ref}`]);
+		// prefix slash-having branch names with `origin/`
+		// (or git gets confused)
+		const mergeRef = pr.head.ref.includes("/")
+			? `origin/${pr.head.ref}`
+			: pr.head.ref;
+
+		await execGit(["merge", "--ff-only", mergeRef]);
 	}
 
 	await execGit(["push", "origin", `${pr.base.ref}`]);
