@@ -16,6 +16,13 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
+      - name: Generate access token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.BOT_ID }}
+          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       - name: Check out
         uses: actions/checkout@v3
         with:
@@ -27,7 +34,7 @@ jobs:
       - name: Publish
         run: pnpm semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN_ELEVATED }}
 
   update-canary:
@@ -36,12 +43,19 @@ jobs:
     name: Update canary
     runs-on: ubuntu-latest
     steps:
+      - name: Generate access token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.BOT_ID }}
+          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       - name: Check out
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           ref: "canary"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.generate-token.outputs.token }}
 
       - name: Back-merge main into canary
         run: |
