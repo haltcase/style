@@ -1,3 +1,24 @@
+// @ts-check
+
+/**
+ * @typedef {import("@actions/github/lib/context").Context} Context
+ * @typedef {import("@actions/core")} Core
+ * @typedef {import("@actions/exec")} Exec
+ * @typedef {ReturnType<import("@actions/github").getOctokit>} Octokit
+ * @typedef {Awaited<ReturnType<Octokit["rest"]["pulls"]["get"]>>["data"]} PullRequest
+ * @typedef {import("@octokit/types")
+ * 	.Endpoints["GET /repos/{owner}/{repo}/rules/branches/{branch}"]["response"]
+ * } BranchRules
+ */
+
+/**
+ * @typedef ScriptProps
+ * @property {Context} context
+ * @property {Core} core
+ * @property {Exec} exec
+ * @property {Octokit} github
+ */
+
 "use strict";
 
 const releaseBranch = "main";
@@ -5,6 +26,9 @@ const prereleaseBranch = "canary";
 
 let execLogs = "";
 
+/**
+ * @type {import("@actions/exec").ExecOptions}
+ */
 const execOptions = {
 	listeners: {
 		stdout: (data) => {
@@ -16,13 +40,21 @@ const execOptions = {
 	}
 };
 
+/**
+ * @param {(args: string[]) => Promise<number>} execGit
+ * @param {object} props
+ * @param {PullRequest} props.pr
+ */
 const fastForward = async (execGit, { pr }) => {
 	const {
 		USER_NAME = "github-actions[bot]",
 		USER_EMAIL = "github-actions[bot]@users.noreply.github.com"
 	} = process.env;
 
-	const isDownstream = pr.base.repo.clone_url !== pr.head.repo.clone_url;
+	const isDownstream =
+		pr.base.repo.fork &&
+		pr.head.repo != null &&
+		pr.base.repo.clone_url !== pr.head.repo.clone_url;
 
 	await execGit(["config", "--local", "user.name", USER_NAME]);
 	await execGit(["config", "--local", "user.email", USER_EMAIL]);
@@ -30,11 +62,16 @@ const fastForward = async (execGit, { pr }) => {
 	await execGit(["checkout", pr.base.ref]);
 
 	if (isDownstream) {
-		console.info(
-			`Pulling & merging changes from downstream fork ${pr.head.repo.clone_url}#${pr.head.label}`
+		console.log(
+			`Pulling & merging changes from downstream fork ${pr.head.repo?.clone_url}#${pr.head.label}`
 		);
 
-		await execGit(["pull", "--ff-only", pr.head.repo.clone_url, pr.head.ref]);
+		await execGit([
+			"pull",
+			"--ff-only",
+			pr.head.repo?.clone_url || "<unknown head>",
+			pr.head.ref
+		]);
 	} else {
 		// prefix the branch name with `origin/` to ensure this works with
 		// slash-having branch names like `feat/add-rule`
@@ -44,17 +81,24 @@ const fastForward = async (execGit, { pr }) => {
 	await execGit(["push", "origin", `${pr.base.ref}`]);
 };
 
-const okConclusions = new Set(["success", "neutral"]);
-
+/**
+ *
+ * @param {object} props
+ * @param {Octokit} props.github
+ * @param {PullRequest} props.pr
+ * @returns {Promise<{ isOk: boolean, message: string }>}
+ */
 const verifyCheckSuccess = async ({ github, pr }) => {
 	const scope = {
 		owner: pr.base.repo.owner.login,
 		repo: pr.base.repo.name
 	};
 
+	const ref = pr.head.sha;
+
 	const {
 		data: { check_suites: checkSuites }
-	} = await github.rest.checks.listSuitesForRef({ ...scope, ref: pr.head.sha });
+	} = await github.rest.checks.listSuitesForRef({ ...scope, ref });
 
 	// if `latest_check_runs_count == 0`, the suite does not apply
 
@@ -72,30 +116,81 @@ const verifyCheckSuccess = async ({ github, pr }) => {
 		};
 	}
 
-	const blockers = checkSuites.filter(
-		({ latest_check_runs_count: count, conclusion }) =>
-			count > 0 && !okConclusions.has(conclusion)
+	/**
+	 * @type {BranchRules}
+	 */
+	// @ts-expect-error - use method below when available
+	const { data: branchRules } = await github.request(
+		"GET /repos/{owner}/{repo}/rules/branches/{branch}",
+		{
+			...scope,
+			branch: pr.base.ref
+		}
 	);
 
-	if (blockers.length > 0) {
-		return {
-			isOk: false,
-			message: `Some checks for ${
-				pr.head.label
-			} have failed:\n\n${JSON.stringify(blockers, undefined, "\t")}`
-		};
+	// TODO: use this when `actions/github-script` upgrades to `@actions/core@4.2+`
+	// const branchRules = await github.rest.repos.getBranchRules({
+	// 	...scope,
+	// 	branch: pr.base.ref
+	// });
+
+	console.log(
+		`Branch rules:\n\n${JSON.stringify(branchRules, undefined, "\t")}`
+	);
+
+	const foundChecks = branchRules.find(
+		({ type }) => type === "required_status_checks"
+	);
+
+	const requiredStatusChecks =
+		foundChecks?.type === "required_status_checks"
+			? foundChecks.parameters?.required_status_checks ?? []
+			: [];
+
+	const requiredChecksResults = await Promise.all(
+		requiredStatusChecks.map(({ context: check_name }) =>
+			github.rest.checks.listForRef({
+				...scope,
+				ref,
+				check_name
+			})
+		)
+	);
+
+	const checkRuns = requiredChecksResults.flatMap(
+		({ data: { check_runs } }) => check_runs
+	);
+
+	for (const { name, status, conclusion } of checkRuns) {
+		if (status !== "completed" || conclusion !== "success") {
+			console.log(`${name} check failed`);
+
+			return {
+				isOk: false,
+				message: `Required status check ${name} did not succeed`
+			};
+		}
+
+		console.log(`${name} check passed`);
 	}
 
 	return {
-		isOk: true
+		isOk: true,
+		message: ""
 	};
 };
 
+/**
+ *
+ * @param {object} props
+ * @param {PullRequest} props.pr
+ * @returns
+ */
 const getIsMergeAllowed = async ({ pr }) => {
 	if (pr.base.ref === releaseBranch) {
 		// merging into `origin/main` is only allowed from `origin/canary`
 		return (
-			pr.head.clone_url === pr.base.clone_url &&
+			pr.head.repo?.clone_url === pr.base.repo.clone_url &&
 			pr.head.ref === prereleaseBranch
 		);
 	}
@@ -109,6 +204,13 @@ const getIsMergeAllowed = async ({ pr }) => {
 	return false;
 };
 
+/**
+ *
+ * @param {Octokit} github
+ * @param {{ owner: string, repo: string }} scope
+ * @param {number} pullNumber
+ * @returns {(body: string) => any}
+ */
 const createAddComment = (github, scope, pullNumber) => (body) =>
 	github.rest.issues.createComment({
 		...scope,
@@ -116,6 +218,12 @@ const createAddComment = (github, scope, pullNumber) => (body) =>
 		body: `<!-- ffrelease -->\n${body.trim()}`
 	});
 
+/**
+ *
+ * @param {string} message
+ * @param {string} [title]
+ * @returns
+ */
 const formatSummary = (message, title = "expand for details") =>
 	`<details>
 <summary>${title}</summary>
@@ -125,6 +233,10 @@ ${message}
 \`\`\`
 </details>`;
 
+/**
+ * @param {ScriptProps} props
+ * @returns
+ */
 module.exports = async ({ context, core, exec, github }) => {
 	console.log(
 		`Merging commits for release from ${context.repo.owner}/${context.repo.repo}#${context.issue.number}`
@@ -194,6 +306,10 @@ ${formatSummary(message)}
 	}
 
 	try {
+		/**
+		 * @param {string[]} args
+		 * @returns {Promise<number>}
+		 */
 		const execGit = (args) => exec.exec("git", args, execOptions);
 
 		await fastForward(execGit, {
