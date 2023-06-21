@@ -84,17 +84,35 @@ const fastForward = async (execGit, { pr }) => {
 /**
  *
  * @param {object} props
+ * @param {Context} props.context
  * @param {Octokit} props.github
  * @param {PullRequest} props.pr
  * @returns {Promise<{ isOk: boolean, message: string }>}
  */
-const verifyCheckSuccess = async ({ github, pr }) => {
+const verifyCheckSuccess = async ({ context, github, pr }) => {
+	console.log(
+		`Verifying checks (current workflow run: ${context.runId} #${context.runNumber})`
+	);
+
 	const scope = {
 		owner: pr.base.repo.owner.login,
 		repo: pr.base.repo.name
 	};
 
 	const ref = pr.head.sha;
+
+	// get the current check suite ID so we can exclude it below, or the current
+	// workflow run considers itself a pending check and the process will fail
+	const {
+		data: { check_suite_id: currentCheckSuiteId }
+	} = await github.rest.actions.getWorkflowRun({
+		...scope,
+		run_id: context.runId
+	});
+
+	if (currentCheckSuiteId != null) {
+		console.log(`Current workflow is check suite ID ${currentCheckSuiteId}`);
+	}
 
 	const {
 		data: { check_suites: checkSuites }
@@ -103,8 +121,8 @@ const verifyCheckSuccess = async ({ github, pr }) => {
 	// if `latest_check_runs_count == 0`, the suite does not apply
 
 	const pending = checkSuites.filter(
-		({ latest_check_runs_count: count, status }) =>
-			count > 0 && status !== "completed"
+		({ latest_check_runs_count: count, id, status }) =>
+			count > 0 && status !== "completed" && id !== currentCheckSuiteId
 	);
 
 	if (pending.length > 0) {
@@ -292,7 +310,7 @@ module.exports = async ({ context, core, exec, github }) => {
 		return;
 	}
 
-	const { isOk, message } = await verifyCheckSuccess({ github, pr });
+	const { isOk, message } = await verifyCheckSuccess({ context, github, pr });
 
 	if (!isOk) {
 		await addComment(`
