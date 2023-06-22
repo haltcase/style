@@ -9,6 +9,9 @@
  * @typedef {import("@octokit/types")
  * 	.Endpoints["GET /repos/{owner}/{repo}/rules/branches/{branch}"]["response"]
  * } BranchRules
+ * @typedef {NonNullable<
+ * 	Parameters<Octokit["rest"]["reactions"]["createForIssue"]>[0]>["content"]
+ * } Reaction
  */
 
 /**
@@ -130,11 +133,14 @@ const verifyCheckSuccess = async ({ context, github, pr }) => {
 	);
 
 	if (pending.length > 0) {
+		const jsonSummary = formatSummary(JSON.stringify(pending, undefined, "\t"));
 		return {
 			isOk: false,
-			message: `Some workflows for ${
-				pr.head.label
-			} are still in progress:\n\n${JSON.stringify(pending, undefined, "\t")}`
+			message: `
+while workflows for \`${pr.head.label}\` are still in progress.
+
+${jsonSummary}
+`.trim()
 		};
 	}
 
@@ -185,15 +191,15 @@ const verifyCheckSuccess = async ({ context, github, pr }) => {
 
 	for (const { name, status, conclusion } of checkRuns) {
 		if (status !== "completed" || conclusion !== "success") {
-			console.log(`${name} check failed`);
+			console.log(`Check failed: ${name}`);
 
 			return {
 				isOk: false,
-				message: `Required status check ${name} did not succeed`
+				message: `because required status check \`${name}\` did not succeed.`
 			};
 		}
 
-		console.log(`${name} check passed`);
+		console.log(`Check passed: ${name}`);
 	}
 
 	return {
@@ -224,6 +230,33 @@ const getIsMergeAllowed = async ({ pr }) => {
 	}
 
 	return false;
+};
+
+/**
+ * @param {object} props
+ * @param {Context} props.context
+ * @param {Octokit} props.github
+ * @param {Reaction} props.reaction
+ */
+const reactToComment = async ({ context, github, reaction }) => {
+	if (context.payload.comment == null) {
+		return;
+	}
+
+	try {
+		const {
+			data: { id }
+		} = await github.rest.reactions.createForIssueComment({
+			owner: context.repo.owner,
+			repo: context.repo.repo,
+			comment_id: context.payload.comment.id,
+			content: reaction
+		});
+
+		return id;
+	} catch {
+		// disregard; we don't actually care much if this fails
+	}
 };
 
 /**
@@ -263,6 +296,12 @@ module.exports = async ({ context, core, exec, github }) => {
 	console.log(
 		`Merging commits for release from ${context.repo.owner}/${context.repo.repo}#${context.issue.number}`
 	);
+
+	const beginReactionId = await reactToComment({
+		context,
+		github,
+		reaction: "eyes"
+	});
 
 	const scope = {
 		owner: context.repo.owner,
@@ -318,12 +357,10 @@ module.exports = async ({ context, core, exec, github }) => {
 
 	if (!isOk) {
 		await addComment(`
-❌ This pull request cannot be merged while checks are pending or in a failed state.
-
-${formatSummary(message)}
+❌ This pull request cannot be merged ${message}
 `);
 
-		core.setFailed(message);
+		core.setFailed(`Cannot merge ${message}`);
 		return;
 	}
 
@@ -337,12 +374,26 @@ ${formatSummary(message)}
 		await fastForward(execGit, {
 			pr
 		});
+
+		try {
+			if (context.payload.comment != null && beginReactionId != null) {
+				await github.rest.reactions.deleteForIssueComment({
+					...scope,
+					comment_id: context.payload.comment.id,
+					reaction_id: beginReactionId
+				});
+			}
+
+			await reactToComment({ context, github, reaction: "rocket" });
+		} catch {
+			// disregard; we don't actually care much if this fails
+		}
 	} catch (error) {
 		console.error(error);
 		core.setFailed(execLogs);
 
 		await addComment(`
-❌ Fast-forward merge attempt was made, but it failed. See logs for more details.
+❌ Fast-forward merge attempt was made, but it failed.
 
 ${formatSummary(execLogs)}
 `);
