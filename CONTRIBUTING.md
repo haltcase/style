@@ -43,23 +43,35 @@ pnpm add --save-dev @haltcase/style@2.0.0-canary.1
 ```
 
 Once changes are ready for mainline release, merging `canary` &rarr; `main`
-will trigger a publish to npm on the `latest` dist-tag. See below for workflow details.
+will trigger a publish to npm on the `latest` dist-tag. However, protections
+on branches require a specific workflow &mdash; see below for details.
 
-Multiple changes will be grouped together when possible to reduce the
+Multiple changes should be grouped together when possible to reduce the
 number of version increments made to official releases.
 
 ## Workflow
 
 ### Collaborators
 
-Once changes are approved to merge into `main`, it's important **not** to merge
-using the GitHub pull request UI. Instead, always use the dedicated GitHub
-action as follows.
+Once changes are approved to merge into `main` (or `canary`), it's important
+**not** to merge using the GitHub pull request UI. In fact, there are branch
+rules in place to disallow that. Instead, we use a comment command to trigger
+releases.
+
+#### Prereleases
 
 1. Create a new branch, e.g., `feat/prettier-recipe`
 2. Once ready, open a pull request to merge your branch into `canary`
-3. After the review cycle, when `canary` is ready to be mainlined, open a pull request from `canary` &rarr; `main`
-4. Comment on the PR with `!release this` to start merging `canary` into `main`
+3. Wait for check & review requirements to be satisfied
+4. Comment on the PR with `!release this` to start merging, which will trigger a prerelease
+
+#### Releases
+
+When changes in `canary` are ready to be mainlined for a stable release:
+
+1. Open a pull request from `canary` &rarr; `main`
+2. Wait for check & review requirements to be satisfied
+3. Comment on the PR with `!release this` to start merging, which will trigger a release
 
 > The [Release workflow](https://github.com/haltcase/style/actions/workflows/release.yml)
 > can also be triggered manually to merge `canary` into `main` (the PR comment
@@ -78,10 +90,10 @@ eventually end up in a release. :tada:
 
 ## Commits and release versioning
 
-This repository uses [Standard Release](https://semantic-release.gitbook.io/semantic-release/)
+This repository uses [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
 to automate releases &mdash; including versioning and release note generation.
 
-Commit standards are based on [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/blob/master/%40commitlint/config-conventional).
+Commit standards are based on [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/blob/-/%40commitlint/config-conventional).
 
 ### Creating a commit
 
@@ -96,7 +108,7 @@ Resolves #1
 The scope should be included most of the time, and all allowed types and scopes
 are documented here:
 
-https://github.com/haltcase/style/blob/main/.commitlintrc.js
+https://github.com/haltcase/style/blob/-/.commitlintrc.js
 
 ### How commits affect versions
 
