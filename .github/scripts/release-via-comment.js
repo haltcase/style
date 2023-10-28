@@ -68,8 +68,8 @@ const fastForward = async (execGit, { pr }) => {
 	await execGit(["config", "--local", "user.name", USER_NAME]);
 	await execGit(["config", "--local", "user.email", USER_EMAIL]);
 	await execGit(["fetch", "--all"]);
-	await execGit(["fetch", ".", `${headOriginRef}:${pr.head.ref}`]);
 	await execGit(["checkout", pr.base.ref]);
+	await execGit(["fetch", ".", `${headOriginRef}:${pr.head.ref}`]);
 
 	if (isDownstream) {
 		console.log(
