@@ -22,10 +22,10 @@ module.exports = async ({ context, github }) => {
 		repo: context.repo.repo,
 		issue_number: context.issue.number,
 		body: `
-Hey @${mention}, thanks for contributing! If you haven't read the contributing
+Hey @${mention}, thanks for contributing! If you haven't read the contributing \
 guide that outlines the process, you can do so [here](${contributingUrl}).
 
-Maintainers: once checks have passed, comment \`!release this\` and I'll begin
+Maintainers: once checks have passed, comment \`!release this\` and I'll begin \
 merging this for you.
 `.trim()
 	});
