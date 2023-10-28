@@ -59,9 +59,16 @@ const fastForward = async (execGit, { pr }) => {
 		pr.head.repo != null &&
 		pr.base.repo.clone_url !== pr.head.repo.clone_url;
 
+	// prefix head branch name with `origin/` which ensures branch names
+	// containing `/` work properly
+	const headOriginRef = pr.head.ref.startsWith("origin/")
+		? pr.head.ref
+		: `origin/${pr.head.ref}`;
+
 	await execGit(["config", "--local", "user.name", USER_NAME]);
 	await execGit(["config", "--local", "user.email", USER_EMAIL]);
 	await execGit(["fetch", "--all"]);
+	await execGit(["fetch", ".", `${headOriginRef}:${pr.head.ref}`]);
 	await execGit(["checkout", pr.base.ref]);
 
 	if (isDownstream) {
@@ -76,13 +83,7 @@ const fastForward = async (execGit, { pr }) => {
 			pr.head.ref
 		]);
 	} else {
-		// prefix slash-having branch names with `origin/`
-		// (or git gets confused)
-		const mergeRef = pr.head.ref.includes("/")
-			? `origin/${pr.head.ref}`
-			: pr.head.ref;
-
-		await execGit(["merge", "--ff-only", mergeRef]);
+		await execGit(["merge", "--ff-only", headOriginRef]);
 	}
 
 	await execGit(["push", "origin", `${pr.base.ref}`]);
