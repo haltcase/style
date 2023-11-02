@@ -18,6 +18,8 @@ module.exports = {
 	nextJsPageFiles: ["**/{pages,app}/**/*.{m,}{js,ts}x"],
 	nextJsApiRoutes: ["**/{pages,app}/api/**/*.{m,}{js,ts}"],
 
+	astroFiles: ["*.astro"],
+
 	commonJsOverrides: {
 		parserOptions: {
 			sourceType: "script"

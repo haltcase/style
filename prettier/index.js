@@ -17,5 +17,13 @@ module.exports = {
 	...overridableDefaults,
 	singleQuote: false,
 	trailingComma: "none",
-	plugins: ["prettier-plugin-packagejson"]
+	plugins: ["prettier-plugin-astro", "prettier-plugin-packagejson"],
+	overrides: [
+		{
+			files: "*.astro",
+			options: {
+				parser: "astro"
+			}
+		}
+	]
 };

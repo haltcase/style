@@ -74,6 +74,7 @@
 		"eslint-plugin-testing-library": "^6.1.0",
 		"eslint-plugin-tsdoc": "^0.2.17",
 		"eslint-plugin-unicorn": "^48.0.1",
+		"prettier-plugin-astro": "^0.12.1",
 		"prettier-plugin-packagejson": "^2.4.6"
 	},
 	"devDependencies": {
@@ -103,6 +104,9 @@
 			"optional": true
 		},
 		"eslint": {
+			"optional": true
+		},
+		"eslint-plugin-astro": {
 			"optional": true
 		},
 		"prettier": {
