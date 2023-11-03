@@ -20,6 +20,7 @@
 	"exports": {
 		"./eslint/rules/*": "./eslint/rules/*.js",
 		"./eslint/rules/*.js": "./eslint/rules/*.js",
+		"./eslint/astro": "./eslint/astro.js",
 		"./eslint/browser": "./eslint/browser.js",
 		"./eslint/cjs": "./eslint/cjs.js",
 		"./eslint/jest": "./eslint/jest.js",
@@ -40,7 +41,9 @@
 	"files": [
 		"eslint",
 		"prettier",
-		"typescript"
+		"typescript",
+		"astro",
+		"next"
 	],
 	"scripts": {
 		"eslint-check": "eslint --max-warnings=0 .",
