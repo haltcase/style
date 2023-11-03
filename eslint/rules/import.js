@@ -48,6 +48,17 @@ module.exports = {
 		 */
 		"import/no-default-export": error,
 		/**
+		 * Combine separate imports of resolved paths.
+		 *
+		 * 🔧 Fixable - https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-duplicates.md
+		 */
+		"import/no-duplicates": [
+			error,
+			{
+				considerQueryString: true
+			}
+		],
+		/**
 		 * Disallow the use of extraneous packages.
 		 *
 		 * 🚫 Not fixable - https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-extraneous-dependencies.md
