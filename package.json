@@ -97,10 +97,10 @@
 		"typescript": "^5.2.2"
 	},
 	"peerDependencies": {
-		"@next/eslint-plugin-next": "^13.3.0",
-		"eslint": "^8.40.0",
-		"prettier": "^3.0.0",
-		"typescript": "^5.0.0"
+		"@next/eslint-plugin-next": ">=13.3.0 <15",
+		"eslint": ">=8.40.0 <9",
+		"prettier": ">=3.0.0 <4",
+		"typescript": ">=5.0.0 <6"
 	},
 	"peerDependenciesMeta": {
 		"@next/eslint-plugin-next": {
