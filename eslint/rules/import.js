@@ -63,11 +63,7 @@ module.exports = {
 		 *
 		 * 🚫 Not fixable - https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-extraneous-dependencies.md
 		 */
-		"import/no-extraneous-dependencies": [
-			error
-			// TODO: Enable this line after the next release of `eslint-plugin-import` (v2.27+)
-			// { includeInternal: true, includeTypes: true },
-		],
+		"import/no-extraneous-dependencies": [error, { includeTypes: true }],
 		/**
 		 * Disallow mutable exports.
 		 *
