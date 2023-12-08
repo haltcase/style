@@ -93,7 +93,9 @@ module.exports = {
 #### Configuring ESLint for TypeScript
 
 Some of the rules enabled in the TypeScript config require additional type
-information, you'll need to provide the path to your `tsconfig.json`.
+information, so you'll need to use `project: true` and `tsconfigRootDir` or
+explicitly supply the path(s) to your `tsconfig.json` per the typescript-eslint
+documentation.
 
 For more information, see: https://typescript-eslint.io/linting/typed-linting/
 
