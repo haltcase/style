@@ -106,7 +106,7 @@ module.exports = {
 	],
 	parserOptions: {
 		project: true,
-    tsconfigRootDir: __dirname
+		tsconfigRootDir: __dirname
 	},
 	settings: {
 		"import/resolver": {
