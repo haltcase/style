@@ -23,14 +23,15 @@ pnpm i --save-dev @haltcase/style
 yarn add --dev @haltcase/style
 ```
 
-> Some ESLint scenarios require additional peer dependencies.
-> See the [ESLint](#eslint) section.
+> [!NOTE]
+> Some scenarios require additional peer dependencies.
+> See the [Prettier](#prettier) and [ESLint](#eslint) sections.
 
 ## usage
 
 ### Prettier
 
-> **Note**
+> [!NOTE]
 > Prettier is a peer dependency you'll need to install
 > at the root of your project.
 >
@@ -46,7 +47,7 @@ Add the following in `package.json`:
 
 ### ESLint
 
-> **Note**
+> [!NOTE]
 > ESLint is a peer dependency you'll need to install
 > at the root of your project.
 >
@@ -59,7 +60,7 @@ Start with at least one of these base configs, which should always be first in `
 - `@haltcase/style/eslint/browser`
 - `@haltcase/style/eslint/node`
 
-> **Note**
+> [!TIP]
 > You can scope configs so they only target specific files.
 >
 > See: [Scoped configuration with `overrides`](#scoped-configuration-with-overrides).
@@ -94,13 +95,9 @@ module.exports = {
 Some of the rules enabled in the TypeScript config require additional type
 information, you'll need to provide the path to your `tsconfig.json`.
 
-For more information, see: https://typescript-eslint.io/docs/linting/type-linting
+For more information, see: https://typescript-eslint.io/linting/typed-linting/
 
 ```js
-const { resolve } = require("path");
-
-const project = resolve(__dirname, "tsconfig.json");
-
 module.exports = {
 	root: true,
 	extends: [
@@ -108,7 +105,8 @@ module.exports = {
 		require.resolve("@haltcase/style/eslint/typescript")
 	],
 	parserOptions: {
-		project
+		project: true,
+    tsconfigRootDir: __dirname
 	},
 	settings: {
 		"import/resolver": {
@@ -221,7 +219,7 @@ You could also combine them with an `extends` array in [Typescript 5+](https://d
 }
 ```
 
-> **Note**
+> [!TIP]
 > Run `tsc --showConfig` to see the result of the combined configs.
 
 ## contributing
