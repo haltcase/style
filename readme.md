@@ -1,4 +1,4 @@
-# `@haltcase/style` &middot; [![Version](https://flat.badgen.net/npm/v/@haltcase/style)](https://www.npmjs.com/package/@haltcase/style) [![License](https://flat.badgen.net/npm/license/@haltcase/style)](https://www.npmjs.com/package/@haltcase/style) [![GitHub Actions](https://flat.badgen.net/github/checks/haltcase/style)](https://github.com/haltcase/style/actions)
+# `@haltcase/style` &middot; [![npm version](https://img.shields.io/npm/v/@haltcase/style?style=flat-square)](https://www.npmjs.com/package/@haltcase/style) [![license](https://img.shields.io/npm/l/@haltcase/style?style=flat-square)](https://www.npmjs.com/package/@haltcase/style) [![@haltcase/style](https://img.shields.io/static/v1?label=style&message=haltcase&color=0ca5ed&style=flat-square)](https://haltcase.dev/style)
 
 > Style guide and configurations for tools in the web ecosystem.
 
