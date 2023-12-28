@@ -67,6 +67,19 @@ module.exports = {
 			}
 		],
 		/**
+		 * Prevent `void` type expressions from being used in misleading locations
+		 * such as being assigned to a variable, provided as a function argument,
+		 * or returned from a function (except concise arrow functions).
+		 *
+		 * 🔧 Fixable - https://typescript-eslint.io/rules/no-confusing-void-expression/
+		 */
+		"@typescript-eslint/no-confusing-void-expression": [
+			error,
+			{
+				ignoreArrowShorthand: true
+			}
+		],
+		/**
 		 * Disallow Promises in places not designed to handle them.
 		 *
 		 * Function arguments and JSX attributes are allowed.
