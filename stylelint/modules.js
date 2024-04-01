@@ -1,3 +1,5 @@
+// @ts-check
+
 "use strict";
 
 const defineConfig = require("stylelint-define-config").defineConfig;
