@@ -20,6 +20,14 @@ module.exports = defineConfig({
 		// "custom-property-pattern": camelCaseRegex,
 
 		"keyframes-name-pattern": camelCaseRegex,
-		"selector-class-pattern": camelCaseRegex
+		"selector-class-pattern": camelCaseRegex,
+
+		// allow the `:global` CSS Modules pseudo-class
+		"selector-pseudo-class-no-unknown": [
+			true,
+			{
+				ignorePseudoClasses: ["global"]
+			}
+		]
 	}
 });
