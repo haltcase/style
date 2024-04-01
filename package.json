@@ -31,6 +31,8 @@
 		"./eslint/typescript": "./eslint/typescript.js",
 		"./prettier": "./prettier/index.js",
 		"./stylelint": "./stylelint/index.js",
+		"./stylelint/modules": "./stylelint/modules.js",
+		"./stylelint/standard": "./stylelint/standard.js",
 		"./typescript/base": "./typescript/tsconfig.base.json",
 		"./typescript/bundler": "./typescript/tsconfig.bundler.json",
 		"./typescript/next": "./typescript/tsconfig.next.json",

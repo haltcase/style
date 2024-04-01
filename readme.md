@@ -250,6 +250,22 @@ Add the following in `package.json`:
 > See the [Stylelint documentation](https://stylelint.io/user-guide/configure)
 > for other configuration options.
 
+#### Stylelint configs
+
+There are several configs you can extend from. The default config does not
+enforce a specific naming convention for classes, IDs, etc. This is intended
+to allow flexibility between conventional CSS, where `kebab-case` is standard,
+and CSS Modules or CSS-in-JS, where `camelCase` is more common.
+
+There are alternate entry points if you would like to enforce a specific naming
+convention: `standard` for kebab case and `modules` for camel case.
+
+| Name                                 | Description                                         |
+| ------------------------------------ | --------------------------------------------------- |
+| `@haltcase/style/stylelint`          | Do not enforce a naming convention for identifiers. |
+| `@haltcase/style/stylelint/modules`  | Enforce `camelCase` identifiers.                    |
+| `@haltcase/style/stylelint/standard` | Enforce conventional `kebab-case` identifiers.      |
+
 ## contributing
 
 Please read our [contributing](https://github.com/haltcase/style/blob/main/CONTRIBUTING.md)
