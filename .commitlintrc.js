@@ -44,7 +44,9 @@ module.exports = {
 				// Prettier related changes
 				"prettier",
 				// TypeScript related changes
-				"typescript"
+				"typescript",
+				// Stylelint related changes
+				"stylelint"
 			]
 		],
 		"scope-empty": [1, "never"]
