@@ -1,6 +1,6 @@
 {
 	"name": "@haltcase/style",
-	"version": "6.1.0",
+	"version": "6.2.0-canary.1",
 	"description": "haltcase's web ecosystem style guide & configurations",
 	"keywords": [
 		"eslint",
