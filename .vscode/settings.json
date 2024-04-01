@@ -1,0 +1,13 @@
+{
+	"stylelint.packageManager": "pnpm",
+	"stylelint.validate": [
+		"css",
+		"postcss",
+		"html",
+		"vue",
+		"astro",
+		"svelte",
+		"xml",
+		"php"
+	]
+}

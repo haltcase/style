@@ -5,6 +5,7 @@
 - [Prettier](#prettier)
 - [ESLint](#eslint)
 - [TypeScript](#typescript)
+- [Stylelint](#stylelint)
 
 > This package originated from [Vercel's style guide](https://github.com/vercel/style-guide).
 
@@ -223,6 +224,31 @@ You could also combine them with an `extends` array in [Typescript 5+](https://d
 
 > [!TIP]
 > Run `tsc --showConfig` to see the result of the combined configs.
+
+### Stylelint
+
+To format and check CSS with Stylelint, install the `stylelint` package and
+set your configuration to extend from `@haltcase/style/stylelint`.
+
+> [!NOTE]
+> Stylelint is a peer dependency you'll need to install
+> at the root of your project.
+>
+> See: https://stylelint.io/user-guide/get-started
+
+Add the following in `package.json`:
+
+```json
+{
+	"stylelint": {
+		"extends": "@haltcase/style/stylelint"
+	}
+}
+```
+
+> [!TIP]
+> See the [Stylelint documentation](https://stylelint.io/user-guide/configure)
+> for other configuration options.
 
 ## contributing
 

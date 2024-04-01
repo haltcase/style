@@ -30,6 +30,7 @@
 		"./eslint/react": "./eslint/react.js",
 		"./eslint/typescript": "./eslint/typescript.js",
 		"./prettier": "./prettier/index.js",
+		"./stylelint": "./stylelint/index.js",
 		"./typescript/base": "./typescript/tsconfig.base.json",
 		"./typescript/bundler": "./typescript/tsconfig.bundler.json",
 		"./typescript/next": "./typescript/tsconfig.next.json",
@@ -41,6 +42,7 @@
 	"files": [
 		"eslint",
 		"prettier",
+		"stylelint",
 		"typescript",
 		"astro",
 		"next"
@@ -57,6 +59,9 @@
 		"*.{js,jsx,ts,tsx,css,yml,yaml}": "pnpm prettier --write"
 	},
 	"prettier": "./prettier",
+	"stylelint": {
+		"extends": "./stylelint/index.js"
+	},
 	"dependencies": {
 		"@babel/core": "^7.23.2",
 		"@babel/eslint-parser": "^7.22.15",
@@ -77,8 +82,13 @@
 		"eslint-plugin-testing-library": "^6.1.0",
 		"eslint-plugin-tsdoc": "^0.2.17",
 		"eslint-plugin-unicorn": "^48.0.1",
+		"postcss-html": "^1.6.0",
 		"prettier-plugin-astro": "^0.12.1",
-		"prettier-plugin-packagejson": "^2.4.6"
+		"prettier-plugin-packagejson": "^2.4.6",
+		"stylelint-config-clean-order": "^5.4.1",
+		"stylelint-config-html": "^1.1.0",
+		"stylelint-config-standard": "^36.0.0",
+		"stylelint-define-config": "^1.2.0"
 	},
 	"devDependencies": {
 		"@actions/core": "^1.10.1",
@@ -94,12 +104,14 @@
 		"lint-staged": "^15.0.2",
 		"prettier": "^3.0.3",
 		"semantic-release": "^22.0.5",
+		"stylelint": "^16.3.1",
 		"typescript": "^5.2.2"
 	},
 	"peerDependencies": {
 		"@next/eslint-plugin-next": ">=13.3.0 <15",
 		"eslint": ">=8.40.0 <9",
 		"prettier": ">=3.0.0 <4",
+		"stylelint": ">=16.3.1 <17",
 		"typescript": ">=5.0.0 <6"
 	},
 	"peerDependenciesMeta": {
@@ -113,6 +125,9 @@
 			"optional": true
 		},
 		"prettier": {
+			"optional": true
+		},
+		"stylelint": {
 			"optional": true
 		},
 		"typescript": {
