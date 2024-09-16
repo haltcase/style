@@ -1,7 +1,4 @@
 // @ts-check
+/* eslint-disable import-x/no-default-export */
 
-"use strict";
-
-const base = require("./_base.js");
-
-module.exports = base;
+export { stylelintBase as default } from "./_base.js";

@@ -1,11 +1,9 @@
 // @ts-check
 
 /**
- * @typedef {import("@actions/github/lib/context").Context} Context
+ * @import {Context} from "@actions/github/lib/context"
  * @typedef {ReturnType<import("@actions/github").getOctokit>} Octokit
  */
-
-"use strict";
 
 /**
  * @param {object} props
@@ -13,7 +11,7 @@
  * @param {Octokit} props.github
  * @returns
  */
-module.exports = async ({ context, github }) => {
+export const commentOnNewPr = async ({ context, github }) => {
 	const mention = context.payload.pull_request?.user.login || "there";
 	const contributingUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/blob/-/CONTRIBUTING.md`;
 

@@ -1,18 +1,17 @@
 // @ts-check
+/* eslint-disable import-x/no-default-export */
 
-"use strict";
+import { defineConfig } from "stylelint-define-config";
 
-const defineConfig = require("stylelint-define-config").defineConfig;
-
-const base = require("./_base.js");
+import { stylelintBase } from "./_base.js";
 
 const camelCaseRegex = /^(?<=^|[^A-Z_a-z])_*[a-z]+[A-Z_a-z]*$/;
 
-module.exports = defineConfig({
-	...base,
+export default defineConfig({
+	...stylelintBase,
 
 	rules: {
-		...base.rules,
+		...stylelintBase.rules,
 
 		"custom-media-pattern": camelCaseRegex,
 

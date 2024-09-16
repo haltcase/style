@@ -1,32 +1,16 @@
-"use strict";
+export const ecmaVersion = 2021;
 
-module.exports = {
-	levels: {
-		off: "off",
-		warn: "warn",
-		error: "error"
-	},
-	ecmaVersion: 2021,
+export const commonJsOnlyFiles = ["**/*.cjs"];
+export const commonJsFiles = ["**/*.{c,}js"];
+export const javascriptFiles = ["**/*.{m,}js{x,}"];
+export const typescriptFiles = ["**/*.{m,}ts{x,}"];
+export const typescriptJsxFiles = ["**/*.{m,}tsx"];
+export const jsxFiles = ["**/*.{c,m,}{js,ts}x"];
 
-	commonJsFiles: ["*.?(c)js"],
-	javascriptFiles: ["*.js?(x)", "*.mjs"],
-	typescriptFiles: ["*.ts?(x)"],
+export const configFiles = ["**/*.config.{m,}{js,ts}"];
+export const scriptFiles = ["**/scripts/*", "**/prisma/*"];
 
-	configFiles: ["**/*.config.{m,}{js,ts}"],
-	scriptFiles: ["**/scripts/*", "**/prisma/*"],
+export const nextJsPageFiles = ["**/{pages,app}/**/*.{m,}{js,ts}x"];
+export const nextJsApiRoutes = ["**/{pages,app}/api/**/*.{m,}{js,ts}"];
 
-	nextJsPageFiles: ["**/{pages,app}/**/*.{m,}{js,ts}x"],
-	nextJsApiRoutes: ["**/{pages,app}/api/**/*.{m,}{js,ts}"],
-
-	astroFiles: ["*.astro"],
-
-	commonJsOverrides: {
-		parserOptions: {
-			sourceType: "script"
-		},
-		rules: {
-			strict: ["error", "global"],
-			"unicorn/prefer-module": "off"
-		}
-	}
-};
+export const allSupportedFiles = ["**/*.{c,m,}{js,ts}{x,}"];

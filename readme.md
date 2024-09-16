@@ -110,7 +110,7 @@ module.exports = {
 		tsconfigRootDir: __dirname
 	},
 	settings: {
-		"import/resolver": {
+		"import-x/resolver": {
 			typescript: {
 				project
 			}

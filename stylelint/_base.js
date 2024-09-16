@@ -1,10 +1,8 @@
 // @ts-check
 
-"use strict";
+import { defineConfig } from "stylelint-define-config";
 
-const defineConfig = require("stylelint-define-config").defineConfig;
-
-module.exports = defineConfig({
+export const stylelintBase = defineConfig({
 	extends: [
 		"stylelint-config-standard",
 		"stylelint-config-html",

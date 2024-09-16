@@ -22,8 +22,6 @@
  * @property {Octokit} github
  */
 
-"use strict";
-
 const releaseBranch = "main";
 const prereleaseBranch = "canary";
 
@@ -148,20 +146,10 @@ ${jsonSummary}
 	/**
 	 * @type {BranchRules}
 	 */
-	// @ts-expect-error - use method below when available
-	const { data: branchRules } = await github.request(
-		"GET /repos/{owner}/{repo}/rules/branches/{branch}",
-		{
-			...scope,
-			branch: pr.base.ref
-		}
-	);
-
-	// TODO: use this when `actions/github-script` upgrades to `@actions/core@4.2+`
-	// const branchRules = await github.rest.repos.getBranchRules({
-	// 	...scope,
-	// 	branch: pr.base.ref
-	// });
+	const { data: branchRules } = await github.rest.repos.getBranchRules({
+		...scope,
+		branch: pr.base.ref
+	});
 
 	console.log(
 		`Branch rules:\n\n${JSON.stringify(branchRules, undefined, "\t")}`
@@ -173,21 +161,21 @@ ${jsonSummary}
 
 	const requiredStatusChecks =
 		foundChecks?.type === "required_status_checks"
-			? foundChecks.parameters?.required_status_checks ?? []
+			? (foundChecks.parameters?.required_status_checks ?? [])
 			: [];
 
 	const requiredChecksResults = await Promise.all(
-		requiredStatusChecks.map(({ context: check_name }) =>
+		requiredStatusChecks.map(({ context: checkName }) =>
 			github.rest.checks.listForRef({
 				...scope,
 				ref,
-				check_name
+				check_name: checkName
 			})
 		)
 	);
 
 	const checkRuns = requiredChecksResults.flatMap(
-		({ data: { check_runs } }) => check_runs
+		({ data: { check_runs: checkRuns } }) => checkRuns
 	);
 
 	for (const { name, status, conclusion } of checkRuns) {
@@ -238,10 +226,11 @@ const getIsMergeAllowed = async ({ pr }) => {
  * @param {Context} props.context
  * @param {Octokit} props.github
  * @param {Reaction} props.reaction
+ * @returns {Promise<number | undefined>}
  */
 const reactToComment = async ({ context, github, reaction }) => {
 	if (context.payload.comment == null) {
-		return;
+		return undefined;
 	}
 
 	try {
@@ -257,6 +246,7 @@ const reactToComment = async ({ context, github, reaction }) => {
 		return id;
 	} catch {
 		// disregard; we don't actually care much if this fails
+		return undefined;
 	}
 };
 
@@ -293,7 +283,7 @@ ${message}
  * @param {ScriptProps} props
  * @returns
  */
-module.exports = async ({ context, core, exec, github }) => {
+export const releaseViaComment = async ({ context, core, exec, github }) => {
 	console.log(
 		`Merging commits for release from ${context.repo.owner}/${context.repo.repo}#${context.issue.number}`
 	);

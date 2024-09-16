@@ -17,16 +17,17 @@
 	},
 	"license": "MPL-2.0",
 	"author": "Bo Lingen <bo@haltcase.dev> (https://haltcase.dev)",
+	"type": "module",
 	"exports": {
 		"./eslint/rules/*": "./eslint/rules/*.js",
 		"./eslint/rules/*.js": "./eslint/rules/*.js",
-		"./eslint/browser": "./eslint/browser.js",
-		"./eslint/cjs": "./eslint/cjs.js",
-		"./eslint/next": "./eslint/next.js",
-		"./eslint/node": "./eslint/node.js",
-		"./eslint/playwright-test": "./eslint/playwright-test.js",
-		"./eslint/react": "./eslint/react.js",
-		"./eslint/typescript": "./eslint/typescript.js",
+		"./eslint/browser": "./eslint/configs/browser.js",
+		"./eslint/cjs": "./eslint/configs/cjs.js",
+		"./eslint/next": "./eslint/configs/next.js",
+		"./eslint/node": "./eslint/configs/node.js",
+		"./eslint/playwright-test": "./eslint/configs/playwright-test.js",
+		"./eslint/react": "./eslint/configs/react.js",
+		"./eslint/typescript": "./eslint/configs/typescript.js",
 		"./prettier": "./prettier/index.js",
 		"./stylelint": "./stylelint/index.js",
 		"./stylelint/modules": "./stylelint/modules.js",
@@ -37,6 +38,7 @@
 		"./typescript/node": "./typescript/tsconfig.node.json",
 		"./typescript/node18": "./typescript/tsconfig.node18.json",
 		"./typescript/node20": "./typescript/tsconfig.node20.json",
+		"./typescript/node22": "./typescript/tsconfig.node22.json",
 		"./typescript/web": "./typescript/tsconfig.web.json"
 	},
 	"files": [
@@ -57,7 +59,7 @@
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx,css,yml,yaml}": "pnpm prettier --write"
 	},
-	"prettier": "./prettier",
+	"prettier": "./prettier/index.js",
 	"stylelint": {
 		"extends": "./stylelint/index.js"
 	},

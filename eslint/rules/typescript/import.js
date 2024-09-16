@@ -1,22 +1,19 @@
-"use strict";
-
-const {
-	levels: { off }
-} = require("../../constants");
-
 /**
- * These are enabled by `import/recommended`, but are better handled by
- * TypeScript and @typescript-eslint.
+ * These are enabled by `import-x/recommended`, but are better handled by
+ * TypeScript and `typescript-eslint`.
+ *
+ * @type {import("eslint-define-config").Rules}
  */
 const disabledRules = {
-	"import/default": off,
-	"import/export": off,
-	"import/namespace": off,
-	"import/no-unresolved": off
+	"import-x/default": "off",
+	"import-x/export": "off",
+	"import-x/namespace": "off",
+	"import-x/no-unresolved": "off"
 };
 
-module.exports = {
-	rules: {
-		...disabledRules
-	}
+/**
+ * @type {import("eslint-define-config").Rules}
+ */
+export const typescriptImportRules = {
+	...disabledRules
 };

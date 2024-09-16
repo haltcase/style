@@ -1,16 +1,15 @@
 // @ts-check
+/* eslint-disable import-x/no-default-export */
 
-"use strict";
+import { defineConfig } from "stylelint-define-config";
 
-const defineConfig = require("stylelint-define-config").defineConfig;
+import { stylelintBase } from "./_base.js";
 
-const base = require("./_base.js");
-
-module.exports = defineConfig({
-	...base,
+export default defineConfig({
+	...stylelintBase,
 
 	rules: {
-		...base.rules,
+		...stylelintBase.rules,
 
 		// disable identifier casing rules
 		"custom-media-pattern": null,

@@ -1,4 +1,4 @@
-"use strict";
+/* eslint-disable import-x/no-default-export */
 
 /**
  * Some of Prettier's defaults can be overridden by an EditorConfig file. We
@@ -13,17 +13,9 @@ const overridableDefaults = {
 	useTabs: true
 };
 
-module.exports = {
+export default {
 	...overridableDefaults,
 	singleQuote: false,
 	trailingComma: "none",
-	plugins: ["prettier-plugin-astro", "prettier-plugin-packagejson"],
-	overrides: [
-		{
-			files: "*.astro",
-			options: {
-				parser: "astro"
-			}
-		}
-	]
+	plugins: ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"]
 };
