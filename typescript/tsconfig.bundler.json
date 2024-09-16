@@ -9,6 +9,6 @@
 		"noEmit": true,
 		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
-		"target": "ES2015"
+		"target": "es2020"
 	}
 }
