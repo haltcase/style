@@ -22,7 +22,6 @@
 		"./eslint/rules/*.js": "./eslint/rules/*.js",
 		"./eslint/browser": "./eslint/browser.js",
 		"./eslint/cjs": "./eslint/cjs.js",
-		"./eslint/jest": "./eslint/jest.js",
 		"./eslint/next": "./eslint/next.js",
 		"./eslint/node": "./eslint/node.js",
 		"./eslint/playwright-test": "./eslint/playwright-test.js",
