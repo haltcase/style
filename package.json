@@ -20,7 +20,6 @@
 	"exports": {
 		"./eslint/rules/*": "./eslint/rules/*.js",
 		"./eslint/rules/*.js": "./eslint/rules/*.js",
-		"./eslint/astro": "./eslint/astro.js",
 		"./eslint/browser": "./eslint/browser.js",
 		"./eslint/cjs": "./eslint/cjs.js",
 		"./eslint/jest": "./eslint/jest.js",
@@ -46,7 +45,6 @@
 		"prettier",
 		"stylelint",
 		"typescript",
-		"astro",
 		"next"
 	],
 	"scripts": {
@@ -81,7 +79,6 @@
 		"eslint-plugin-tsdoc": "^0.3.0",
 		"eslint-plugin-unicorn": "^55.0.0",
 		"postcss-html": "^1.7.0",
-		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-packagejson": "^2.5.2",
 		"prettier-plugin-tailwindcss": "^0.6.6",
 		"stylelint-config-clean-order": "^6.1.0",
@@ -124,9 +121,6 @@
 			"optional": true
 		},
 		"eslint": {
-			"optional": true
-		},
-		"eslint-plugin-astro": {
 			"optional": true
 		},
 		"prettier": {

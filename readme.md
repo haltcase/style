@@ -68,7 +68,6 @@ Start with at least one of these base configs, which should always be first in `
 
 The following additional configs are available:
 
-- `@haltcase/style/eslint/astro` (requires `eslint-plugin-astro` to be installed)
 - `@haltcase/style/eslint/cjs`
 - `@haltcase/style/eslint/jest`
 - `@haltcase/style/eslint/next` (requires `@next/eslint-plugin-next` to be installed at the same version as `next`)
