@@ -49,7 +49,7 @@
 	"scripts": {
 		"eslint-check": "eslint --max-warnings=0 .",
 		"format": "eslint --fix . && prettier --write .",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"prettier-check": "prettier --check .",
 		"semantic-release": "semantic-release",
 		"test": "echo \"Error: no test specified\" && exit 1"
