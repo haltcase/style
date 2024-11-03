@@ -4,7 +4,7 @@ import { config } from "typescript-eslint";
 import { playwrightTestRules } from "../rules/playwright-test.js";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
  */
 export const getEslintPlaywrightTestConfig = (_options = {}) =>
 	config({

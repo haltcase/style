@@ -12,8 +12,8 @@ import { eslintTsdocConfig } from "./internal/tsdoc.js";
 /**
  * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
  */
-export const getTypescriptConfig = (options = {}) => {
-	/** @type {import("eslint-define-config").FlatESLintConfig["languageOptions"]} */
+export const getEslintTypescriptConfig = (options = {}) => {
+	/** @type {import("typescript-eslint").ConfigWithExtends["languageOptions"]} */
 	const languageOptions = {
 		parser,
 		parserOptions: {
@@ -23,7 +23,7 @@ export const getTypescriptConfig = (options = {}) => {
 			},
 			// https://github.com/typescript-eslint/typescript-eslint/issues/3788#issuecomment-905094436
 			jsxPragma: null,
-			project: options.typescriptProject || true
+			projectService: options.typescriptProjectServiceOptions ?? true
 		}
 	};
 

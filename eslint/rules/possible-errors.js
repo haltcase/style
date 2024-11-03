@@ -1,13 +1,11 @@
 /**
- * @type {import("eslint-define-config").Rules}
+ * @import { Linter } from "eslint"
+ */
+
+/**
+ * @type {Linter.RulesRecord}
  */
 export const possibleErrorsRules = {
-	/**
-	 * Disallow await inside of loops.
-	 *
-	 * 🚫 Not fixable - https://eslint.org/docs/rules/no-await-in-loop
-	 */
-	"no-await-in-loop": "error",
 	/**
 	 * Disallow the use of console.
 	 *

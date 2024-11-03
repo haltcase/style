@@ -5,9 +5,7 @@ import { config } from "typescript-eslint";
 import { getEslintNodeConfig } from "./eslint/configs/node.js";
 
 export default config(
-	...getEslintNodeConfig({
-		nextjs: true
-	}),
+	...getEslintNodeConfig(),
 
 	{
 		name: "Rules dictionaries",

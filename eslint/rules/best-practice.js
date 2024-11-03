@@ -1,12 +1,16 @@
 /**
- * @type {import("eslint-define-config").Rules}
+ * @import { Linter } from "eslint"
+ */
+
+/**
+ * @type {Linter.RulesRecord}
  */
 const commentsRules = {
 	"eslint-comments/disable-enable-pair": ["error", { allowWholeFile: true }]
 };
 
 /**
- * @type {import("eslint-define-config").Rules}
+ * @type {Linter.RulesRecord}
  */
 export const bestPracticeRules = {
 	...commentsRules,

@@ -1,7 +1,11 @@
 /**
+ * @import { Linter } from "eslint"
+ */
+
+/**
  * @param {object} [options]
  * @param {boolean} [options.isTsx = false] - Whether to lint as TSX (JSX).
- * @returns {import("eslint-define-config").Rules}
+ * @returns {Linter.RulesRecord}
  */
 export const getTypescriptNamingConventionRule = ({ isTsx = false } = {}) => ({
 	/**

@@ -1,11 +1,13 @@
 // @ts-check
 
-// @ts-expect-error it doesn't have a default export
+/**
+ * @import { ProjectServiceOptions } from "@typescript-eslint/types"
+ */
+
 import babelParser from "@babel/eslint-parser";
-import { FlatCompat } from "@eslint/eslintrc";
 import eslint from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
-import eslintPluginEslintComments from "eslint-plugin-eslint-comments";
+import eslintPluginEslintComments from "@eslint-community/eslint-plugin-eslint-comments";
 import eslintPluginImportX from "eslint-plugin-import-x";
 import { config } from "typescript-eslint";
 
@@ -23,7 +25,7 @@ import { stylisticRules } from "../../rules/stylistic.js";
 import { variablesRules } from "../../rules/variables.js";
 import { getEslintNextConfig } from "../next.js";
 import { getEslintReactConfig } from "../react.js";
-import { getTypescriptConfig } from "../typescript.js";
+import { getEslintTypescriptConfig } from "../typescript.js";
 import { getEslintCommonJsConfig } from "./commonjs.js";
 import { eslintEs2015Config } from "./es2015.js";
 import { eslintSimpleImportSortConfig } from "./simple-import-sort.js";
@@ -31,13 +33,13 @@ import { eslintUnicornConfig } from "./unicorn.js";
 
 /**
  * @typedef {Object} HaltcaseStyleOptions
- * @property {boolean} [nextjs] Whether to include Next.js rules.
- * @property {boolean} [react] Whether to include React rules.
+ * @property {boolean} [browser] Whether to include browser rules and globals.
  * @property {boolean} [commonjs] Whether to treat *.js files as CommonJS instead of ES Modules.
- * @property {true | string | string[]} [typescriptProject = true] Custom TypeScript project path(s) for the `typescript-eslint` parser.
+ * @property {boolean} [nextjs] Whether to include Next.js rules (implies `react`).
+ * @property {boolean} [node] Whether to include Node.js rules.
+ * @property {boolean} [react] Whether to include React rules.
+ * @property {ProjectServiceOptions} [typescriptProjectServiceOptions = true] Custom TypeScript project service options for the `typescript-eslint` parser.
  */
-
-const compat = new FlatCompat();
 
 /**
  * Get the common ESLint config for Node and browsers.
@@ -71,11 +73,12 @@ export const getEslintBaseConfig = (options = {}) =>
 			extends: [
 				{ name: "eslint/recommended", ...eslint.configs.recommended },
 
-				...compat
-					.config(eslintPluginEslintComments.configs.recommended)
-					.map((it) => ({ name: "eslint-comments/recommended", ...it })),
+				{ name: "prettier", ...eslintConfigPrettier },
 
-				{ name: "prettier", ...eslintConfigPrettier }
+				{
+					name: "eslint-comments",
+					...eslintPluginEslintComments.configs.recommended
+				}
 			],
 			languageOptions: {
 				// global parser options
@@ -139,7 +142,7 @@ export const getEslintBaseConfig = (options = {}) =>
 			}
 		},
 
-		...getTypescriptConfig(options),
+		...getEslintTypescriptConfig(options),
 
 		...(options.nextjs ? getEslintNextConfig(options) : []),
 		...(options.react || options.nextjs ? getEslintReactConfig(options) : []),

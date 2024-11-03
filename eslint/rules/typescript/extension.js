@@ -1,3 +1,7 @@
+/**
+ * @import { Linter } from "eslint"
+ */
+
 import { variablesRules } from "../variables.js";
 
 // These share identical configuration options, so we want to keep them in sync.
@@ -5,7 +9,7 @@ import { variablesRules } from "../variables.js";
 const noUnusedVarsOptions = variablesRules["no-unused-vars"];
 
 /**
- * @type {import("eslint-define-config").Rules}
+ * @type {Linter.RulesRecord}
  */
 export const typescriptExtensionRules = {
 	/**

@@ -8,7 +8,7 @@ import {
 } from "../constants";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
  */
 export const getEslintNextConfig = (_options = {}) =>
 	config(
@@ -19,6 +19,7 @@ export const getEslintNextConfig = (_options = {}) =>
 			plugins: {
 				"@next/next": pluginNextjs
 			},
+			// @ts-expect-error inference issue
 			rules: {
 				...pluginNextjs.configs.recommended.rules,
 				...pluginNextjs.configs["core-web-vitals"].rules

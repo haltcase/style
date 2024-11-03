@@ -1,5 +1,9 @@
 /**
- * @type {import("eslint-define-config").Rules}
+ * @import { Linter } from "eslint"
+ */
+
+/**
+ * @type {Linter.RulesRecord}
  */
 const disabledRules = {
 	/**
@@ -12,7 +16,7 @@ const disabledRules = {
 };
 
 /**
- * @type {import("eslint-define-config").Rules}
+ * @type {Linter.RulesRecord}
  */
 export const importRules = {
 	...disabledRules,

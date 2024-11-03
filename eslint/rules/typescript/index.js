@@ -1,5 +1,9 @@
 /**
- * @type {import("eslint-define-config").Rules}
+ * @import { Linter } from "eslint"
+ */
+
+/**
+ * @type {Linter.RulesRecord}
  */
 export const typescriptBaseRules = {
 	/**

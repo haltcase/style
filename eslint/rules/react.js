@@ -1,6 +1,12 @@
 /**
+ * @import { Linter } from "eslint"
+ */
+
+/**
  * These are enabled by `react/recommended`, but we've made the decision to
  * disable them.
+ *
+ * @type {Linter.RulesRecord}
  */
 const disabledRules = {
 	// This is better handled by TypeScript.
@@ -13,7 +19,7 @@ const disabledRules = {
 };
 
 /**
- * @type {import("eslint-define-config").Rules}
+ * @type {Linter.RulesRecord}
  */
 export const reactRules = {
 	...disabledRules,

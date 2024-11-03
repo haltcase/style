@@ -1,8 +1,12 @@
 /**
+ * @import { Linter } from "eslint"
+ */
+
+/**
  * These are enabled by `import-x/recommended`, but are better handled by
  * TypeScript and `typescript-eslint`.
  *
- * @type {import("eslint-define-config").Rules}
+ * @type {Linter.RulesRecord}
  */
 const disabledRules = {
 	"import-x/default": "off",
@@ -12,7 +16,7 @@ const disabledRules = {
 };
 
 /**
- * @type {import("eslint-define-config").Rules}
+ * @type {Linter.RulesRecord}
  */
 export const typescriptImportRules = {
 	...disabledRules
