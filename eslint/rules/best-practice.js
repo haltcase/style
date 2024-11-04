@@ -108,7 +108,7 @@ export const bestPracticeRules = {
 	/**
 	 * Require converting types explicitly, e.g., `Boolean(foo)` instead of `!!foo`.
 	 *
-	 * 🔧 Partially Fixable - https://eslint.org/docs/rules/no-implicit-coercion
+	 * 🔧 Partially fixable - https://eslint.org/docs/rules/no-implicit-coercion
 	 */
 	"no-implicit-coercion": "error",
 	/**

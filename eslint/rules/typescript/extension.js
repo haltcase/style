@@ -19,6 +19,21 @@ export const typescriptExtensionRules = {
 	 */
 	"@typescript-eslint/default-param-last": "error",
 	/**
+	 * Disallow accidentally using the "empty object" type (`{}`).
+	 *
+	 * 🔧 Partially fixable - https://typescript-eslint.io/rules/no-empty-object-type/
+	 */
+	"@typescript-eslint/no-empty-object-type": [
+		"error",
+		{
+			// allow "single-extends" interfaces as they are often useful for
+			// documentation purposes and future extensibility
+			allowInterfaces: "with-single-extends",
+			// allow React-like props types
+			allowWithName: "Props$"
+		}
+	],
+	/**
 	 * Disallow creation of functions within loops.
 	 *
 	 * 🚫 Not fixable - https://typescript-eslint.io/rules/no-loop-func/
