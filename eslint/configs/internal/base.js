@@ -7,8 +7,10 @@
 import babelParser from "@babel/eslint-parser";
 import eslint from "@eslint/js";
 import eslintPluginEslintComments from "@eslint-community/eslint-plugin-eslint-comments";
+// eslint-disable-next-line import-x/default
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginImportX from "eslint-plugin-import-x";
+// eslint-disable-next-line import-x/default
 import eslintRegexp from "eslint-plugin-regexp";
 import { config } from "typescript-eslint";
 
@@ -120,6 +122,7 @@ export const getEslintBaseConfig = (options = {}) =>
 
 		{
 			name: "@haltcase/internal/Regular Expressions",
+			// eslint-disable-next-line import-x/no-named-as-default-member
 			...eslintRegexp.configs["flat/recommended"]
 		},
 

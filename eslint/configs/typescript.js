@@ -1,3 +1,4 @@
+// eslint-disable-next-line import-x/default
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginImportX from "eslint-plugin-import-x";
 import { config, configs, parser, plugin } from "typescript-eslint";

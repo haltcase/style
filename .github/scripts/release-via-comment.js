@@ -230,7 +230,7 @@ const getIsMergeAllowed = async ({ pr }) => {
  */
 const reactToComment = async ({ context, github, reaction }) => {
 	if (context.payload.comment == null) {
-		return undefined;
+		return;
 	}
 
 	try {
@@ -246,7 +246,6 @@ const reactToComment = async ({ context, github, reaction }) => {
 		return id;
 	} catch {
 		// disregard; we don't actually care much if this fails
-		return undefined;
 	}
 };
 

@@ -1,23 +1,8 @@
 import { config } from "typescript-eslint";
-import { getEslintBaseConfig } from "./configs/internal/base.js";
-import { getEslintBrowserConfig } from "./configs/browser.js";
-import { getEslintCommonJsConfig } from "./configs/cjs.js";
-import { getEslintNextConfig } from "./configs/next.js";
-import { getEslintNodeConfig } from "./configs/node.js";
-import { getEslintReactConfig } from "./configs/react.js";
-import { getEslintTypescriptConfig } from "./configs/typescript.js";
-import { withFiles } from "./withFiles.js";
 
-export {
-	getEslintBaseConfig,
-	getEslintBrowserConfig,
-	getEslintCommonJsConfig,
-	getEslintNextConfig,
-	getEslintNodeConfig,
-	getEslintReactConfig,
-	getEslintTypescriptConfig,
-	withFiles
-};
+import { getEslintBrowserConfig } from "./configs/browser.js";
+import { getEslintBaseConfig } from "./configs/internal/base.js";
+import { getEslintNodeConfig } from "./configs/node.js";
 
 /**
  * @param {import("./configs/internal/base.js").HaltcaseStyleOptions} [options]
@@ -29,4 +14,14 @@ export const getEslintConfig = (options) =>
 		...(options.node ? getEslintNodeConfig(options) : [])
 	);
 
+// eslint-disable-next-line import-x/no-default-export
 export default getEslintConfig;
+
+export { getEslintBrowserConfig } from "./configs/browser.js";
+export { getEslintCommonJsConfig } from "./configs/cjs.js";
+export { getEslintBaseConfig } from "./configs/internal/base.js";
+export { getEslintNextConfig } from "./configs/next.js";
+export { getEslintNodeConfig } from "./configs/node.js";
+export { getEslintReactConfig } from "./configs/react.js";
+export { getEslintTypescriptConfig } from "./configs/typescript.js";
+export { withFiles } from "./withFiles.js";
