@@ -9,12 +9,6 @@ export const eslintUnicornConfig = config({
 	},
 	rules: {
 		/**
-		 * Improve regexes by making them shorter, consistent, and safer.
-		 *
-		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/better-regex.md
-		 */
-		"unicorn/better-regex": "error",
-		/**
 		 * Enforce a specific parameter name in catch clauses.
 		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/catch-error-name.md
