@@ -7,18 +7,19 @@
 - [TypeScript](#typescript)
 - [Stylelint](#stylelint)
 
-> This package originated from [Vercel's style guide](https://github.com/vercel/style-guide).
+> This package originated from [Vercel's style guide](https://github.com/vercel/style-guide),
+> but has since diverged in both architecture and rules.
 
 ## installation
 
 Install `@haltcase/style` with your preferred package manager:
 
 ```sh
+# pnpm
+pnpm add --save-dev @haltcase/style
+
 # npm
 npm i --save-dev @haltcase/style
-
-# pnpm
-pnpm i --save-dev @haltcase/style
 
 # yarn
 yarn add --dev @haltcase/style
@@ -26,7 +27,7 @@ yarn add --dev @haltcase/style
 
 > [!NOTE]
 > Some scenarios require additional peer dependencies.
-> See the [Prettier](#prettier) and [ESLint](#eslint) sections.
+> See the [Prettier](#prettier), [ESLint](#eslint), and [Stylelint](#stylelint) sections.
 
 ## usage
 
@@ -54,70 +55,155 @@ Add the following in `package.json`:
 >
 > See: https://eslint.org/docs/user-guide/getting-started#installation-and-usage
 
-Several ESLint configs are available which can be combined.
+> [!IMPORTANT]
+> This config requires ESLint 9+ and the use of
+> [flat config](https://eslint.org/docs/latest/extend/plugin-migration-flat-config).
 
-Start with at least one of these base configs, which should always be first in `extends`:
-
-- `@haltcase/style/eslint/browser`
-- `@haltcase/style/eslint/node`
-
-> [!TIP]
-> You can scope configs so they only target specific files.
->
-> See: [Scoped configuration with `overrides`](#scoped-configuration-with-overrides).
-
-The following additional configs are available:
-
-- `@haltcase/style/eslint/cjs`
-- `@haltcase/style/eslint/next` (requires `@next/eslint-plugin-next` to be installed at the same version as `next`)
-- `@haltcase/style/eslint/playwright-test`
-- `@haltcase/style/eslint/react`
-- `@haltcase/style/eslint/typescript` (requires `typescript` to be installed and [additional configuration](#configuring-eslint-for-typescript))
-
-Be sure to use `require.resolve` to reference these configs &mdash; ESLint requires absolute paths ([eslint/eslint#9188](https://github.com/eslint/eslint/issues/9188)).
-
-For example, to use the shared ESLint config(s) in a Next.js project, set the
-following in `.eslintrc.js`.
+At its simplest, your config might look like this for a general purpose
+project:
 
 ```js
-module.exports = {
-	extends: [
-		require.resolve("@haltcase/style/eslint/browser"),
-		require.resolve("@haltcase/style/eslint/react"),
-		require.resolve("@haltcase/style/eslint/next")
-	]
-};
+// eslint.config.js
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default getEslintConfig();
 ```
+
+TypeScript support is enabled by default by applying TypeScript-specific
+configurations to files with TypeScript file extensions
+(`ts`, `tsx`, `mts`, and `mtsx`). You may need to apply your own project-specific
+configurations &mdash; see [Configuring ESLint for TypeScript](#configuring-eslint-for-typescript)
+for details on how to do so.
+
+#### ESLint customization
+
+You can enable more rules for your project with configuration options:
+
+```js
+// eslint.config.js
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default getEslintConfig({
+	// for browser environments
+	browser: true,
+
+	// treat *.js files as CommonJS instead of ES Modules
+	commonjs: true,
+
+	// for Next.js projects (implies `react`)
+	nextjs: true,
+
+	// for Node.js projects
+	node: true,
+
+	// for React
+	react: true
+});
+```
+
+And, of course, you may include configs as any part of a larger one:
+
+```js
+// eslint.config.js
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default [
+	...getEslintConfig({
+		nextjs: true
+	}),
+
+	{
+		name: "Customizations",
+		files: ["src/lib/**"],
+		rules: {
+			"no-unused-vars": "warn"
+		}
+	}
+];
+```
+
+You can be more granular with your customizations by using the modular configs
+also exported from `@haltcase/style/eslint`:
+
+```js
+// eslint.config.js
+import {
+	getEslintBaseConfig,
+	getEslintCommonJsConfig,
+	getEslintNodeConfig,
+	getEslintReactConfig,
+	withFiles
+} from "@haltcase/style/eslint";
+
+export default [
+	// use the base config for everything by default
+	...getEslintBaseConfig(),
+
+	// apply Common JS rules to some files
+	...getEslintCommonJsConfig().map((config) => ({
+		...config,
+		files: ["src/legacy/cjs/**/*.js"]
+	})),
+
+	// apply React rules to some files
+	// (`withFiles` is equivalent to the above `map`)
+	...withFiles(getEslintReactConfig(), ["src/frontend/**/*.{ts,js,tsx,jsx}"]),
+
+	...withFiles(getEslintNodeConfig(), ["src/backend/**/*.{ts,js}"]),
+
+	{
+		name: "Customizations",
+		files: ["src/lib/**"],
+		rules: {
+			"no-unused-vars": "warn"
+		}
+	}
+];
+```
+
+> [!TIP]
+> See the ESLint documentation for more details on using configs:
+> https://eslint.org/docs/latest/use/configure/combine-configs
 
 #### Configuring ESLint for TypeScript
 
 Some of the rules enabled in the TypeScript config require additional type
-information, so you'll need to use `project: true` and `tsconfigRootDir` or
-explicitly supply the path(s) to your `tsconfig.json` per the typescript-eslint
-documentation.
+information. By default, this config will configure `parserOptions` with
+[`projectService: true`](https://typescript-eslint.io/packages/parser#projectservice).
 
-For more information, see: https://typescript-eslint.io/linting/typed-linting/
+You can customize this behavior with the `typescriptProjectServiceOptions` option:
 
 ```js
-module.exports = {
-	root: true,
-	extends: [
-		require.resolve("@haltcase/style/eslint/node"),
-		require.resolve("@haltcase/style/eslint/typescript")
-	],
-	parserOptions: {
-		project: true,
-		tsconfigRootDir: __dirname
-	},
-	settings: {
-		"import-x/resolver": {
-			typescript: {
-				project
-			}
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default [
+	...getEslintConfig({
+		typescriptProjectServiceOptions: {
+			allowDefaultProject: ["*.js"]
+		}
+	})
+];
+```
+
+If you need to further customize the TypeScript behavior, use a separate config
+with your own options, for example:
+
+```js
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default [
+	...getEslintConfig(),
+
+	{
+		files: ["*.{c,m,}ts{x,}"],
+		parserOptions: {
+			project: true
 		}
 	}
-};
+];
 ```
+
+For more information, see: https://typescript-eslint.io/linting/typed-linting/
 
 #### Configuring custom components for `jsx-a11y`
 
@@ -128,63 +214,51 @@ via the `components` setting.
 The below list is not exhaustive.
 
 ```js
-module.exports = {
-	root: true,
-	extends: [require.resolve("@haltcase/style/eslint/react")],
-	settings: {
-		"jsx-a11y": {
-			components: {
-				Article: "article",
-				Button: "button",
-				Image: "img",
-				Input: "input",
-				Link: "a",
-				Video: "video"
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default [
+	getEslintConfig({
+		react: true
+	}),
+
+	{
+		settings: {
+			"jsx-a11y": {
+				components: {
+					Article: "article",
+					Button: "button",
+					Image: "img",
+					Input: "input",
+					Link: "a",
+					Video: "video"
+				}
 			}
 		}
 	}
-};
-```
-
-#### Scoped configuration with `overrides`
-
-ESLint configs can be scoped to include/exclude specific paths. This ensures
-that rules don't "leak" into places where those rules don't apply.
-
-In this example, Jest rules are only being applied to files matching Jest's
-default test match pattern.
-
-```js
-module.exports = {
-	extends: [require.resolve("@haltcase/style/eslint/node")],
-	overrides: [
-		{
-			files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-			extends: [require.resolve("@haltcase/style/eslint/jest")]
-		}
-	]
-};
+];
 ```
 
 ##### A note on file extensions
 
-By default, all TypeScript rules are scoped to files ending with `.ts` and
-`.tsx`.
+By default, all TypeScript rules are scoped to files with extensions ending in
+`ts` or `tsx`.
 
-However, when using overrides, file extensions must be included or ESLint will
-only include `.js` files.
+If you need to override configuration for TypeScript files, make sure to
+specify the `files` property or ESLint will
+[only target `*.js` files](https://eslint.org/docs/latest/use/configure/configuration-files#specifying-files-and-ignores).
 
 ```js
-module.exports = {
-	overrides: [
-		{
-			files: ["directory/**/*.[jt]s?(x)"],
-			rules: {
-				"my-rule": "off"
-			}
+export default [
+	...getEslintConfig(),
+
+	{
+		// apply this config to js, ts, jsx, and tsx files
+		files: ["directory/**/*.[jt]s?(x)"],
+		rules: {
+			"my-rule": "off"
 		}
-	]
-};
+	}
+];
 ```
 
 ### TypeScript
@@ -196,9 +270,10 @@ Several Typescript configs are available to cover various scenarios:
 | `@haltcase/style/typescript/base`    | Baseline config, intended to be extended from.                                                       |
 | `@haltcase/style/typescript/bundler` | For use in bundled projects, most commonly [Vite](https://vitejs.dev/) + [React](https://react.dev). |
 | `@haltcase/style/typescript/next`    | For use in [Next.js](https://nextjs.org/) projects.                                                  |
-| `@haltcase/style/typescript/node`    | Default Node config, currently targeting Node 20.                                                    |
+| `@haltcase/style/typescript/node`    | Default Node config, currently targeting Node 22.                                                    |
 | `@haltcase/style/typescript/node18`  | For projects targeting Node 18.                                                                      |
 | `@haltcase/style/typescript/node20`  | For projects targeting Node 20.                                                                      |
+| `@haltcase/style/typescript/node22`  | For projects targeting Node 22.                                                                      |
 | `@haltcase/style/typescript/web`     | For use in web projects.                                                                             |
 
 Typically, you'll only need to extend from one of these:
@@ -222,6 +297,16 @@ You could also combine them with an `extends` array in [Typescript 5+](https://d
 
 > [!TIP]
 > Run `tsc --showConfig` to see the result of the combined configs.
+
+#### TypeScript includes, excludes, and `paths` aliases
+
+Some TypeScript configs set `include`, `exclude`, and `paths` for you with
+common options. Currently:
+
+| Name                                 | Description                                                                       |
+| ------------------------------------ | --------------------------------------------------------------------------------- |
+| `@haltcase/style/typescript/bundler` | Includes `@/*` → `src/*` path alias.                                              |
+| `@haltcase/style/typescript/next`    | Includes `@/*` → `src/*` path alias and Next.js `include` and `exclude` settings. |
 
 ### Stylelint
 
