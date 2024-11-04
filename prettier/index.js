@@ -17,5 +17,6 @@ export default {
 	...overridableDefaults,
 	singleQuote: false,
 	trailingComma: "none",
-	plugins: ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"]
+	plugins: ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"],
+	tailwindAttributes: ["classNames", "clsx", "cx", "twMerge"]
 };
