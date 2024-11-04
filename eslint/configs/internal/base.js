@@ -78,7 +78,9 @@ export const getEslintBaseConfig = (options = {}) =>
 
 				{
 					name: "eslint-comments",
-					...eslintPluginEslintComments.configs.recommended
+					rules: {
+						...eslintPluginEslintComments.configs.recommended.rules
+					}
 				}
 			],
 			languageOptions: {
@@ -92,7 +94,7 @@ export const getEslintBaseConfig = (options = {}) =>
 				reportUnusedDisableDirectives: "warn"
 			},
 			plugins: {
-				"eslint-comments": eslintPluginEslintComments
+				"@eslint-community/eslint-comments": eslintPluginEslintComments
 			}
 		},
 

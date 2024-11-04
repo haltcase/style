@@ -6,7 +6,10 @@
  * @type {Linter.RulesRecord}
  */
 const commentsRules = {
-	"eslint-comments/disable-enable-pair": ["error", { allowWholeFile: true }]
+	"@eslint-community/eslint-comments/disable-enable-pair": [
+		"error",
+		{ allowWholeFile: true }
+	]
 };
 
 /**
