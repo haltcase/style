@@ -19,6 +19,7 @@
 	"author": "Bo Lingen <bo@haltcase.dev> (https://haltcase.dev)",
 	"type": "module",
 	"exports": {
+		"./eslint": "./eslint/index.js",
 		"./eslint/rules/*": "./eslint/rules/*.js",
 		"./eslint/rules/*.js": "./eslint/rules/*.js",
 		"./eslint/browser": "./eslint/configs/browser.js",
