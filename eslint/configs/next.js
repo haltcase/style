@@ -5,7 +5,7 @@ import {
 	javascriptFiles,
 	nextJsApiRoutes,
 	nextJsPageFiles
-} from "../constants";
+} from "../constants.js";
 
 /**
  * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
