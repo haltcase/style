@@ -5,7 +5,7 @@ import { defineConfig } from "stylelint-define-config";
 
 import { stylelintBase } from "./_base.js";
 
-const camelCaseRegex = /^(?<=^|[^A-Z_a-z])_*[a-z]+[A-Z_a-z]*$/;
+const camelCaseRegex = /^[a-z][a-zA-Z0-9]+$/;
 
 export default defineConfig({
 	...stylelintBase,
