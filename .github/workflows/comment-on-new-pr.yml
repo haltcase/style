@@ -29,5 +29,5 @@ jobs:
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           script: |
-            const { commentOnNewPr } = await import("./.github/scripts/comment-on-new-pr.js");
+            const { commentOnNewPr } = await import("${{ github.workspace }}/.github/scripts/comment-on-new-pr.js");
             await commentOnNewPr({ context, github });

@@ -41,5 +41,5 @@ jobs:
         with:
           github-token: ${{ steps.generate-token.outputs.token }}
           script: |
-            const { releaseViaComment } = await import("./.github/scripts/release-via-comment.js");
+            const { releaseViaComment } = await import("${{ github.workspace }}/.github/scripts/release-via-comment.js");
             await releaseViaComment({ context, core, exec, github });
