@@ -129,7 +129,7 @@ also exported from `@haltcase/style/eslint`:
 // eslint.config.js
 import {
 	getEslintBaseConfig,
-	getEslintCommonJsConfig,
+	getEslintBrowserConfig,
 	getEslintNodeConfig,
 	getEslintReactConfig,
 	withFiles
@@ -139,10 +139,10 @@ export default [
 	// use the base config for everything by default
 	...getEslintBaseConfig(),
 
-	// apply Common JS rules to some files
-	...getEslintCommonJsConfig().map((config) => ({
+	// apply browser rules to some files
+	...getEslintBrowserConfig().map((config) => ({
 		...config,
-		files: ["src/legacy/cjs/**/*.js"]
+		files: ["src/client-only/**/*.js"]
 	})),
 
 	// apply React rules to some files
