@@ -169,18 +169,19 @@ export default [
 
 Some of the rules enabled in the TypeScript config require additional type
 information. By default, this config will configure `parserOptions` with
-[`projectService: true`](https://typescript-eslint.io/packages/parser#projectservice).
+[`project: true`](https://typescript-eslint.io/packages/parser/#project).
 
-You can customize this behavior with the `typescriptProjectServiceOptions` option:
+You can customize this behavior with the `typescriptProject` option:
 
 ```js
 import { getEslintConfig } from "@haltcase/style/eslint";
 
 export default [
 	...getEslintConfig({
-		typescriptProjectServiceOptions: {
-			allowDefaultProject: ["*.js"]
-		}
+		typescriptProject: [
+			"./packages/**/tsconfig.json",
+			"./separate-package/tsconfig.json"
+		]
 	})
 ];
 ```
@@ -197,7 +198,8 @@ export default [
 	{
 		files: ["*.{c,m,}ts{x,}"],
 		parserOptions: {
-			project: true
+			project: true,
+			tsConfigRootDir: "/custom/config/directory"
 		}
 	}
 ];

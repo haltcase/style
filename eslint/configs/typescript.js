@@ -24,7 +24,10 @@ export const getEslintTypescriptConfig = (options = {}) => {
 			},
 			// https://github.com/typescript-eslint/typescript-eslint/issues/3788#issuecomment-905094436
 			jsxPragma: null,
-			projectService: options.typescriptProjectServiceOptions ?? true
+			project: options.typescriptProject ?? true
+			// use `projectService` when VS Code supports it properly
+			// https://github.com/microsoft/vscode-eslint/issues/1911
+			// projectService: options.typescriptProjectServiceOptions ?? true
 		}
 	};
 

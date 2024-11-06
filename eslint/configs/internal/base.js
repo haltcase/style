@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @import { ProjectServiceOptions } from "@typescript-eslint/types"
+ * @import { ParserOptions } from "@typescript-eslint/types"
  */
 
 import babelParser from "@babel/eslint-parser";
@@ -41,7 +41,10 @@ import { eslintUnicornConfig } from "./unicorn.js";
  * @property {boolean} [nextjs] Whether to include Next.js rules (implies `react`).
  * @property {boolean} [node] Whether to include Node.js rules.
  * @property {boolean} [react] Whether to include React rules.
- * @property {ProjectServiceOptions} [typescriptProjectServiceOptions = true] Custom TypeScript project service options for the `typescript-eslint` parser.
+ * @property {ParserOptions["project"]} [typescriptProject = true] Custom TypeScript project options for the `typescript-eslint` parser.
+ * // use when VS Code supports `projectService`
+ * // https://github.com/microsoft/vscode-eslint/issues/1911
+ * property {ProjectServiceOptions} [typescriptProjectServiceOptions = true] Custom TypeScript project service options for the `typescript-eslint` parser.
  */
 
 /**
