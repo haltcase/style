@@ -17,12 +17,29 @@ export const getTypescriptNamingConventionRule = ({ isTsx = false } = {}) => ({
 	 */
 	"@typescript-eslint/naming-convention": [
 		"error",
+		// enforce that unused variable-likes are prefixed with `_`
+		{
+			format: ["camelCase", isTsx && "StrictPascalCase"].filter(Boolean),
+			leadingUnderscore: "require",
+			modifiers: ["unused"],
+			selector: "variableLike",
+			trailingUnderscore: "forbid"
+		},
 		// enforce that everything is camelCase by default
 		{
 			format: ["camelCase", isTsx && "StrictPascalCase"].filter(Boolean),
 			leadingUnderscore: "forbid",
 			selector: "default",
 			trailingUnderscore: "forbid"
+		},
+		// allow variable-likes called exactly "_"
+		{
+			filter: {
+				match: true,
+				regex: "^_$"
+			},
+			format: null,
+			selector: ["variableLike", "typeProperty"]
 		},
 		// anything type-like must be written in PascalCase
 		{
@@ -61,11 +78,25 @@ export const getTypescriptNamingConventionRule = ({ isTsx = false } = {}) => ({
 		{
 			format: null,
 			modifiers: ["destructured"],
-			selector: "variable"
+			prefix: [],
+			selector: ["variable", "parameter"]
 		},
+		// ignore destructured booleans; requires enough specificity to override
+		// the above rule enforcing prefixes
 		{
 			format: null,
-			selector: "typeProperty"
+			leadingUnderscore: "forbid",
+			modifiers: ["destructured"],
+			prefix: [],
+			selector: "variable",
+			trailingUnderscore: "forbid",
+			types: ["boolean"]
+		},
+		// enforce that all type parameters begin with `T`
+		{
+			format: ["PascalCase"],
+			prefix: ["T"],
+			selector: "typeParameter"
 		}
 	]
 });
