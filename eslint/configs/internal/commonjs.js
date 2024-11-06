@@ -5,7 +5,7 @@ import { commonJsFiles, commonJsOnlyFiles } from "../../constants.js";
 /**
  * @param {import("./base.js").HaltcaseStyleOptions} [options]
  */
-export const getEslintCommonJsConfig = (options = {}) =>
+export const getEslintCommonJsConfigInternal = (options = {}) =>
 	config({
 		name: "@haltcase/internal/CommonJS files",
 

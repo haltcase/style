@@ -6,12 +6,26 @@ import {
 	nextJsApiRoutes,
 	nextJsPageFiles
 } from "../constants.js";
+import { getEslintBaseConfig } from "./internal/base.js";
+import { getEslintNodeConfigInternal } from "./node.js";
+import { getEslintReactConfigInternal } from "./react.js";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
+ * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
  */
-export const getEslintNextConfig = (_options = {}) =>
+export const getEslintNextConfig = (options = {}) =>
 	config(
+		...getEslintBaseConfig(options),
+		...getEslintNodeConfigInternal(options),
+		...getEslintNextConfigInternal(options)
+	);
+
+/**
+ * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ */
+export const getEslintNextConfigInternal = (options = {}) =>
+	config(
+		...getEslintReactConfigInternal(options),
 		{
 			name: "@haltcase/nextjs",
 

@@ -1,8 +1,10 @@
 import { config } from "typescript-eslint";
 
-import { getEslintBrowserConfig } from "./configs/browser.js";
+import { getEslintBrowserConfigInternal } from "./configs/browser.js";
 import { getEslintBaseConfig } from "./configs/internal/base.js";
-import { getEslintNodeConfig } from "./configs/node.js";
+import { getEslintNextConfigInternal } from "./configs/next.js";
+import { getEslintNodeConfigInternal } from "./configs/node.js";
+import { getEslintReactConfigInternal } from "./configs/react.js";
 
 /**
  * @param {import("./configs/internal/base.js").HaltcaseStyleOptions} [options]
@@ -10,8 +12,13 @@ import { getEslintNodeConfig } from "./configs/node.js";
 export const getEslintConfig = (options) =>
 	config(
 		...getEslintBaseConfig(options),
-		...(options.browser ? getEslintBrowserConfig(options) : []),
-		...(options.node ? getEslintNodeConfig(options) : [])
+		...(options.browser ? getEslintBrowserConfigInternal(options) : []),
+		...(options.node ? getEslintNodeConfigInternal(options) : []),
+
+		...(options.nextjs ? getEslintNextConfigInternal(options) : []),
+		...(options.react && !options.nextjs
+			? getEslintReactConfigInternal(options)
+			: [])
 	);
 
 // eslint-disable-next-line import-x/no-default-export
@@ -19,7 +26,6 @@ export default getEslintConfig;
 
 export { getEslintBrowserConfig } from "./configs/browser.js";
 export { getEslintCommonJsConfig } from "./configs/cjs.js";
-export { getEslintBaseConfig } from "./configs/internal/base.js";
 export { getEslintNextConfig } from "./configs/next.js";
 export { getEslintNodeConfig } from "./configs/node.js";
 export { getEslintReactConfig } from "./configs/react.js";

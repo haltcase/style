@@ -7,10 +7,18 @@ import { getEslintBaseConfig } from "./internal/base.js";
  * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
  */
 export const getEslintBrowserConfig = (options = {}) =>
+	config(
+		...getEslintBaseConfig(options),
+		...getEslintBrowserConfigInternal(options)
+	);
+
+/**
+ * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
+ */
+export const getEslintBrowserConfigInternal = (_options = {}) =>
 	config({
 		name: "Browser",
 
-		extends: [...getEslintBaseConfig(options)],
 		languageOptions: {
 			globals: {
 				...globals.browser

@@ -26,10 +26,8 @@ import { importRules } from "../../rules/imports.js";
 import { possibleErrorsRules } from "../../rules/possible-errors.js";
 import { stylisticRules } from "../../rules/stylistic.js";
 import { variablesRules } from "../../rules/variables.js";
-import { getEslintNextConfig } from "../next.js";
-import { getEslintReactConfig } from "../react.js";
 import { getEslintTypescriptConfig } from "../typescript.js";
-import { getEslintCommonJsConfig } from "./commonjs.js";
+import { getEslintCommonJsConfigInternal } from "./commonjs.js";
 import { eslintEs2015Config } from "./es2015.js";
 import { eslintSimpleImportSortConfig } from "./simple-import-sort.js";
 import { eslintUnicornConfig } from "./unicorn.js";
@@ -158,9 +156,6 @@ export const getEslintBaseConfig = (options = {}) =>
 
 		...getEslintTypescriptConfig(options),
 
-		...(options.nextjs ? getEslintNextConfig(options) : []),
-		...(options.react || options.nextjs ? getEslintReactConfig(options) : []),
-
 		{
 			name: "@haltcase/internal/Third-party config files (e.g., next.config.mjs)",
 			files: configFiles,
@@ -179,5 +174,5 @@ export const getEslintBaseConfig = (options = {}) =>
 			}
 		},
 
-		...getEslintCommonJsConfig(options)
+		...getEslintCommonJsConfigInternal(options)
 	);

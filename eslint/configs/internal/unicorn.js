@@ -71,12 +71,6 @@ export const eslintUnicornConfig = config({
 		 */
 		"unicorn/filename-case": "off",
 		/**
-		 * Enforce specific import styles per module.
-		 *
-		 * 🚫 Not fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/import-style.md
-		 */
-		"unicorn/import-style": "error",
-		/**
 		 * Enforce the use of `new` for all builtins, except `String`, `Number`, `Boolean`, `Symbol` and `BigInt`.
 		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/new-for-builtins.md

@@ -3,14 +3,18 @@ import { config } from "typescript-eslint";
 
 import { playwrightTestRules } from "../rules/playwright-test.js";
 
+const playwrightRecommendedConfig =
+	eslintPluginPlaywright.configs["flat/recommended"];
+
 /**
  * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
  */
 export const getEslintPlaywrightTestConfig = (_options = {}) =>
 	config({
+		...playwrightRecommendedConfig,
+
 		name: "Playwright tests",
 
-		extends: [eslintPluginPlaywright.configs["flat/recommended"]],
 		rules: {
 			...playwrightTestRules
 		}
