@@ -94,9 +94,11 @@ export const reactRules = {
 	/**
 	 * Require props to be sorted alphabetically.
 	 *
+	 * Disabled because it can be annoying when enabled while not having a lot of upside.
+	 *
 	 * 🔧 Fixable - https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
 	 */
-	"react/jsx-sort-props": "warn",
+	"react/jsx-sort-props": "off",
 	/**
 	 * Disallow usage of Array index in keys.
 	 *
