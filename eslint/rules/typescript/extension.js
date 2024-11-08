@@ -57,5 +57,18 @@ export const typescriptExtensionRules = {
 	 *
 	 * 🚫 Not fixable - https://typescript-eslint.io/rules/no-useless-constructor/
 	 */
-	"@typescript-eslint/no-useless-constructor": "error"
+	"@typescript-eslint/no-useless-constructor": "error",
+	/**
+	 * Enforce template literal expressions to be of string type.
+	 *
+	 * 🚫 Not fixable - https://typescript-eslint.io/rules/restrict-template-expressions/
+	 */
+	"@typescript-eslint/restrict-template-expressions": [
+		"error",
+		{
+			allow: [{ from: "lib", name: ["Error", "URL", "URLSearchParams"] }],
+			allowBoolean: true,
+			allowNumber: true
+		}
+	]
 };
