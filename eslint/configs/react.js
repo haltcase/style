@@ -1,16 +1,12 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import eslintPluginImportX from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginReact from "eslint-plugin-react";
-// @ts-ignore
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import { config } from "typescript-eslint";
 
 import { jsxA11yRules } from "../rules/jsx-a11y.js";
 import { reactRules } from "../rules/react.js";
 import { getEslintBaseConfig } from "./internal/base.js";
-
-const compat = new FlatCompat();
 
 /**
  * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
@@ -42,8 +38,12 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 
 			{
 				name: "@haltcase/react/hooks",
-				// @ts-ignore the modules types are incorrect
-				...compat.config(eslintPluginReactHooks.configs.recommended)
+				plugins: {
+					"react-hooks": eslintPluginReactHooks
+				},
+				rules: {
+					...eslintPluginReactHooks.configs.recommended.rules
+				}
 			},
 
 			{
