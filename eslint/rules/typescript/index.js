@@ -92,6 +92,7 @@ export const typescriptBaseRules = {
 		"error",
 		{
 			ignorePrimitives: {
+				number: true,
 				string: true
 			}
 		}
