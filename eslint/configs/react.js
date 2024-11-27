@@ -1,11 +1,15 @@
+import eslintPluginReact from "@eslint-react/eslint-plugin";
+import eslintStylisticJsx from "@stylistic/eslint-plugin-jsx";
 import eslintPluginImportX from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
-import eslintPluginReact from "eslint-plugin-react";
+import eslintPluginReactOriginal from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import { config } from "typescript-eslint";
 
 import { jsxA11yRules } from "../rules/jsx-a11y.js";
 import { reactRules } from "../rules/react.js";
+import { reactXRules } from "../rules/react-x.js";
+import { stylisticJsxRules } from "../rules/stylistic-jsx.js";
 import { getEslintBaseConfig } from "./internal/base.js";
 
 /**
@@ -25,15 +29,29 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 		name: "@haltcase/react",
 
 		extends: [
-			// @ts-ignore the modules types are incorrect
 			{
-				name: "@haltcase/react/recommended",
-				...eslintPluginReact.configs.flat.recommended
+				...eslintPluginReact.configs["recommended-type-checked"],
+				name: "@haltcase/react/recommended-type-checked"
 			},
-			// @ts-ignore the modules types are incorrect
+
 			{
-				name: "@haltcase/react/jsx-runtime",
-				...eslintPluginReact.configs.flat["jsx-runtime"]
+				name: "@haltcase/react/jsx-eslint/react",
+				plugins: {
+					react: eslintPluginReactOriginal
+				},
+				rules: {
+					...reactRules
+				}
+			},
+
+			{
+				name: "@haltcase/react/stylistic",
+				plugins: {
+					"@stylistic/jsx": eslintStylisticJsx
+				},
+				rules: {
+					...stylisticJsxRules
+				}
 			},
 
 			{
@@ -62,7 +80,7 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 		},
 
 		rules: {
-			...reactRules,
+			...reactXRules,
 			...jsxA11yRules
 		}
 	});
