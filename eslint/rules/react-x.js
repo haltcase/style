@@ -14,54 +14,54 @@ export const reactXRules = {
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/no-useless-fragment
 	 */
-	"no-useless-fragment": "error",
+	"@eslint-react/no-useless-fragment": "error",
 
 	/**
 	 * Enforces using shorthand syntax for boolean attributes.
 	 *
 	 * 🔧 Fixable - https://eslint-react.xyz/docs/rules/prefer-shorthand-boolean
 	 */
-	"prefer-shorthand-boolean": "error",
+	"@eslint-react/prefer-shorthand-boolean": "error",
 
 	/**
 	 * Enforces using shorthand syntax for fragments.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
 	 */
-	"prefer-shorthand-fragment": "error",
+	"@eslint-react/prefer-shorthand-fragment": "error",
 
 	/**
 	 * Warns function calls made inside `useState` calls.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/hooks-extra-prefer-use-state-lazy-initialization
 	 */
-	"hooks-extra/prefer-use-state-lazy-initialization": "error",
+	"@eslint-react/hooks-extra/prefer-use-state-lazy-initialization": "error",
 
 	/**
 	 * Enforces naming conventions for components.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/naming-convention-component-name
 	 */
-	"naming-convention/component-name": "warn",
+	"@eslint-react/naming-convention/component-name": "warn",
 
 	/**
 	 * Enforces naming convention for JSX files.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/naming-convention-filename
 	 */
-	"naming-convention/filename": "warn",
+	"@eslint-react/naming-convention/filename": "warn",
 
 	/**
 	 * Enforces consistent use of the JSX file extension.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/naming-convention-filename-extension
 	 */
-	"naming-convention/filename-extension": "warn",
+	"@eslint-react/naming-convention/filename-extension": "warn",
 
 	/**
 	 * Enforces destructuring and symmetric naming of useState hook value and setter variables.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/naming-convention-use-state
 	 */
-	"naming-convention/use-state": "warn"
+	"@eslint-react/naming-convention/use-state": "warn"
 };

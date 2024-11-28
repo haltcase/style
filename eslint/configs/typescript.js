@@ -1,4 +1,3 @@
-// eslint-disable-next-line import-x/default
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginImportX from "eslint-plugin-import-x";
 import { config, configs, parser, plugin } from "typescript-eslint";
@@ -11,7 +10,7 @@ import { getTypescriptNamingConventionRule } from "../rules/typescript/naming-co
 import { eslintTsdocConfig } from "./internal/tsdoc.js";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintTypescriptConfig = (options = {}) => {
 	/** @type {import("typescript-eslint").ConfigWithExtends["languageOptions"]} */

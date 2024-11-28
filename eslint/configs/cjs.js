@@ -4,7 +4,7 @@ import { getEslintBaseConfig } from "./internal/base.js";
 import { getEslintCommonJsConfigInternal } from "./internal/commonjs.js";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintCommonJsConfig = (options) =>
 	config(

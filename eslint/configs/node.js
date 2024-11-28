@@ -4,7 +4,7 @@ import { config } from "typescript-eslint";
 import { getEslintBaseConfig } from "./internal/base.js";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNodeConfig = (options = {}) =>
 	config(
@@ -13,7 +13,7 @@ export const getEslintNodeConfig = (options = {}) =>
 	);
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNodeConfigInternal = (_options = {}) =>
 	config({

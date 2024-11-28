@@ -7,7 +7,7 @@ const playwrightRecommendedConfig =
 	eslintPluginPlaywright.configs["flat/recommended"];
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintPlaywrightTestConfig = (_options = {}) =>
 	config({

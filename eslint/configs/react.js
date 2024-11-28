@@ -13,7 +13,7 @@ import { stylisticJsxRules } from "../rules/stylistic-jsx.js";
 import { getEslintBaseConfig } from "./internal/base.js";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintReactConfig = (options) =>
 	config(
@@ -22,7 +22,7 @@ export const getEslintReactConfig = (options) =>
 	);
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [_options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintReactConfigInternal = (_options = {}) =>
 	config({
@@ -37,6 +37,7 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 			{
 				name: "@haltcase/react/jsx-eslint/react",
 				plugins: {
+					// @ts-expect-error see https://github.com/jsx-eslint/eslint-plugin-react/pull/3840
 					react: eslintPluginReactOriginal
 				},
 				rules: {

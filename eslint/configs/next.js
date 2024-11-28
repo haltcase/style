@@ -11,7 +11,7 @@ import { getEslintNodeConfigInternal } from "./node.js";
 import { getEslintReactConfigInternal } from "./react.js";
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNextConfig = (options = {}) =>
 	config(
@@ -21,7 +21,7 @@ export const getEslintNextConfig = (options = {}) =>
 	);
 
 /**
- * @param {import("./internal/base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNextConfigInternal = (options = {}) =>
 	config(
@@ -33,7 +33,6 @@ export const getEslintNextConfigInternal = (options = {}) =>
 			plugins: {
 				"@next/next": pluginNextjs
 			},
-			// @ts-expect-error inference issue
 			rules: {
 				...pluginNextjs.configs.recommended.rules,
 				...pluginNextjs.configs["core-web-vitals"].rules

@@ -7,9 +7,9 @@ import { getEslintNodeConfigInternal } from "./configs/node.js";
 import { getEslintReactConfigInternal } from "./configs/react.js";
 
 /**
- * @param {import("./configs/internal/base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./configs/internal/base.js").HaltcaseStyleCreator}
  */
-export const getEslintConfig = (options) =>
+export const getEslintConfig = (options = {}) =>
 	config(
 		...getEslintBaseConfig(options),
 		...(options.browser ? getEslintBrowserConfigInternal(options) : []),

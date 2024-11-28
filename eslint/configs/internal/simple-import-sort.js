@@ -1,6 +1,9 @@
 import eslintPluginSimpleImportSort from "eslint-plugin-simple-import-sort";
 import { config } from "typescript-eslint";
 
+/**
+ * @type {ReturnType<import("./base.js").HaltcaseStyleCreator>}
+ */
 export const eslintSimpleImportSortConfig = config({
 	name: "@haltcase/internal/Import & export sorting",
 

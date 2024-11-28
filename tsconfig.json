@@ -1,7 +1,9 @@
 {
 	"compilerOptions": {
+		"allowJs": true,
 		"moduleResolution": "node",
 		"module": "ESNext",
+		"noEmit": true,
 		"target": "ESNext",
 		"checkJs": true,
 		"allowSyntheticDefaultImports": true,
@@ -11,6 +13,8 @@
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
 		"noImplicitAny": true,
-		"skipLibCheck": true
-	}
+		"skipLibCheck": true,
+		"strictNullChecks": true
+	},
+	"include": ["eslint", "prettier", "stylelint", "**/*.d.ts"]
 }

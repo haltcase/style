@@ -1,5 +1,3 @@
-// @ts-check
-
 /**
  * @import { ParserOptions } from "@typescript-eslint/types"
  */
@@ -7,10 +5,8 @@
 import babelParser from "@babel/eslint-parser";
 import eslint from "@eslint/js";
 import eslintPluginEslintComments from "@eslint-community/eslint-plugin-eslint-comments";
-// eslint-disable-next-line import-x/default
 import eslintConfigPrettier from "eslint-config-prettier";
 import eslintPluginImportX from "eslint-plugin-import-x";
-// eslint-disable-next-line import-x/default
 import eslintRegexp from "eslint-plugin-regexp";
 import { config } from "typescript-eslint";
 
@@ -46,9 +42,13 @@ import { eslintUnicornConfig } from "./unicorn.js";
  */
 
 /**
+ * @typedef {(options?: HaltcaseStyleOptions) => Awaited<import("typescript-eslint").Config>} HaltcaseStyleCreator
+ */
+
+/**
  * Get the common ESLint config for Node and browsers.
  *
- * @param {HaltcaseStyleOptions} options
+ * @type {HaltcaseStyleCreator}
  */
 export const getEslintBaseConfig = (options = {}) =>
 	config(

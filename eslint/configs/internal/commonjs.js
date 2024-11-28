@@ -3,7 +3,7 @@ import { config } from "typescript-eslint";
 import { commonJsFiles, commonJsOnlyFiles } from "../../constants.js";
 
 /**
- * @param {import("./base.js").HaltcaseStyleOptions} [options]
+ * @type {import("./base.js").HaltcaseStyleCreator}
  */
 export const getEslintCommonJsConfigInternal = (options = {}) =>
 	config({
