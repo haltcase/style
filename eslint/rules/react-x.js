@@ -3,12 +3,30 @@
  */
 
 /**
+ * Rules we've decided to disable from the preset config.
+ *
+ * @type {Linter.RulesRecord}
+ */
+const disabledRules = {
+	/**
+	 * Enforces that function components props are read-only.
+	 *
+	 * We have other checks that already disallow changing function parameters.
+	 *
+	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/prefer-read-only-props
+	 */
+	"@eslint-react/prefer-read-only-props": "off"
+};
+
+/**
  * Additional rules to enable on top of the preset config from
  * `@eslint-react/eslint-plugin`
  *
  * @type {Linter.RulesRecord}
  */
 export const reactXRules = {
+	...disabledRules,
+
 	/**
 	 * Prevents using useless `fragment` components or `<>` syntax.
 	 *
@@ -43,13 +61,6 @@ export const reactXRules = {
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/naming-convention-component-name
 	 */
 	"@eslint-react/naming-convention/component-name": "warn",
-
-	/**
-	 * Enforces naming convention for JSX files.
-	 *
-	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/naming-convention-filename
-	 */
-	"@eslint-react/naming-convention/filename": "warn",
 
 	/**
 	 * Enforces consistent use of the JSX file extension.

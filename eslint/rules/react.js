@@ -14,5 +14,11 @@ export const reactRules = {
 	 *
 	 * 🔧 Fixable - https://github.com/jsx-eslint/eslint-plugin-react/blob/HEAD/docs/rules/function-component-definition.md
 	 */
-	"react/function-component-definition": "warn"
+	"react/function-component-definition": [
+		"error",
+		{
+			namedComponents: "arrow-function",
+			unnamedComponents: "arrow-function"
+		}
+	]
 };
