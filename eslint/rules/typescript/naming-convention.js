@@ -42,6 +42,15 @@ export const getTypescriptNamingConventionRule = ({
 			selector: "default",
 			trailingUnderscore: "forbid"
 		},
+		// allow HTTP methods in UPPER_CASE
+		{
+			filter: {
+				match: true,
+				regex: "^(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$"
+			},
+			format: null,
+			selector: ["variableLike"]
+		},
 		// allow variable-likes called exactly "_"
 		{
 			filter: {
