@@ -81,6 +81,26 @@ export const getEslintTypescriptConfig = (options = {}) => {
 					isTsx: true
 				})
 			}
+		},
+		{
+			// special accommodations for non-TSX component-like files;
+			// specifically, this was added to allow PascaleCase'd declarations
+			// of extended components with Mantine, which uses e.g., `Button.extend()`
+			// to create a customized instance of a UI component
+			name: "@haltcase/internal/TypeScript component files",
+
+			files: ["**/components/*.ts"],
+			languageOptions,
+
+			plugins: {
+				"@typescript-eslint": plugin
+			},
+
+			rules: {
+				...getTypescriptNamingConventionRule({
+					isComponentLike: true
+				})
+			}
 		}
 	);
 };

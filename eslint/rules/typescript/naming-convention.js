@@ -4,10 +4,14 @@
 
 /**
  * @param {object} [options]
+ * @param {boolean} [options.isComponentLike = false] - Whether to treat as component-like (e.g., themed components without TSX/JSX).
  * @param {boolean} [options.isTsx = false] - Whether to lint as TSX (JSX).
  * @returns {Linter.RulesRecord}
  */
-export const getTypescriptNamingConventionRule = ({ isTsx = false } = {}) => ({
+export const getTypescriptNamingConventionRule = ({
+	isComponentLike = false,
+	isTsx = false
+} = {}) => ({
 	/**
 	 * Require consistent naming conventions.
 	 *
@@ -19,7 +23,10 @@ export const getTypescriptNamingConventionRule = ({ isTsx = false } = {}) => ({
 		"error",
 		// enforce that unused variable-likes are prefixed with `_`
 		{
-			format: ["camelCase", isTsx && "StrictPascalCase"].filter(Boolean),
+			format: [
+				"camelCase",
+				(isComponentLike || isTsx) && "StrictPascalCase"
+			].filter(Boolean),
 			leadingUnderscore: "require",
 			modifiers: ["unused"],
 			selector: "variableLike",
@@ -27,7 +34,10 @@ export const getTypescriptNamingConventionRule = ({ isTsx = false } = {}) => ({
 		},
 		// enforce that everything is camelCase by default
 		{
-			format: ["camelCase", isTsx && "StrictPascalCase"].filter(Boolean),
+			format: [
+				"camelCase",
+				(isComponentLike || isTsx) && "StrictPascalCase"
+			].filter(Boolean),
 			leadingUnderscore: "forbid",
 			selector: "default",
 			trailingUnderscore: "forbid"
