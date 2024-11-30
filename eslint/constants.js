@@ -12,5 +12,12 @@ export const scriptFiles = ["**/scripts/*", "**/prisma/*"];
 
 export const nextJsPageFiles = ["**/{pages,app}/**/*.{m,}{js,ts}x"];
 export const nextJsApiRoutes = ["**/{pages,app}/api/**/*.{m,}{js,ts}"];
+export const nextJsMetadataFiles = [
+	"**/app/{apple-,}icon.{js,ts}x",
+	"**/app/manifest.{js,ts}",
+	"**/app/robots.{js,ts}",
+	"**/app/sitemap.{js,ts}",
+	"**/app/{opengraph,twitter}-image.{js,ts}x"
+];
 
 export const allSupportedFiles = ["**/*.{c,m,}{js,ts}{x,}"];

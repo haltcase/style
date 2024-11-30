@@ -4,6 +4,7 @@ import { config } from "typescript-eslint";
 import {
 	javascriptFiles,
 	nextJsApiRoutes,
+	nextJsMetadataFiles,
 	nextJsPageFiles
 } from "../constants.js";
 import { getEslintBaseConfig } from "./internal/base.js";
@@ -41,7 +42,7 @@ export const getEslintNextConfigInternal = (options = {}) =>
 		{
 			name: "Next.js page files and API routes",
 
-			files: [...nextJsPageFiles, ...nextJsApiRoutes],
+			files: [...nextJsPageFiles, ...nextJsApiRoutes, ...nextJsMetadataFiles],
 			rules: {
 				"import-x/no-default-export": "off"
 			}
