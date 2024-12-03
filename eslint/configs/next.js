@@ -2,7 +2,7 @@ import pluginNextjs from "@next/eslint-plugin-next";
 import { config } from "typescript-eslint";
 
 import {
-	javascriptFiles,
+	allSupportedFiles,
 	nextJsApiRoutes,
 	nextJsMetadataFiles,
 	nextJsPageFiles
@@ -30,7 +30,7 @@ export const getEslintNextConfigInternal = (options = {}) =>
 		{
 			name: "@haltcase/nextjs",
 
-			files: javascriptFiles,
+			files: allSupportedFiles,
 			plugins: {
 				"@next/next": pluginNextjs
 			},
