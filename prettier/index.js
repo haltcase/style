@@ -5,6 +5,8 @@
  * define those here to ensure that doesn't happen.
  *
  * See: https://prettier.io/docs/en/configuration#editorconfig
+ *
+ * @type {import("prettier").Options}
  */
 const overridableDefaults = {
 	endOfLine: "lf",
@@ -13,6 +15,9 @@ const overridableDefaults = {
 	useTabs: true
 };
 
+/**
+ * @type {import("prettier").Options}
+ */
 export default {
 	...overridableDefaults,
 	singleQuote: false,
