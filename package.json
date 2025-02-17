@@ -130,9 +130,10 @@
 			"optional": true
 		}
 	},
-	"packageManager": "pnpm@9.15.5",
+	"packageManager": "pnpm@10.4.1",
 	"engines": {
-		"node": ">=20"
+		"node": ">=20",
+		"pnpm": ">=10"
 	},
 	"publishConfig": {
 		"access": "public"

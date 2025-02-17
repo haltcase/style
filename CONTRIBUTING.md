@@ -2,20 +2,26 @@
 
 ## installation
 
-This project uses [pnpm](https://pnpm.io).
-
-To get started, run:
+This project uses [pnpm](https://pnpm.io). If you don't have pnpm installed
+(or its version doesn't match the range specified in the `engine` field of
+`package.json`), run:
 
 ```sh
-corepack enable && pnpm setup
+npm install --global pnpm@10 && pnpm setup
 ```
 
-> More on [Node.js Corepack](https://nodejs.org/api/corepack.html)
+> From here, pnpm will automatically download and run the version of pnpm
+> specified in the `packageManager` field of `package.json`. This is the same
+> field used by Corepack.
+>
+> pnpm v10 was the first version to support this by default.
+>
+> See https://pnpm.io/npmrc#manage-package-manager-versions
 
 Then, run:
 
 ```sh
-pnpm i
+pnpm install
 ```
 
 ## Before creating a pull request
