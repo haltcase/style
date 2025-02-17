@@ -1,5 +1,7 @@
 /* eslint-disable import-x/no-default-export */
 
+import { fileURLToPath } from "node:url";
+
 /**
  * Some of Prettier's defaults can be overridden by an EditorConfig file. We
  * define those here to ensure that doesn't happen.
@@ -16,12 +18,22 @@ const overridableDefaults = {
 };
 
 /**
+ * @param {string} specifier - The plugin's package name.
+ */
+const resolvePlugin = (specifier) =>
+	fileURLToPath(import.meta.resolve(specifier));
+
+/**
  * @type {import("prettier").Options}
  */
 export default {
 	...overridableDefaults,
 	singleQuote: false,
 	trailingComma: "none",
-	plugins: ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"],
-	tailwindAttributes: ["classNames", "clsx", "cx", "twMerge"]
+	plugins: [
+		resolvePlugin("prettier-plugin-packagejson"),
+		resolvePlugin("prettier-plugin-tailwindcss")
+	],
+	tailwindAttributes: ["classNames"],
+	tailwindFunctions: ["clsx", "cn", "cx", "twMerge"]
 };
