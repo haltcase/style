@@ -36,7 +36,6 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 				{
 					name: "@haltcase/react/jsx-eslint/react",
 					plugins: {
-						// @ts-expect-error see https://github.com/jsx-eslint/eslint-plugin-react/pull/3840
 						react: eslintPluginReactOriginal
 					},
 					rules: {
