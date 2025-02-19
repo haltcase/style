@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
  *
  * See: https://prettier.io/docs/en/configuration#editorconfig
  *
- * @type {import("prettier").Options}
+ * @satisfies {import("prettier").Options}
  */
 const overridableDefaults = {
 	endOfLine: "lf",
@@ -24,7 +24,7 @@ const resolvePlugin = (specifier) =>
 	fileURLToPath(import.meta.resolve(specifier));
 
 /**
- * @type {import("prettier").Options}
+ * @satisfies {import("prettier").Options}
  */
 export default {
 	...overridableDefaults,

@@ -19,13 +19,34 @@
 	"author": "Bo Lingen <bo@haltcase.dev> (https://haltcase.dev)",
 	"type": "module",
 	"exports": {
-		"./eslint": "./eslint/index.js",
-		"./eslint/rules/*": "./eslint/rules/*.js",
-		"./eslint/rules/*.js": "./eslint/rules/*.js",
-		"./prettier": "./prettier/index.js",
-		"./stylelint": "./stylelint/index.js",
-		"./stylelint/modules": "./stylelint/modules.js",
-		"./stylelint/standard": "./stylelint/standard.js",
+		"./eslint": {
+			"types": "./dist/types/eslint/index.d.ts",
+			"default": "./eslint/index.js"
+		},
+		"./eslint/rules/*": {
+			"types": "./dist/types/eslint/rules/*.d.ts",
+			"default": "./eslint/rules/*.js"
+		},
+		"./eslint/rules/typescript": {
+			"types": "./dist/types/eslint/rules/typescript/index.d.ts",
+			"default": "./eslint/rules/typescript/index.js"
+		},
+		"./prettier": {
+			"types": "./dist/types/prettier/index.d.ts",
+			"default": "./prettier/index.js"
+		},
+		"./stylelint": {
+			"types": "./dist/types/stylelint/index.d.ts",
+			"default": "./stylelint/index.js"
+		},
+		"./stylelint/modules": {
+			"types": "./dist/types/stylelint/modules.d.ts",
+			"default": "./stylelint/modules.js"
+		},
+		"./stylelint/standard": {
+			"types": "./dist/types/stylelint/standard.d.ts",
+			"default": "./stylelint/standard.js"
+		},
 		"./typescript/base": "./typescript/tsconfig.base.json",
 		"./typescript/bundler": "./typescript/tsconfig.bundler.json",
 		"./typescript/next": "./typescript/tsconfig.next.json",
@@ -36,6 +57,7 @@
 		"./typescript/web": "./typescript/tsconfig.web.json"
 	},
 	"files": [
+		"dist",
 		"eslint",
 		"prettier",
 		"stylelint",
@@ -46,6 +68,7 @@
 		"eslint-check": "eslint --max-warnings=0 .",
 		"format": "eslint --fix . && prettier --write .",
 		"prepare": "husky",
+		"prepublishOnly": "tsc",
 		"prettier-check": "prettier --check .",
 		"semantic-release": "semantic-release",
 		"test": "echo \"Error: no test specified\" && exit 1"

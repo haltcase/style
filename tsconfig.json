@@ -1,11 +1,16 @@
 {
 	"compilerOptions": {
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"outDir": "dist/types",
+
 		"allowJs": true,
+		"checkJs": true,
+
 		"moduleResolution": "node",
 		"module": "ESNext",
-		"noEmit": true,
 		"target": "ESNext",
-		"checkJs": true,
+
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"isolatedModules": true,

@@ -21,3 +21,5 @@ lerna-debug.log*
 # local/production env files
 .env*.local
 .env
+
+/dist
