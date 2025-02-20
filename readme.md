@@ -351,6 +351,21 @@ convention: `standard` for kebab case and `modules` for camel case.
 | `@haltcase/style/stylelint/modules`  | Enforce `camelCase` identifiers.                    |
 | `@haltcase/style/stylelint/standard` | Enforce conventional `kebab-case` identifiers.      |
 
+##### Tailwind
+
+If you use Tailwind, you can additionally extend from `@haltcase/style/stylelint/tailwind`:
+
+```json
+{
+	"stylelint": {
+		"extends": [
+			"@haltcase/style/stylelint",
+			"@haltcase/style/stylelint/tailwind"
+		]
+	}
+}
+```
+
 ## contributing
 
 Please read our [contributing](https://github.com/haltcase/style/blob/main/CONTRIBUTING.md)

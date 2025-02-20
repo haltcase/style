@@ -47,6 +47,10 @@
 			"types": "./dist/types/stylelint/standard.d.ts",
 			"default": "./stylelint/standard.js"
 		},
+		"./stylelint/tailwind": {
+			"types": "./dist/types/stylelint/tailwind.d.ts",
+			"default": "./stylelint/tailwind.js"
+		},
 		"./typescript/base": "./typescript/tsconfig.base.json",
 		"./typescript/bundler": "./typescript/tsconfig.bundler.json",
 		"./typescript/next": "./typescript/tsconfig.next.json",
@@ -131,6 +135,7 @@
 		"prettier": "^3.5.1",
 		"semantic-release": "^24.2.3",
 		"stylelint": "^16.14.1",
+		"stylelint-config-tailwindcss": "^1.0.0",
 		"typescript": "^5.7.3"
 	},
 	"peerDependencies": {
