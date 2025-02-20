@@ -46,7 +46,7 @@ export const getTypescriptNamingConventionRule = ({
 		{
 			filter: {
 				match: true,
-				regex: "^(GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$"
+				regex: "^(ALL|GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$"
 			},
 			format: null,
 			selector: ["variableLike"]
