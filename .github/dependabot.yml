@@ -10,8 +10,7 @@ updates:
     schedule:
       interval: monthly
     commit-message:
-      prefix: feat(deps)!
-      include: scope
+      prefix: "chore(deps)!:"
     ignore:
       - dependency-name: "*"
         update-types:
@@ -25,8 +24,7 @@ updates:
     schedule:
       interval: daily
     commit-message:
-      prefix: chore(deps)
-      include: scope
+      prefix: "chore(deps)"
     groups:
       patch-updates:
         update-types:
