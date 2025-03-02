@@ -24,8 +24,8 @@ importers:
         specifier: ^15.1.7
         version: 15.1.7
       '@stylistic/eslint-plugin-jsx':
-        specifier: ^3.1.0
-        version: 3.1.0(eslint@9.20.1(jiti@2.4.2))
+        specifier: ^4.1.0
+        version: 4.1.0(eslint@9.20.1(jiti@2.4.2))
       eslint-config-prettier:
         specifier: ^10.0.1
         version: 10.0.1(eslint@9.20.1(jiti@2.4.2))
@@ -666,11 +666,11 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
-  '@stylistic/eslint-plugin-jsx@3.1.0':
-    resolution: {integrity: sha512-+4SYALAM+l6OH6ARGUJ5h0coQBq7Y1QQVS8JbVFPZWuxdXVLTTwpj8qCnpW0afzyS/sBu4MaPDdGnGL16KebAQ==}
+  '@stylistic/eslint-plugin-jsx@4.1.0':
+    resolution: {integrity: sha512-Vu0chvox4xa4fKerc/kQiXSExkmA4ZsLM5w84nyFhqH+JP6r/uskhNZU2ZU4qaWbIuECssRyv0oDSNPR1+6MWg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      eslint: '>=8.40.0'
+      eslint: '>=9.0.0'
 
   '@types/conventional-commits-parser@5.0.0':
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
@@ -4518,7 +4518,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
-  '@stylistic/eslint-plugin-jsx@3.1.0(eslint@9.20.1(jiti@2.4.2))':
+  '@stylistic/eslint-plugin-jsx@4.1.0(eslint@9.20.1(jiti@2.4.2))':
     dependencies:
       eslint: 9.20.1(jiti@2.4.2)
       eslint-visitor-keys: 4.2.0
