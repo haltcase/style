@@ -89,7 +89,7 @@ export const getEslintTypescriptConfig = (options = {}) => {
 			// to create a customized instance of a UI component
 			name: "@haltcase/internal/TypeScript component files",
 
-			files: ["**/components/*.ts"],
+			files: ["**/components/**/*.ts"],
 			languageOptions,
 
 			plugins: {
