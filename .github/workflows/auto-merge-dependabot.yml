@@ -1,17 +1,27 @@
 name: Auto-merge Dependabot PRs
 
 on:
-  check_suite:
-    types:
-      - completed
+  pull_request_target:
+    branches:
+      - canary
 
 jobs:
-  dependabot:
+  wait-for-checks:
+    if: github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
+    permissions:
+      checks: read
+    steps:
+      - name: Wait for status checks
+        uses: poseidon/wait-for-status-checks@899c768d191b56eef585c18f8558da19e1f3e707 # v0.6.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    if: |
-      github.actor == 'dependabot[bot]' &&
-      github.event.check_suite.conclusion == 'success'
+  dependabot:
+    if: github.actor == 'dependabot[bot]'
+    needs: wait-for-checks
+
+    runs-on: ubuntu-latest
 
     steps:
       - name: Generate access token
@@ -43,8 +53,8 @@ jobs:
           git config --global user.email "${{ vars.RELEASE_USER_EMAIL }}"
           git fetch --all
           git checkout "origin/${{ steps.dependabot_metadata.outputs.target-branch }}"
-          git fetch . "origin/${{ github.event.check_suite.head_branch }}:${{ github.event.check_suite.head_branch }}"
-          git merge --ff-only "origin/${{ github.event.check_suite.head_branch }}"
+          git fetch . "origin/${{ github.event.pull_request.head.ref }}:${{ github.event.pull_request.head.ref }}"
+          git merge --ff-only "origin/${{ github.event.pull_request.head.ref }}"
           git push origin "${{ steps.dependabot_metadata.outputs.target-branch }}"
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
