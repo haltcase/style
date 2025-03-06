@@ -52,7 +52,6 @@ jobs:
           git config --global user.name "${{ vars.RELEASE_USER_NAME }}"
           git config --global user.email "${{ vars.RELEASE_USER_EMAIL }}"
           git fetch --all
-          git checkout "origin/${{ steps.dependabot_metadata.outputs.target-branch }}"
           git fetch . "origin/${{ github.event.pull_request.head.ref }}:${{ github.event.pull_request.head.ref }}"
           git merge --ff-only "origin/${{ github.event.pull_request.head.ref }}"
           git push origin "${{ steps.dependabot_metadata.outputs.target-branch }}"
