@@ -16,9 +16,11 @@ export const commentOnNewPr = async ({ context, github }) => {
 	const mention = login ? `@${login}` : "there";
 	const contributingUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/blob/-/CONTRIBUTING.md`;
 
-	const isMaintainer = ["OWNER", "MEMBER", "COLLABORATOR"].includes(
-		context.payload.pull_request?.author_association
-	);
+	const isMaintainer =
+		login === "dependabot[bot]" ||
+		["OWNER", "MEMBER", "COLLABORATOR"].includes(
+			context.payload.pull_request?.author_association
+		);
 
 	const greeting = isMaintainer
 		? `Thanks for your contribution.`
