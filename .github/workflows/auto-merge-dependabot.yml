@@ -1,19 +1,17 @@
 name: Auto-merge Dependabot PRs
 
 on:
-  pull_request_target:
-    branches:
-      - canary
-
-permissions:
-  contents: read
-  pull-requests: read
+  check_suite:
+    types:
+      - completed
 
 jobs:
   dependabot:
     runs-on: ubuntu-latest
 
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: |
+      github.actor == 'dependabot[bot]' &&
+      github.event.check_suite.conclusion == 'success'
 
     steps:
       - name: Generate access token
@@ -23,6 +21,13 @@ jobs:
           app-id: ${{ secrets.BOT_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
 
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+          # ensure branches share histories
+          # see: https://github.com/actions/checkout/issues/125
+          fetch-depth: 0
+
       - name: Fetch Dependabot metadata
         id: dependabot_metadata
         uses: dependabot/fetch-metadata@v2
@@ -30,12 +35,16 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Merge PR
-        if: >
-          ${{
-            steps.dependabot_metadata.outputs.update-type == 'version-update:semver-minor' ||
-            steps.dependabot_metadata.outputs.update-type == 'version-update:semver-patch'
-          }}
-        run: gh pr merge --auto --squash "$PR_URL"
+        if: |
+          steps.dependabot_metadata.outputs.update-type == 'version-update:semver-minor' ||
+          steps.dependabot_metadata.outputs.update-type == 'version-update:semver-patch'
+        run: |
+          git config --global user.name "${{ vars.RELEASE_USER_NAME }}"
+          git config --global user.email "${{ vars.RELEASE_USER_EMAIL }}"
+          git fetch --all
+          git checkout "origin/${{ steps.dependabot_metadata.outputs.target-branch }}"
+          git fetch . "origin/${{ github.event.check_suite.head_branch }}:${{ github.event.check_suite.head_branch }}"
+          git merge --ff-only "origin/${{ github.event.check_suite.head_branch }}"
+          git push origin "${{ steps.dependabot_metadata.outputs.target-branch }}"
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
