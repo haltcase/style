@@ -3,6 +3,7 @@ import eslintStylisticJsx from "@stylistic/eslint-plugin-jsx";
 import eslintPluginImportX from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginReactOriginal from "eslint-plugin-react";
+// eslint-disable-next-line import-x/default
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import { config } from "typescript-eslint";
 
