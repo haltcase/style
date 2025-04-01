@@ -4,5 +4,13 @@
 import { defineConfig } from "stylelint-define-config";
 
 export default defineConfig({
-	extends: "stylelint-config-tailwindcss"
+	extends: "stylelint-config-tailwindcss",
+	rules: {
+		"at-rule-no-deprecated": [
+			true,
+			{
+				ignoreAtRules: ["apply"]
+			}
+		]
+	}
 });
