@@ -6,7 +6,7 @@ import babelParser from "@babel/eslint-parser";
 import eslint from "@eslint/js";
 import eslintPluginEslintComments from "@eslint-community/eslint-plugin-eslint-comments";
 import eslintConfigPrettier from "eslint-config-prettier";
-import eslintPluginImportX from "eslint-plugin-import-x";
+import * as eslintPluginImportX from "eslint-plugin-import-x";
 import eslintRegexp from "eslint-plugin-regexp";
 import { config } from "typescript-eslint";
 

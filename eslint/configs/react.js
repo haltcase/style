@@ -1,6 +1,6 @@
 import eslintPluginReact from "@eslint-react/eslint-plugin";
 import eslintStylisticJsx from "@stylistic/eslint-plugin-jsx";
-import eslintPluginImportX from "eslint-plugin-import-x";
+import * as eslintPluginImportX from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginReactOriginal from "eslint-plugin-react";
 // eslint-disable-next-line import-x/default

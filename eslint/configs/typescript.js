@@ -1,5 +1,5 @@
 import eslintConfigPrettier from "eslint-config-prettier";
-import eslintPluginImportX from "eslint-plugin-import-x";
+import * as eslintPluginImportX from "eslint-plugin-import-x";
 import { config, configs, parser, plugin } from "typescript-eslint";
 
 import { typescriptFiles, typescriptJsxFiles } from "../constants.js";
