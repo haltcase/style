@@ -22,7 +22,7 @@ import { importRules } from "../../rules/imports.js";
 import { possibleErrorsRules } from "../../rules/possible-errors.js";
 import { stylisticRules } from "../../rules/stylistic.js";
 import { variablesRules } from "../../rules/variables.js";
-import { getEslintTypescriptConfig } from "../typescript.js";
+import { getEslintTypescriptConfigInternal } from "../typescript.js";
 import { getEslintCommonJsConfigInternal } from "./commonjs.js";
 import { eslintEs2015Config } from "./es2015.js";
 import { eslintSimpleImportSortConfig } from "./simple-import-sort.js";
@@ -58,7 +58,7 @@ export const getEslintBaseConfig = (options = {}) =>
 				"import-x": eslintPluginImportX
 			},
 			rules: {
-				...eslintPluginImportX.configs.recommended.rules
+				...eslintPluginImportX.flatConfigs.recommended.rules
 			},
 			settings: {
 				"import-x/parsers": {
@@ -154,7 +154,7 @@ export const getEslintBaseConfig = (options = {}) =>
 			}
 		},
 
-		...getEslintTypescriptConfig(options),
+		...getEslintTypescriptConfigInternal({ ...options, internal: true }),
 
 		{
 			name: "@haltcase/internal/Third-party config files (e.g., next.config.mjs)",

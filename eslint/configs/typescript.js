@@ -12,7 +12,13 @@ import { eslintTsdocConfig } from "./internal/tsdoc.js";
 /**
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
-export const getEslintTypescriptConfig = (options = {}) => {
+export const getEslintTypescriptConfig = (options = {}) =>
+	getEslintTypescriptConfigInternal(options);
+
+/**
+ * @type {(options?: import("./internal/base.js").HaltcaseStyleOptions & {internal?: boolean}) => Awaited<import("typescript-eslint").Config>}
+ */
+export const getEslintTypescriptConfigInternal = (options = {}) => {
 	/** @type {import("typescript-eslint").ConfigWithExtends["languageOptions"]} */
 	const languageOptions = {
 		parser,
@@ -43,7 +49,12 @@ export const getEslintTypescriptConfig = (options = {}) => {
 
 				{
 					name: "import-x/typescript",
-					...eslintPluginImportX.configs.typescript
+					...eslintPluginImportX.flatConfigs.typescript,
+
+					// the base config already defines the `import-x` plugin, and if we
+					// don't omit it from this config, we get the error:
+					// Cannot redefine plugin "import-x"
+					plugins: {}
 				},
 
 				{ name: "prettier", ...eslintConfigPrettier },

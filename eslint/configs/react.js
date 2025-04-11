@@ -71,7 +71,12 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 
 				{
 					name: "@haltcase/react/import-x",
-					...eslintPluginImportX.flatConfigs.react
+					...eslintPluginImportX.flatConfigs.react,
+
+					// the base config already defines the `import-x` plugin, and if we
+					// don't omit it from this config, we get the error:
+					// Cannot redefine plugin "import-x"
+					plugins: {}
 				}
 			],
 			settings: {
