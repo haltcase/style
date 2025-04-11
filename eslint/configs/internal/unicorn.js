@@ -611,20 +611,18 @@ export const eslintUnicornConfig = config({
 		"unicorn/prevent-abbreviations": [
 			"error",
 			{
-				ignore: [
-					// e.g., `next-env.d.ts` filename
-					/.+-env\.d/
-				],
 				replacements: {
 					// revise default abbreviations for reserved words/keywords
 					// (because I think the default hanging underscores look nasty)
 					args: false,
+					env: false,
 					fn: false,
 					func: {
 						fn: true,
 						function: false
 					},
 					mod: false,
+					params: false,
 					pkg: false,
 
 					// allow commonly used abbreviations in React projects
