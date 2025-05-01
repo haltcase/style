@@ -164,5 +164,10 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"unrs-resolver"
+		]
 	}
 }
