@@ -104,12 +104,6 @@ export const eslintUnicornConfig = config({
 		 */
 		"unicorn/no-array-method-this-argument": "error",
 		/**
-		 * Enforce combining multiple `Array#push()` into one call.
-		 *
-		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-push-push.md
-		 */
-		"unicorn/no-array-push-push": "error",
-		/**
 		 * Disallow `Array#reduce()` and `Array#reduceRight()`.
 		 *
 		 * Disabled because `reduce` is useful for functional programming patterns.
@@ -549,6 +543,14 @@ export const eslintUnicornConfig = config({
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-set-size.md
 		 */
 		"unicorn/prefer-set-size": "error",
+		/**
+		 * Enforce combining multiple `Array#push()`,
+		 * `Element#classList.{add,remove}()`, and `importScripts()` into one call.
+		 *
+		 * 🔧 Fixable -
+		 * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-single-call.md
+		 */
+		"unicorn/prefer-single-call": "error",
 		/**
 		 * Prefer the spread operator over `Array.from(…)`, `Array#concat(…)`, `Array#{slice,toSpliced}()` and `String#split('')`.
 		 *
