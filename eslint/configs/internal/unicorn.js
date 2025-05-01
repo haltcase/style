@@ -24,6 +24,14 @@ export const eslintUnicornConfig = config({
 		 */
 		"unicorn/consistent-destructuring": "error",
 		/**
+		 * Enforce consistent style for element existence checks with `indexOf()`,
+		 * `lastIndexOf()`, `findIndex()`, and `findLastIndex()`.
+		 *
+		 * 🔧 Fixable -
+		 * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-existence-index-check.md
+		 */
+		"unicorn/consistent-existence-index-check": "error",
+		/**
 		 * Move function definitions to the highest possible scope.
 		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-function-scoping.md
@@ -248,6 +256,22 @@ export const eslintUnicornConfig = config({
 		 */
 		"unicorn/no-unnecessary-await": "error",
 		/**
+		 * Disallow using `.length` or `Infinity` as the `end` argument of
+		 * `{Array,String,TypedArray}#slice()`.
+		 *
+		 * 🔧 Fixable -
+		 * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-slice-end.md
+		 */
+		"unicorn/no-unnecessary-slice-end": "error",
+		/**
+		 * Disallow using `.length` or `Infinity` as the `deleteCount` or
+		 * `skipCount` argument of `Array#{splice,toSpliced}()`.
+		 *
+		 * 🔧 Fixable -
+		 * https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-array-splice-count.md
+		 */
+		"unicorn/no-unnecessary-array-splice-count": "error",
+		/**
 		 * Disallow unreadable array destructuring.
 		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unreadable-array-destructuring.md
@@ -445,6 +469,12 @@ export const eslintUnicornConfig = config({
 		 * 🚫 Not fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-logical-operator-over-ternary.md
 		 */
 		"unicorn/prefer-logical-operator-over-ternary": "error",
+		/**
+		 * Prefer `Math.min()` and `Math.max()` over ternaries for simple comparisons.
+		 *
+		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-math-min-max.md
+		 */
+		"unicorn/prefer-math-min-max": "error",
 		/**
 		 * Enforce the use of `Math.trunc` instead of bitwise operators.
 		 *
