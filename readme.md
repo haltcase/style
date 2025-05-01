@@ -186,6 +186,47 @@ export default [
 ];
 ```
 
+You can also enable TypeScript ESLint's
+[`projectService`](https://typescript-eslint.io/packages/parser#projectservice):
+
+```js
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default [
+	...getEslintConfig({
+		typescriptProject: {
+			projectService: true
+		}
+	})
+];
+```
+
+Because `eslint-import-resolver-typescript` [does not support
+`projectService`](https://github.com/import-js/eslint-import-resolver-typescript/issues/282),
+you should either:
+
+1. Have a single `tsconfig.json` file in your root directory, including [project
+   references](https://www.typescriptlang.org/docs/handbook/project-references.html)
+   if necessary.
+
+2. Explicitly pass your `tsconfig.json` paths:
+
+   ```js
+   import { getEslintConfig } from "@haltcase/style/eslint";
+
+   export default [
+   	...getEslintConfig({
+   		typescriptProject: {
+   			projectService: true,
+   			tsconfigPaths: [
+   				"./packages/**/tsconfig.json",
+   				"./separate-package/tsconfig.json"
+   			]
+   		}
+   	})
+   ];
+   ```
+
 If you need to further customize the TypeScript behavior, use a separate config
 with your own options, for example:
 

@@ -1,4 +1,5 @@
 import eslintConfigPrettier from "eslint-config-prettier";
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import * as eslintPluginImportX from "eslint-plugin-import-x";
 import { config, configs, parser, plugin } from "typescript-eslint";
 
@@ -8,6 +9,7 @@ import { typescriptImportRules } from "../rules/typescript/import.js";
 import { typescriptBaseRules } from "../rules/typescript/index.js";
 import { getTypescriptNamingConventionRule } from "../rules/typescript/naming-convention.js";
 import { eslintTsdocConfig } from "./internal/tsdoc.js";
+import { prepareTypeScriptProjectConfig } from "./internal/utils/typescript.js";
 
 /**
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
@@ -19,6 +21,10 @@ export const getEslintTypescriptConfig = (options = {}) =>
  * @type {(options?: import("./internal/base.js").HaltcaseStyleOptions & {internal?: boolean}) => Awaited<import("typescript-eslint").Config>}
  */
 export const getEslintTypescriptConfigInternal = (options = {}) => {
+	const { parserOptions, resolverOptions } = prepareTypeScriptProjectConfig(
+		options.typescriptProject
+	);
+
 	/** @type {import("typescript-eslint").ConfigWithExtends["languageOptions"]} */
 	const languageOptions = {
 		parser,
@@ -29,10 +35,7 @@ export const getEslintTypescriptConfigInternal = (options = {}) => {
 			},
 			// https://github.com/typescript-eslint/typescript-eslint/issues/3788#issuecomment-905094436
 			jsxPragma: null,
-			project: options.typescriptProject ?? true
-			// use `projectService` when VS Code supports it properly
-			// https://github.com/microsoft/vscode-eslint/issues/1911
-			// projectService: options.typescriptProjectServiceOptions ?? true
+			...parserOptions
 		}
 	};
 
@@ -72,9 +75,11 @@ export const getEslintTypescriptConfigInternal = (options = {}) => {
 			},
 
 			settings: {
-				"import-x/resolver": {
-					typescript: true
-				}
+				"import-x/resolver-next": [
+					createTypeScriptImportResolver({
+						...resolverOptions
+					})
+				]
 			}
 		},
 		{

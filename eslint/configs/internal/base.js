@@ -1,11 +1,12 @@
 /**
- * @import { ParserOptions } from "@typescript-eslint/types"
+ * @import { type ParserOptions } from "@typescript-eslint/types"
  */
 
 import babelParser from "@babel/eslint-parser";
 import eslint from "@eslint/js";
 import eslintPluginEslintComments from "@eslint-community/eslint-plugin-eslint-comments";
 import eslintConfigPrettier from "eslint-config-prettier";
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import * as eslintPluginImportX from "eslint-plugin-import-x";
 import eslintRegexp from "eslint-plugin-regexp";
 import { config } from "typescript-eslint";
@@ -27,6 +28,19 @@ import { getEslintCommonJsConfigInternal } from "./commonjs.js";
 import { eslintEs2015Config } from "./es2015.js";
 import { eslintSimpleImportSortConfig } from "./simple-import-sort.js";
 import { eslintUnicornConfig } from "./unicorn.js";
+import { prepareTypeScriptProjectConfig } from "./utils/typescript.js";
+
+/**
+ * @typedef {Object} TypeScriptProjectServiceOptions
+ * @property {true} projectService Use the TypeScript ESLint [project service](https://typescript-eslint.io/packages/parser#projectservice).
+ * @property {string | string[] | undefined} [tsconfigPaths] Paths to tsconfig.json files for resolving and linting imports.
+ * 	This defaults to `<root>/tsconfig.json` or `<root>/jsconfig.json` and
+ * 	[project references](https://www.typescriptlang.org/docs/handbook/project-references.html) are supported.
+ */
+
+/**
+ * @typedef {ParserOptions["project"] | TypeScriptProjectServiceOptions} TypeScriptProjectOptions
+ */
 
 /**
  * @typedef {Object} HaltcaseStyleOptions
@@ -35,7 +49,11 @@ import { eslintUnicornConfig } from "./unicorn.js";
  * @property {boolean} [nextjs] Whether to include Next.js rules (implies `react`).
  * @property {boolean} [node] Whether to include Node.js rules.
  * @property {boolean} [react] Whether to include React rules.
- * @property {ParserOptions["project"]} [typescriptProject = true] Custom TypeScript project options for the `typescript-eslint` parser.
+ * @property {TypeScriptProjectOptions} [typescriptProject] Custom TypeScript project options for
+ * 	the `typescript-eslint` parser and `eslint-import-resolver-typescript`.
+ */
+
+/*
  * // use when VS Code supports `projectService`
  * // https://github.com/microsoft/vscode-eslint/issues/1911
  * property {ProjectServiceOptions} [typescriptProjectServiceOptions = true] Custom TypeScript project service options for the `typescript-eslint` parser.
@@ -50,8 +68,12 @@ import { eslintUnicornConfig } from "./unicorn.js";
  *
  * @type {HaltcaseStyleCreator}
  */
-export const getEslintBaseConfig = (options = {}) =>
-	config(
+export const getEslintBaseConfig = (options = {}) => {
+	const { resolverOptions } = prepareTypeScriptProjectConfig(
+		options.typescriptProject
+	);
+
+	return config(
 		{
 			name: "import-x/recommended",
 			plugins: {
@@ -64,10 +86,13 @@ export const getEslintBaseConfig = (options = {}) =>
 				"import-x/parsers": {
 					"@typescript-eslint/parser": [".ts"]
 				},
-				"import-x/resolver": {
-					typescript: true,
-					node: true
-				}
+				"import-x/resolver-next": [
+					createTypeScriptImportResolver({
+						...resolverOptions
+					}),
+
+					eslintPluginImportX.createNodeResolver()
+				]
 			}
 		},
 
@@ -176,3 +201,4 @@ export const getEslintBaseConfig = (options = {}) =>
 
 		...getEslintCommonJsConfigInternal(options)
 	);
+};
