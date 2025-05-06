@@ -128,7 +128,7 @@ importers:
         version: 22.15.3
       '@typescript-eslint/types':
         specifier: ^8.24.0
-        version: 8.31.1
+        version: 8.32.0
       eslint:
         specifier: ^9.20.1
         version: 9.25.1(jiti@2.4.2)
@@ -4197,7 +4197,7 @@ snapshots:
   '@eslint-react/ast@1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)':
     dependencies:
       '@eslint-react/eff': 1.49.0
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/typescript-estree': 8.32.0(typescript@5.7.3)
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       string-ts: 2.2.1
@@ -4216,7 +4216,7 @@ snapshots:
       '@eslint-react/var': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
       '@typescript-eslint/type-utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       birecord: 0.1.1
       ts-pattern: 5.7.0
@@ -4234,7 +4234,7 @@ snapshots:
       '@eslint-react/shared': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
       '@typescript-eslint/type-utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.25.1(jiti@2.4.2)
       eslint-plugin-react-debug: 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
@@ -4277,7 +4277,7 @@ snapshots:
       '@eslint-react/ast': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@eslint-react/eff': 1.49.0
       '@typescript-eslint/scope-manager': 8.31.1
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       string-ts: 2.2.1
       ts-pattern: 5.7.0
@@ -5779,7 +5779,7 @@ snapshots:
       '@eslint-react/var': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
       '@typescript-eslint/type-utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.25.1(jiti@2.4.2)
       string-ts: 2.2.1
@@ -5798,7 +5798,7 @@ snapshots:
       '@eslint-react/shared': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@eslint-react/var': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       compare-versions: 6.1.1
       eslint: 9.25.1(jiti@2.4.2)
@@ -5819,7 +5819,7 @@ snapshots:
       '@eslint-react/var': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
       '@typescript-eslint/type-utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.25.1(jiti@2.4.2)
       string-ts: 2.2.1
@@ -5843,7 +5843,7 @@ snapshots:
       '@eslint-react/var': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
       '@typescript-eslint/type-utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.25.1(jiti@2.4.2)
       string-ts: 2.2.1
@@ -5862,7 +5862,7 @@ snapshots:
       '@eslint-react/shared': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@eslint-react/var': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.25.1(jiti@2.4.2)
       string-ts: 2.2.1
@@ -5882,7 +5882,7 @@ snapshots:
       '@eslint-react/var': 1.49.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       '@typescript-eslint/scope-manager': 8.31.1
       '@typescript-eslint/type-utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
-      '@typescript-eslint/types': 8.31.1
+      '@typescript-eslint/types': 8.32.0
       '@typescript-eslint/utils': 8.31.1(eslint@9.25.1(jiti@2.4.2))(typescript@5.7.3)
       compare-versions: 6.1.1
       eslint: 9.25.1(jiti@2.4.2)
