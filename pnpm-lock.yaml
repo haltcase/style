@@ -58,7 +58,7 @@ importers:
         version: 12.1.1(eslint@9.28.0(jiti@2.4.2))
       eslint-plugin-testing-library:
         specifier: ^7.1.1
-        version: 7.5.2(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
+        version: 7.5.3(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-plugin-tsdoc:
         specifier: ^0.4.0
         version: 0.4.0
@@ -143,7 +143,7 @@ importers:
         version: 9.1.7
       lint-staged:
         specifier: ^16.1.0
-        version: 16.1.0
+        version: 16.1.2
       prettier:
         specifier: ^3.5.1
         version: 3.5.3
@@ -1784,8 +1784,8 @@ packages:
     peerDependencies:
       eslint: '>=5.0.0'
 
-  eslint-plugin-testing-library@7.5.2:
-    resolution: {integrity: sha512-8WJOBsV+RZRNJE1dbtJie5oPpU2c6SvUUQ8/tyDQwXUPW1UCpVvlef3lvoPVQfOlGfO/6r2yOuCXFxii0zrpqQ==}
+  eslint-plugin-testing-library@7.5.3:
+    resolution: {integrity: sha512-sZk5hIrx0p1ehvdS2qHefKwXHiEysiQN+FMGCzES6xRNUgwI3q4KdWMeAwpPDP9u0RDkNzJpebRUnNch1sJh+A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0, pnpm: ^9.14.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -2585,8 +2585,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@16.1.0:
-    resolution: {integrity: sha512-HkpQh69XHxgCjObjejBT3s2ILwNjFx8M3nw+tJ/ssBauDlIpkx2RpqWSi1fBgkXLSSXnbR3iEq1NkVtpvV+FLQ==}
+  lint-staged@16.1.2:
+    resolution: {integrity: sha512-sQKw2Si2g9KUZNY3XNvRuDq4UJqpHwF0/FQzZR2M7I5MvtpWvibikCjUVJzZdGE0ByurEl3KQNvsGetd1ty1/Q==}
     engines: {node: '>=20.17'}
     hasBin: true
 
@@ -6058,7 +6058,7 @@ snapshots:
     dependencies:
       eslint: 9.28.0(jiti@2.4.2)
 
-  eslint-plugin-testing-library@7.5.2(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3):
+  eslint-plugin-testing-library@7.5.3(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3):
     dependencies:
       '@typescript-eslint/scope-manager': 8.34.0
       '@typescript-eslint/utils': 8.34.0(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
@@ -6909,7 +6909,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@16.1.0:
+  lint-staged@16.1.2:
     dependencies:
       chalk: 5.4.1
       commander: 14.0.0
