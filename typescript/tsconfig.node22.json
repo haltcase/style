@@ -3,7 +3,8 @@
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
 		"lib": ["es2023"],
-		"module": "node16",
+		// Use `"module": "node20"` when TypeScript 5.9+ is widely used
+		"module": "nodenext",
 		"target": "es2022",
 		"moduleResolution": "node16"
 	}
