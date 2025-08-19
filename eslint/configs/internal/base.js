@@ -49,6 +49,7 @@ import { prepareTypeScriptProjectConfig } from "./utils/typescript.js";
  * @property {boolean} [nextjs] Whether to include Next.js rules (implies `react`).
  * @property {boolean} [node] Whether to include Node.js rules.
  * @property {boolean} [react] Whether to include React rules.
+ * @property {string[]} [typescriptComponentPaths] Additional paths to consider as TypeScript component files.
  * @property {TypeScriptProjectOptions} [typescriptProject] Custom TypeScript project options for
  * 	the `typescript-eslint` parser and `eslint-import-resolver-typescript`.
  */
