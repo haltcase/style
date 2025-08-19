@@ -313,10 +313,12 @@ Several Typescript configs are available to cover various scenarios:
 | `@haltcase/style/typescript/base`    | Baseline config, intended to be extended from.                                                       |
 | `@haltcase/style/typescript/bundler` | For use in bundled projects, most commonly [Vite](https://vitejs.dev/) + [React](https://react.dev). |
 | `@haltcase/style/typescript/next`    | For use in [Next.js](https://nextjs.org/) projects.                                                  |
-| `@haltcase/style/typescript/node`    | Default Node config, currently targeting Node 22.                                                    |
+| `@haltcase/style/typescript/node`    | Default Node config, currently targeting Node 24.                                                    |
+| `@haltcase/style/typescript/node-ts` | Addon for other Node configs for use with Node's built-in TypeScript support.                        |
 | `@haltcase/style/typescript/node18`  | For projects targeting Node 18.                                                                      |
 | `@haltcase/style/typescript/node20`  | For projects targeting Node 20.                                                                      |
 | `@haltcase/style/typescript/node22`  | For projects targeting Node 22.                                                                      |
+| `@haltcase/style/typescript/node24`  | For projects targeting Node 24.                                                                      |
 | `@haltcase/style/typescript/web`     | For use in web projects.                                                                             |
 
 Typically, you'll only need to extend from one of these:
