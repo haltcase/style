@@ -11,6 +11,10 @@ import { getEslintBaseConfig } from "./internal/base.js";
 import { getEslintNodeConfigInternal } from "./node.js";
 import { getEslintReactConfigInternal } from "./react.js";
 
+// Remove this when `@next/eslint-plugin-next` is ESM and typed properly
+// eslint-disable-next-line import-x/no-named-as-default-member
+const nextJsConfigs = pluginNextjs.configs;
+
 /**
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
@@ -35,8 +39,8 @@ export const getEslintNextConfigInternal = (options = {}) =>
 				"@next/next": pluginNextjs
 			},
 			rules: {
-				...pluginNextjs.configs.recommended.rules,
-				...pluginNextjs.configs["core-web-vitals"].rules
+				...nextJsConfigs.recommended.rules,
+				...nextJsConfigs["core-web-vitals"].rules
 			}
 		},
 		{
