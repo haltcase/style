@@ -49,7 +49,7 @@ export const getTypescriptNamingConventionRule = ({
 				regex: "^(ALL|GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)$"
 			},
 			format: null,
-			selector: ["variableLike"]
+			selector: ["variableLike", "memberLike"]
 		},
 		// allow variable-likes called exactly "_"
 		{
