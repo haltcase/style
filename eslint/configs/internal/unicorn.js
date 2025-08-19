@@ -120,6 +120,12 @@ export const eslintUnicornConfig = config({
 		 */
 		"unicorn/no-array-reduce": "off",
 		/**
+		 * Prefer `Array#toReversed()` over `Array#reverse()`.
+		 *
+		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reverse.md
+		 */
+		"unicorn/no-array-reverse": "error",
+		/**
 		 * Disallow member access from await expression.
 		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-await-expression-member.md
@@ -290,6 +296,12 @@ export const eslintUnicornConfig = config({
 		 */
 		"unicorn/no-unused-properties": "error",
 		/**
+		 * Disallow unnecessary `Error.captureStackTrace(…)`.
+		 *
+		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-error-capture-stack-trace.md
+		 */
+		"unicorn/no-useless-error-capture-stack-trace": "error",
+		/**
 		 * Disallow useless fallback when spreading in object literals.
 		 *
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-fallback-in-spread.md
@@ -391,6 +403,12 @@ export const eslintUnicornConfig = config({
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-blob-reading-methods.md
 		 */
 		"unicorn/prefer-blob-reading-methods": "error",
+		/**
+		 * Prefer class field declarations over `this` assignments in constructors.
+		 *
+		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-class-fields.md
+		 */
+		"unicorn/prefer-class-fields": "error",
 		/**
 		 * Prefer `String#codePointAt(…)` over `String#charCodeAt(…)` and `String.fromCodePoint(…)` over `String.fromCharCode(…)`.
 		 *
@@ -677,6 +695,12 @@ export const eslintUnicornConfig = config({
 		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/require-array-join-separator.md
 		 */
 		"unicorn/require-array-join-separator": "error",
+		/**
+		 * Require non-empty specifier list in import and export statements.
+		 *
+		 * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/require-module-specifiers.md
+		 */
+		"unicorn/require-module-specifiers": "error",
 		/**
 		 * Enforce using the digits argument with `Number#toFixed()`.
 		 *
