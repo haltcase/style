@@ -34,7 +34,7 @@ jobs:
           fetch-depth: 0
 
       - name: Verify PR and dispatch release workflow
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           USER_NAME: ${{ vars.RELEASE_USER_NAME }}
           USER_EMAIL: ${{ vars.RELEASE_USER_EMAIL }}
