@@ -58,7 +58,7 @@ importers:
         version: 12.1.1(eslint@9.37.0(jiti@2.4.2))
       eslint-plugin-testing-library:
         specifier: ^7.1.1
-        version: 7.13.2(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
+        version: 7.13.3(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
       eslint-plugin-tsdoc:
         specifier: ^0.4.0
         version: 0.4.0
@@ -1770,8 +1770,8 @@ packages:
     peerDependencies:
       eslint: '>=5.0.0'
 
-  eslint-plugin-testing-library@7.13.2:
-    resolution: {integrity: sha512-30KmNGIl3OjdqMShUj/R5QBjdRx0ZCST00N7w5nUxxId7IqO8EcBoYMl4Da3a4CcMmN/r7fv5UJb9kVJ7Xnc/w==}
+  eslint-plugin-testing-library@7.13.3:
+    resolution: {integrity: sha512-STwyXN7GnHulgsfdXVd5iC8fFCJVRQj2AcKtMmQOsA8G4oMnSCOX1p3MjbrDQ9fmwVf5wZy6vboTOTFobWuxOA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0, pnpm: ^9.14.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -4282,7 +4282,7 @@ snapshots:
       '@eslint-react/kit': 1.53.1(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
       '@eslint-react/shared': 1.53.1(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
       '@eslint-react/var': 1.53.1(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
-      '@typescript-eslint/scope-manager': 8.43.0
+      '@typescript-eslint/scope-manager': 8.46.1
       '@typescript-eslint/type-utils': 8.43.0(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
       '@typescript-eslint/types': 8.46.1
       '@typescript-eslint/utils': 8.46.1(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
@@ -4344,7 +4344,7 @@ snapshots:
     dependencies:
       '@eslint-react/ast': 1.53.1(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
       '@eslint-react/eff': 1.53.1
-      '@typescript-eslint/scope-manager': 8.43.0
+      '@typescript-eslint/scope-manager': 8.46.1
       '@typescript-eslint/types': 8.46.1
       '@typescript-eslint/utils': 8.46.1(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
       string-ts: 2.2.1
@@ -6076,7 +6076,7 @@ snapshots:
     dependencies:
       eslint: 9.37.0(jiti@2.4.2)
 
-  eslint-plugin-testing-library@7.13.2(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3):
+  eslint-plugin-testing-library@7.13.3(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3):
     dependencies:
       '@typescript-eslint/scope-manager': 8.46.1
       '@typescript-eslint/utils': 8.46.1(eslint@9.37.0(jiti@2.4.2))(typescript@5.9.3)
