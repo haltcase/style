@@ -115,8 +115,8 @@ importers:
         specifier: ^9.20.0
         version: 9.38.0
       '@octokit/types':
-        specifier: ^14.0.0
-        version: 14.1.0
+        specifier: ^15.0.1
+        version: 15.0.1
       '@semantic-release/git':
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@24.2.9(typescript@5.9.3))
@@ -641,8 +641,8 @@ packages:
   '@octokit/types@14.1.0':
     resolution: {integrity: sha512-1y6DgTy8Jomcpu33N+p5w58l6xyt55Ar2I91RPiIA0xCJBXyUAhXCcmZaDWSANiha7R9a6qJJ2CRomGPZ6f46g==}
 
-  '@octokit/types@15.0.0':
-    resolution: {integrity: sha512-8o6yDfmoGJUIeR9OfYU0/TUJTnMPG2r68+1yEdUeG2Fdqpj8Qetg0ziKIgcBm0RW/j29H41WP37CYCEhp6GoHQ==}
+  '@octokit/types@15.0.1':
+    resolution: {integrity: sha512-sdiirM93IYJ9ODDCBgmRPIboLbSkpLa5i+WLuXH8b8Atg+YMLAyLvDDhNWLV4OYd08tlvYfVm/dw88cqHWtw1Q==}
 
   '@pkgr/core@0.2.9':
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
@@ -4554,7 +4554,7 @@ snapshots:
       '@octokit/graphql': 9.0.1
       '@octokit/request': 10.0.3
       '@octokit/request-error': 7.0.0
-      '@octokit/types': 15.0.0
+      '@octokit/types': 15.0.1
       before-after-hook: 4.0.0
       universal-user-agent: 7.0.3
 
@@ -4653,7 +4653,7 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 25.1.0
 
-  '@octokit/types@15.0.0':
+  '@octokit/types@15.0.1':
     dependencies:
       '@octokit/openapi-types': 26.0.0
 
