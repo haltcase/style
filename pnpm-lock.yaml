@@ -88,7 +88,7 @@ importers:
         version: 1.0.0(stylelint@16.26.1(typescript@5.9.3))(tailwindcss@4.0.7)
       stylelint-define-config:
         specifier: ^16.14.1
-        version: 16.24.0(stylelint@16.26.1(typescript@5.9.3))
+        version: 16.26.0(stylelint@16.26.1(typescript@5.9.3))
       typescript-eslint:
         specifier: ^8.40.0
         version: 8.48.0(eslint@9.39.1(jiti@2.4.2))(typescript@5.9.3)
@@ -1435,8 +1435,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  csstype@3.1.3:
-    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+  csstype@3.2.3:
+    resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -3666,8 +3666,8 @@ packages:
       stylelint: '>=13.13.1'
       tailwindcss: '>=2.2.16'
 
-  stylelint-define-config@16.24.0:
-    resolution: {integrity: sha512-QktXPtFnT7EQNVOTNA0Rju1lVM0wHWkYvXTLFWpA832vS+EUsDf9ay6GBMjm9MQ0ocPRJBU+apyJetCbsMcj8A==}
+  stylelint-define-config@16.26.0:
+    resolution: {integrity: sha512-fflSJOGVuzFahtA+kj7QYw6uU39WUarAkSjycsXXEfYW/x7DXRnz5AQnDBuibnOZIQn+CwyhNcalzr4KYV9m8A==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>=8.6.0'}
     peerDependencies:
       stylelint: '>=16.0.0'
@@ -5606,7 +5606,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  csstype@3.1.3: {}
+  csstype@3.2.3: {}
 
   damerau-levenshtein@1.0.8: {}
 
@@ -8048,9 +8048,9 @@ snapshots:
       stylelint: 16.26.1(typescript@5.9.3)
       tailwindcss: 4.0.7
 
-  stylelint-define-config@16.24.0(stylelint@16.26.1(typescript@5.9.3)):
+  stylelint-define-config@16.26.0(stylelint@16.26.1(typescript@5.9.3)):
     dependencies:
-      csstype: 3.1.3
+      csstype: 3.2.3
       stylelint: 16.26.1(typescript@5.9.3)
 
   stylelint-order@6.0.4(stylelint@16.26.1(typescript@5.9.3)):
