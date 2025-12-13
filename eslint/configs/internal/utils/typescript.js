@@ -9,7 +9,7 @@
  */
 
 /**
- * @param {import("../base").TypeScriptProjectOptions} projectInput
+ * @param {import("../base.js").TypeScriptProjectOptions} projectInput
  * @returns {TypeScriptProjectConfig}
  */
 export const prepareTypeScriptProjectConfig = (projectInput) => {
