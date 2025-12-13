@@ -26,12 +26,12 @@ jobs:
     steps:
       - name: Generate access token
         id: generate_token
-        uses: actions/create-github-app-token@a8d616148505b5069dccd32f177bb87d7f39123b # v2.1.1
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
           app-id: ${{ secrets.BOT_ID }}
           private-key: ${{ secrets.BOT_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           token: ${{ steps.generate_token.outputs.token }}
           # ensure branches share histories
@@ -40,7 +40,7 @@ jobs:
 
       - name: Fetch Dependabot metadata
         id: dependabot_metadata
-        uses: dependabot/fetch-metadata@v2
+        uses: dependabot/fetch-metadata@08eff52bf64351f401fb50d4972fa95b9f2c2d1b # v2.4.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
