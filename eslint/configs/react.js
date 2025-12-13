@@ -3,7 +3,6 @@ import eslintStylisticJsx from "@stylistic/eslint-plugin-jsx";
 import * as eslintPluginImportX from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginReactOriginal from "eslint-plugin-react";
-// eslint-disable-next-line import-x/default
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import { config } from "typescript-eslint";
 
@@ -60,7 +59,7 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 						"react-hooks": eslintPluginReactHooks
 					},
 					rules: {
-						...eslintPluginReactHooks.configs.recommended.rules
+						...eslintPluginReactHooks.configs.flat.recommended.rules
 					}
 				},
 
