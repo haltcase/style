@@ -37,23 +37,23 @@ export const reactXRules = {
 	/**
 	 * Enforces using shorthand syntax for boolean attributes.
 	 *
-	 * 🔧 Fixable - https://eslint-react.xyz/docs/rules/prefer-shorthand-boolean
+	 * 🔧 Fixable - https://eslint-react.xyz/docs/rules/jsx-shorthand-boolean
 	 */
-	"@eslint-react/prefer-shorthand-boolean": "error",
+	"@eslint-react/jsx-shorthand-boolean": "error",
 
 	/**
 	 * Enforces using shorthand syntax for fragments.
 	 *
-	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
+	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/jsx-shorthand-fragment
 	 */
-	"@eslint-react/prefer-shorthand-fragment": "error",
+	"@eslint-react/jsx-shorthand-fragment": "error",
 
 	/**
-	 * Warns function calls made inside `useState` calls.
+	 * Enforces function calls made inside `useState` to be wrapped in an initializer function.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/hooks-extra-prefer-use-state-lazy-initialization
 	 */
-	"@eslint-react/hooks-extra/prefer-use-state-lazy-initialization": "error",
+	"@eslint-react/prefer-use-state-lazy-initialization": "error",
 
 	/**
 	 * Enforces naming conventions for components.
@@ -70,7 +70,7 @@ export const reactXRules = {
 	"@eslint-react/naming-convention/filename-extension": "warn",
 
 	/**
-	 * Enforces destructuring and symmetric naming of useState hook value and setter variables.
+	 * Enforces destructuring and symmetric naming of `useState` hook value and setter.
 	 *
 	 * 🚫 Not fixable - https://eslint-react.xyz/docs/rules/naming-convention-use-state
 	 */
