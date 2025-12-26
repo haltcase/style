@@ -90,7 +90,7 @@ export default getEslintConfig({
 	// treat *.js files as CommonJS instead of ES Modules
 	commonjs: true,
 
-	// for Next.js projects (implies `react`)
+	// for Next.js projects (implies `react`, requires `@next/eslint-plugin-next`)
 	nextjs: true,
 
 	// for Node.js projects
@@ -308,24 +308,24 @@ export default [
 
 Several Typescript configs are available to cover various scenarios:
 
-| Name                                 | Description                                                                                          |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| `@haltcase/style/typescript/base`    | Baseline config, intended to be extended from.                                                       |
-| `@haltcase/style/typescript/bundler` | For use in bundled projects, most commonly [Vite](https://vitejs.dev/) + [React](https://react.dev). |
-| `@haltcase/style/typescript/next`    | For use in [Next.js](https://nextjs.org/) projects.                                                  |
-| `@haltcase/style/typescript/node`    | Default Node config, currently targeting Node 24.                                                    |
-| `@haltcase/style/typescript/node-ts` | Addon for other Node configs for use with Node's built-in TypeScript support.                        |
-| `@haltcase/style/typescript/node18`  | For projects targeting Node 18.                                                                      |
-| `@haltcase/style/typescript/node20`  | For projects targeting Node 20.                                                                      |
-| `@haltcase/style/typescript/node22`  | For projects targeting Node 22.                                                                      |
-| `@haltcase/style/typescript/node24`  | For projects targeting Node 24.                                                                      |
-| `@haltcase/style/typescript/web`     | For use in web projects.                                                                             |
+| Name                                 | Description                                                                                              |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `@haltcase/style/typescript/base`    | Baseline config, intended to be extended from.                                                           |
+| `@haltcase/style/typescript/bundler` | For use in bundled projects, most commonly [Vite](https://vitejs.dev/) + [React](https://react.dev).     |
+| `@haltcase/style/typescript/next`    | For use in [Next.js](https://nextjs.org/) projects. See the [Next.js](#nextjs) section for more details. |
+| `@haltcase/style/typescript/node`    | Default Node config, currently targeting Node 24.                                                        |
+| `@haltcase/style/typescript/node-ts` | Addon for other Node configs for use with Node's built-in TypeScript support.                            |
+| `@haltcase/style/typescript/node18`  | For projects targeting Node 18.                                                                          |
+| `@haltcase/style/typescript/node20`  | For projects targeting Node 20.                                                                          |
+| `@haltcase/style/typescript/node22`  | For projects targeting Node 22.                                                                          |
+| `@haltcase/style/typescript/node24`  | For projects targeting Node 24.                                                                          |
+| `@haltcase/style/typescript/web`     | For use in web projects.                                                                                 |
 
 Typically, you'll only need to extend from one of these:
 
 ```json
 {
-	"extends": "@haltcase/style/typescript/next"
+	"extends": "@haltcase/style/typescript/node"
 }
 ```
 
@@ -406,6 +406,47 @@ If you use Tailwind, you can additionally extend from `@haltcase/style/stylelint
 			"@haltcase/style/stylelint/tailwind"
 		]
 	}
+}
+```
+
+### Other workloads
+
+#### Next.js
+
+For Next.js projects, install `@next/eslint-plugin-next` as a development
+dependency.
+
+> [!TIP]
+> Keep your Next.js and `@next/eslint-plugin-next` versions in sync for best
+> compatibility.
+
+```sh
+# pnpm
+pnpm add -D @next/eslint-plugin-next
+
+# npm
+npm i -D @next/eslint-plugin-next
+```
+
+Then, enable the Next.js config in your ESLint configuration:
+
+```ts
+// eslint.config.js
+import { getEslintConfig } from "@haltcase/style/eslint";
+
+export default getEslintConfig({
+	nextjs: true
+});
+```
+
+See the [ESLint section](#eslint) for more details.
+
+If you're using TypeScript, you can extend from the Next.js-specific config:
+
+```jsonc
+// tsconfig.json
+{
+	"extends": "@haltcase/style/typescript/next"
 }
 ```
 
