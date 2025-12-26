@@ -1,5 +1,5 @@
+import { defineConfig } from "eslint/config";
 import eslintPluginPlaywright from "eslint-plugin-playwright";
-import { config } from "typescript-eslint";
 
 import { playwrightTestRules } from "../rules/playwright-test.js";
 
@@ -10,7 +10,7 @@ const playwrightRecommendedConfig =
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintPlaywrightTestConfig = (_options = {}) =>
-	config({
+	defineConfig({
 		...playwrightRecommendedConfig,
 
 		name: "Playwright tests",

@@ -1,10 +1,10 @@
 // @ts-check
 
-import { config } from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
 import { getEslintNodeConfig } from "./eslint/configs/node.js";
 
-export default config(
+export default defineConfig(
 	...getEslintNodeConfig(),
 
 	{

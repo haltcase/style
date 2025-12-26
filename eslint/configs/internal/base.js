@@ -5,11 +5,11 @@
 import babelParser from "@babel/eslint-parser";
 import eslint from "@eslint/js";
 import eslintPluginEslintComments from "@eslint-community/eslint-plugin-eslint-comments";
+import { defineConfig } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import * as eslintPluginImportX from "eslint-plugin-import-x";
 import eslintRegexp from "eslint-plugin-regexp";
-import { config } from "typescript-eslint";
 
 import {
 	allSupportedFiles,
@@ -61,7 +61,7 @@ import { prepareTypeScriptProjectConfig } from "./utils/typescript.js";
  */
 
 /**
- * @typedef {(options?: HaltcaseStyleOptions) => Awaited<import("typescript-eslint").Config>} HaltcaseStyleCreator
+ * @typedef {(options?: HaltcaseStyleOptions) => Awaited<import("eslint/config").Config[]>} HaltcaseStyleCreator
  */
 
 /**
@@ -74,10 +74,13 @@ export const getEslintBaseConfig = (options = {}) => {
 		options.typescriptProject
 	);
 
-	return config(
+	return defineConfig(
 		{
 			name: "import-x/recommended",
 			plugins: {
+				// @ts-expect-error
+				// https://github.com/un-ts/eslint-plugin-import-x/issues/421
+				// https://github.com/typescript-eslint/typescript-eslint/issues/11543
 				"import-x": eslintPluginImportX
 			},
 			rules: {

@@ -1,7 +1,8 @@
+import { defineConfig } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 import * as eslintPluginImportX from "eslint-plugin-import-x";
-import { config, configs, parser, plugin } from "typescript-eslint";
+import { configs, parser, plugin } from "typescript-eslint";
 
 import { typescriptFiles, typescriptJsxFiles } from "../constants.js";
 import { typescriptExtensionRules } from "../rules/typescript/extension.js";
@@ -18,14 +19,14 @@ export const getEslintTypescriptConfig = (options = {}) =>
 	getEslintTypescriptConfigInternal(options);
 
 /**
- * @type {(options?: import("./internal/base.js").HaltcaseStyleOptions & {internal?: boolean}) => Awaited<import("typescript-eslint").Config>}
+ * @type {(options?: import("./internal/base.js").HaltcaseStyleOptions & {internal?: boolean}) => Awaited<import("eslint/config").Config[]>}
  */
 export const getEslintTypescriptConfigInternal = (options = {}) => {
 	const { parserOptions, resolverOptions } = prepareTypeScriptProjectConfig(
 		options.typescriptProject
 	);
 
-	/** @type {import("typescript-eslint").ConfigWithExtends["languageOptions"]} */
+	/** @type {import("eslint/config").Config["languageOptions"]} */
 	const languageOptions = {
 		parser,
 		parserOptions: {
@@ -39,12 +40,16 @@ export const getEslintTypescriptConfigInternal = (options = {}) => {
 		}
 	};
 
-	return config(
+	return defineConfig(
 		{
 			name: "@haltcase/internal/TypeScript files",
 
 			files: typescriptFiles,
 
+			// @ts-expect-error this error is due to differences in type
+			// definitions between typescript-eslint's deprecated `config`
+			// and ESLint's `defineConfig`, but should work fine at runtime
+			// https://github.com/typescript-eslint/typescript-eslint/issues/10935#issuecomment-2852410510
 			extends: [
 				...configs.recommendedTypeChecked,
 				...configs.strictTypeChecked,

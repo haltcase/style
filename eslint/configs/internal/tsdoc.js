@@ -1,10 +1,10 @@
+import { defineConfig } from "eslint/config";
 import eslintPluginTsdoc from "eslint-plugin-tsdoc";
-import { config } from "typescript-eslint";
 
 /**
  * @type {ReturnType<import("./base.js").HaltcaseStyleCreator>}
  */
-export const eslintTsdocConfig = config({
+export const eslintTsdocConfig = defineConfig({
 	name: "@haltcase/internal/TSDoc comments",
 	plugins: {
 		tsdoc: eslintPluginTsdoc

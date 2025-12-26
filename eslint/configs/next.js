@@ -1,5 +1,5 @@
 import pluginNextjs from "@next/eslint-plugin-next";
-import { config } from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
 import {
 	allSupportedFiles,
@@ -19,7 +19,7 @@ const nextJsConfigs = pluginNextjs.configs;
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNextConfig = (options = {}) =>
-	config(
+	defineConfig(
 		...getEslintBaseConfig(options),
 		...getEslintNodeConfigInternal(options),
 		...getEslintNextConfigInternal(options)
@@ -29,7 +29,7 @@ export const getEslintNextConfig = (options = {}) =>
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNextConfigInternal = (options = {}) =>
-	config(
+	defineConfig(
 		...getEslintReactConfigInternal(options),
 		{
 			name: "@haltcase/nextjs",

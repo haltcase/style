@@ -1,4 +1,4 @@
-import { config } from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
 import { commonJsFiles, commonJsOnlyFiles } from "../../constants.js";
 
@@ -6,7 +6,7 @@ import { commonJsFiles, commonJsOnlyFiles } from "../../constants.js";
  * @type {import("./base.js").HaltcaseStyleCreator}
  */
 export const getEslintCommonJsConfigInternal = (options = {}) =>
-	config({
+	defineConfig({
 		name: "@haltcase/internal/CommonJS files",
 
 		files: options.commonjs ? commonJsFiles : commonJsOnlyFiles,

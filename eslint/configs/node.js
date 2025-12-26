@@ -1,5 +1,5 @@
+import { defineConfig } from "eslint/config";
 import globals from "globals";
-import { config } from "typescript-eslint";
 
 import { getEslintBaseConfig } from "./internal/base.js";
 
@@ -7,7 +7,7 @@ import { getEslintBaseConfig } from "./internal/base.js";
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNodeConfig = (options = {}) =>
-	config(
+	defineConfig(
 		...getEslintNodeConfigInternal(options),
 		...getEslintBaseConfig(options)
 	);
@@ -16,7 +16,7 @@ export const getEslintNodeConfig = (options = {}) =>
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintNodeConfigInternal = (_options = {}) =>
-	config({
+	defineConfig({
 		name: "@haltcase/Node.js",
 
 		languageOptions: {

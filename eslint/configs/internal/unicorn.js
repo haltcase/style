@@ -1,10 +1,10 @@
+import { defineConfig } from "eslint/config";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
-import { config } from "typescript-eslint";
 
 /**
  * @type {ReturnType<import("./base.js").HaltcaseStyleCreator>}
  */
-export const eslintUnicornConfig = config({
+export const eslintUnicornConfig = defineConfig({
 	name: "@haltcase/internal/Unicorn",
 
 	plugins: {

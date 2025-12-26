@@ -1,9 +1,9 @@
-import { config } from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
 /**
  * @type {ReturnType<import("./base.js").HaltcaseStyleCreator>}
  */
-export const eslintEs2015Config = config({
+export const eslintEs2015Config = defineConfig({
 	name: "@haltcase/internal/ES2015",
 
 	rules: {

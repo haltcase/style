@@ -1,10 +1,10 @@
 import eslintPluginReact from "@eslint-react/eslint-plugin";
 import eslintStylisticJsx from "@stylistic/eslint-plugin-jsx";
+import { defineConfig } from "eslint/config";
 import * as eslintPluginImportX from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginReactOriginal from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
-import { config } from "typescript-eslint";
 
 import { jsxFiles, typescriptJsxFiles } from "../constants.js";
 import { jsxA11yRules } from "../rules/jsx-a11y.js";
@@ -17,7 +17,7 @@ import { getEslintBaseConfig } from "./internal/base.js";
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintReactConfig = (options) =>
-	config(
+	defineConfig(
 		...getEslintBaseConfig(options),
 		...getEslintReactConfigInternal(options)
 	);
@@ -26,7 +26,7 @@ export const getEslintReactConfig = (options) =>
  * @type {import("./internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintReactConfigInternal = (_options = {}) =>
-	config(
+	defineConfig(
 		{
 			name: "@haltcase/react",
 
@@ -55,12 +55,7 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 
 				{
 					name: "@haltcase/react/hooks",
-					plugins: {
-						"react-hooks": eslintPluginReactHooks
-					},
-					rules: {
-						...eslintPluginReactHooks.configs.flat.recommended.rules
-					}
+					...eslintPluginReactHooks.configs.flat.recommended
 				},
 
 				{
@@ -68,6 +63,10 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 					...eslintPluginJsxA11y.flatConfigs.recommended
 				},
 
+				// @ts-expect-error this error is due to differences in type
+				// definitions between typescript-eslint's deprecated `config`
+				// and ESLint's `defineConfig`, but should work fine at runtime
+				// https://github.com/typescript-eslint/typescript-eslint/issues/10935#issuecomment-2852410510
 				{
 					name: "@haltcase/react/import-x",
 					...eslintPluginImportX.flatConfigs.react,
