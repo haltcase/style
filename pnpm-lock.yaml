@@ -108,9 +108,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^20.2.0
         version: 20.2.0
-      '@eslint/eslintrc':
-        specifier: ^3.2.0
-        version: 3.3.3
       '@eslint/js':
         specifier: ^9.20.0
         version: 9.39.2
@@ -135,9 +132,6 @@ importers:
       eslint:
         specifier: ^9.20.1
         version: 9.39.2(jiti@2.4.2)
-      eslint-define-config:
-        specifier: ^2.1.0
-        version: 2.1.0
       globals:
         specifier: ^16.0.0
         version: 16.5.0
@@ -1599,11 +1593,6 @@ packages:
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
-
-  eslint-define-config@2.1.0:
-    resolution: {integrity: sha512-QUp6pM9pjKEVannNAbSJNeRuYwW3LshejfyBBpjeMGaJjaDUpVps4C6KVR8R7dWZnD3i0synmrE36znjTkJvdQ==}
-    engines: {node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>=8.6.0'}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   eslint-import-context@0.1.9:
     resolution: {integrity: sha512-K9Hb+yRaGAGUbwjhFNHvSmmkZs9+zbuoe3kFQ4V1wYjrepUFYM2dZAfNtjbbj3qsPfUfsA68Bx/ICWQMi+C8Eg==}
@@ -5793,8 +5782,6 @@ snapshots:
   eslint-config-prettier@10.1.8(eslint@9.39.2(jiti@2.4.2)):
     dependencies:
       eslint: 9.39.2(jiti@2.4.2)
-
-  eslint-define-config@2.1.0: {}
 
   eslint-import-context@0.1.9(unrs-resolver@1.9.2):
     dependencies:
