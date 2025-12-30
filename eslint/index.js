@@ -1,4 +1,4 @@
-import { config } from "typescript-eslint";
+import { defineConfig } from "eslint/config";
 
 import { getEslintBrowserConfigInternal } from "./configs/browser.js";
 import { getEslintBaseConfig } from "./configs/internal/base.js";
@@ -10,7 +10,7 @@ import { getEslintReactConfigInternal } from "./configs/react.js";
  * @type {import("./configs/internal/base.js").HaltcaseStyleCreator}
  */
 export const getEslintConfig = (options = {}) =>
-	config(
+	defineConfig(
 		...getEslintBaseConfig(options),
 		...(options.browser ? getEslintBrowserConfigInternal(options) : []),
 		...(options.node ? getEslintNodeConfigInternal(options) : []),
