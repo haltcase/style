@@ -5,6 +5,7 @@ import * as eslintPluginImportX from "eslint-plugin-import-x";
 import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import eslintPluginReactOriginal from "eslint-plugin-react";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+import eslintPluginYouMightNotNeedAnEffect from "eslint-plugin-react-you-might-not-need-an-effect";
 
 import { jsxFiles, typescriptJsxFiles } from "../constants.js";
 import { jsxA11yRules } from "../rules/jsx-a11y.js";
@@ -56,6 +57,11 @@ export const getEslintReactConfigInternal = (_options = {}) =>
 				{
 					name: "@haltcase/react/hooks",
 					...eslintPluginReactHooks.configs.flat.recommended
+				},
+
+				{
+					name: "@haltcase/react/you-might-not-need-an-effect",
+					...eslintPluginYouMightNotNeedAnEffect.configs.recommended
 				},
 
 				{
