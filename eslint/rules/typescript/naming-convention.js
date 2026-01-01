@@ -60,12 +60,13 @@ export const getTypescriptNamingConventionRule = ({
 			format: null,
 			selector: ["variableLike", "typeProperty"]
 		},
-		// anything type-like must be written in PascalCase
+		// classes and anything type-like must be written in PascalCase
 		{
 			format: ["PascalCase"],
 			leadingUnderscore: "forbid",
-			selector: ["typeLike", "enumMember"],
-			trailingUnderscore: "forbid"
+			selector: ["class", "typeLike", "enumMember"],
+			trailingUnderscore: "forbid",
+			types: []
 		},
 		// interfaces must not be prefixed with `I` or have restricted names
 		{
