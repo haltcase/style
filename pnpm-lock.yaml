@@ -136,8 +136,8 @@ importers:
         specifier: ^9.20.1
         version: 9.39.3(jiti@2.6.1)
       globals:
-        specifier: ^16.0.0
-        version: 16.5.0
+        specifier: ^17.4.0
+        version: 17.4.0
       husky:
         specifier: ^9.1.7
         version: 9.1.7
