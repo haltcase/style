@@ -118,7 +118,7 @@
 		"typescript-eslint": "^8.40.0"
 	},
 	"devDependencies": {
-		"@actions/core": "^2.0.1",
+		"@actions/core": "^3.0.0",
 		"@actions/exec": "^2.0.0",
 		"@actions/github": "^6.0.0",
 		"@commitlint/cli": "^20.2.0",
