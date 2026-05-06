@@ -49,7 +49,7 @@ importers:
         version: 7.1.1(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-react-you-might-not-need-an-effect:
         specifier: ^0.10.0
-        version: 0.10.0(eslint@9.39.4(jiti@2.6.1))
+        version: 0.10.1(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-regexp:
         specifier: ^2.7.0
         version: 2.10.0(eslint@9.39.4(jiti@2.6.1))
@@ -1943,8 +1943,8 @@ packages:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  eslint-plugin-react-you-might-not-need-an-effect@0.10.0:
-    resolution: {integrity: sha512-a4pugbQc2zLiE2NZGuXdTjtMNvlP2984QFPDv71eskUYDzigLFYfBL4QjK+RnRtcboHoXRKOcQqEZKxiK6KegA==}
+  eslint-plugin-react-you-might-not-need-an-effect@0.10.1:
+    resolution: {integrity: sha512-IK0s/+ShN0bkur5moKCu/lfx2D/9uIeozje8Wv2/XnYdmswa17pDg02aUuytEPb8Gf0eueiQFf/QsvOHHcvujg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -2510,6 +2510,10 @@ packages:
 
   is-core-module@2.16.1:
     resolution: {integrity: sha512-UfoeMA6fIJ8wTYFEUjelnaGI67v6+N7qXJEvQuIGa99l4xsCruSYOVSQ0uPANn4dAzm8lkYPaKLrrijLq7x23w==}
+    engines: {node: '>= 0.4'}
+
+  is-core-module@2.16.2:
+    resolution: {integrity: sha512-evOr8xfXKxE6qSR0hSXL2r3sd7ALj8+7jQEUvPYcm5sgZFdJ+AYzT6yNmJenvIYQBgIGwfwz08sL8zoL7yq2BA==}
     engines: {node: '>= 0.4'}
 
   is-data-view@1.0.1:
@@ -6242,7 +6246,7 @@ snapshots:
   eslint-import-resolver-node@0.3.10:
     dependencies:
       debug: 3.2.7
-      is-core-module: 2.16.1
+      is-core-module: 2.16.2
       resolve: 2.0.0-next.6
     transitivePeerDependencies:
       - supports-color
@@ -6306,7 +6310,7 @@ snapshots:
       eslint-import-resolver-node: 0.3.10
       eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.59.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@4.4.4)(eslint@9.39.4(jiti@2.6.1))
       hasown: 2.0.3
-      is-core-module: 2.16.1
+      is-core-module: 2.16.2
       is-glob: 4.0.3
       minimatch: 3.1.5
       object.fromentries: 2.0.8
@@ -6459,7 +6463,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-react-you-might-not-need-an-effect@0.10.0(eslint@9.39.4(jiti@2.6.1)):
+  eslint-plugin-react-you-might-not-need-an-effect@0.10.1(eslint@9.39.4(jiti@2.6.1)):
     dependencies:
       eslint: 9.39.4(jiti@2.6.1)
       globals: 16.5.0
@@ -7121,6 +7125,10 @@ snapshots:
   is-core-module@2.16.1:
     dependencies:
       hasown: 2.0.2
+
+  is-core-module@2.16.2:
+    dependencies:
+      hasown: 2.0.3
 
   is-data-view@1.0.1:
     dependencies:
@@ -7935,7 +7943,7 @@ snapshots:
   resolve@2.0.0-next.6:
     dependencies:
       es-errors: 1.3.0
-      is-core-module: 2.16.1
+      is-core-module: 2.16.2
       node-exports-info: 1.6.0
       object-keys: 1.1.1
       path-parse: 1.0.7
