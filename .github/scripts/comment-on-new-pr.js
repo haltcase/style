@@ -1,8 +1,9 @@
 // @ts-check
 
 /**
- * @import {Context} from "@actions/github/lib/context"
- * @typedef {ReturnType<import("@actions/github").getOctokit>} Octokit
+ * @import { context, getOctokit } from "@actions/github"
+ * @typedef {typeof context} Context
+ * @typedef {ReturnType<typeof getOctokit>} Octokit
  */
 
 /**

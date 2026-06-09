@@ -1,10 +1,11 @@
 // @ts-check
 
 /**
- * @typedef {import("@actions/github/lib/context").Context} Context
- * @typedef {import("@actions/core")} Core
- * @typedef {import("@actions/exec")} Exec
- * @typedef {ReturnType<import("@actions/github").getOctokit>} Octokit
+ * @import { context, getOctokit } from "@actions/github"
+ * @typedef {typeof context} Context
+ * @typedef {ReturnType<typeof getOctokit>} Octokit
+ * @typedef {typeof import("@actions/core")} Core
+ * @typedef {typeof import("@actions/exec")} Exec
  * @typedef {Awaited<ReturnType<Octokit["rest"]["pulls"]["get"]>>["data"]} PullRequest
  * @typedef {import("@octokit/types")
  * 	.Endpoints["GET /repos/{owner}/{repo}/rules/branches/{branch}"]["response"]
