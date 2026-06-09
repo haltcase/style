@@ -2,6 +2,9 @@ version: 2
 updates:
   # bundle major updates monthly
   - package-ecosystem: npm
+    cooldown:
+      default-days: 7
+      semver-patch-days: 3
     # explicitly set target branch to allow two npm configs
     # https://github.com/dependabot/dependabot-core/issues/1778#issuecomment-1988140219
     target-branch: canary
@@ -17,12 +20,15 @@ updates:
           - "version-update:semver-minor"
           - "version-update:semver-patch"
 
-  # bundle minor and patch updates daily
+  # bundle minor and patch updates monthly
   - package-ecosystem: npm
+    cooldown:
+      default-days: 7
+      semver-patch-days: 3
     directory: /
     open-pull-requests-limit: 5
     schedule:
-      interval: daily
+      interval: monthly
     commit-message:
       prefix: "chore(deps)"
     groups:
@@ -35,9 +41,11 @@ updates:
           - "version-update:semver-major"
 
   - package-ecosystem: "github-actions"
+    cooldown:
+      default-days: 7
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       actions:
         patterns:
