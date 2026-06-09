@@ -3,177 +3,185 @@
 	"version": "8.0.0-canary.11",
 	"description": "haltcase's web ecosystem style guide & configurations",
 	"keywords": [
-		"eslint",
-		"prettier",
-		"typescript",
+		"editorconfig",
+		"oxfmt",
+		"oxlint",
+		"oxlint-config",
 		"style",
-		"eslint-config"
+		"typescript",
+		"vite-plus"
 	],
 	"homepage": "https://github.com/haltcase/style#readme",
 	"bugs": "https://github.com/haltcase/style/issues",
+	"license": "MIT",
+	"author": "Bo Lingen <bo@haltcase.dev> (https://haltcase.dev)",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/haltcase/style.git"
 	},
-	"license": "MPL-2.0",
-	"author": "Bo Lingen <bo@haltcase.dev> (https://haltcase.dev)",
-	"type": "module",
-	"exports": {
-		"./eslint": {
-			"types": "./dist/types/eslint/index.d.ts",
-			"default": "./eslint/index.js"
-		},
-		"./eslint/rules/*": {
-			"types": "./dist/types/eslint/rules/*.d.ts",
-			"default": "./eslint/rules/*.js"
-		},
-		"./eslint/rules/typescript": {
-			"types": "./dist/types/eslint/rules/typescript/index.d.ts",
-			"default": "./eslint/rules/typescript/index.js"
-		},
-		"./prettier": {
-			"types": "./dist/types/prettier/index.d.ts",
-			"default": "./prettier/index.js"
-		},
-		"./stylelint": {
-			"types": "./dist/types/stylelint/index.d.ts",
-			"default": "./stylelint/index.js"
-		},
-		"./stylelint/modules": {
-			"types": "./dist/types/stylelint/modules.d.ts",
-			"default": "./stylelint/modules.js"
-		},
-		"./stylelint/standard": {
-			"types": "./dist/types/stylelint/standard.d.ts",
-			"default": "./stylelint/standard.js"
-		},
-		"./stylelint/tailwind": {
-			"types": "./dist/types/stylelint/tailwind.d.ts",
-			"default": "./stylelint/tailwind.js"
-		},
-		"./typescript/base": "./typescript/tsconfig.base.json",
-		"./typescript/bundler": "./typescript/tsconfig.bundler.json",
-		"./typescript/next": "./typescript/tsconfig.next.json",
-		"./typescript/node": "./typescript/tsconfig.node.json",
-		"./typescript/node-ts": "./typescript/tsconfig.node-ts.json",
-		"./typescript/node18": "./typescript/tsconfig.node18.json",
-		"./typescript/node20": "./typescript/tsconfig.node20.json",
-		"./typescript/node22": "./typescript/tsconfig.node22.json",
-		"./typescript/node24": "./typescript/tsconfig.node24.json",
-		"./typescript/web": "./typescript/tsconfig.web.json"
-	},
 	"files": [
-		"dist",
-		"eslint",
-		"prettier",
-		"stylelint",
-		"typescript",
-		"next"
+		"dist"
 	],
+	"type": "module",
+	"imports": {
+		"#self/*": {
+			"development": "./src/*",
+			"default": "./dist/*"
+		}
+	},
+	"exports": {
+		"./editorconfig": "./src/editorconfig/index.ts",
+		"./oxfmt": "./src/oxfmt/index.ts",
+		"./oxlint": "./src/oxlint/index.ts",
+		"./oxlint/configs/base": "./src/oxlint/configs/base.ts",
+		"./oxlint/configs/next": "./src/oxlint/configs/next.ts",
+		"./oxlint/configs/node": "./src/oxlint/configs/node.ts",
+		"./oxlint/configs/react": "./src/oxlint/configs/react.ts",
+		"./oxlint/configs/tanstack-router": "./src/oxlint/configs/tanstack-router.ts",
+		"./oxlint/configs/tanstack-start": "./src/oxlint/configs/tanstack-start.ts",
+		"./oxlint/configs/testing": "./src/oxlint/configs/testing.ts",
+		"./oxlint/configs/typescript": "./src/oxlint/configs/typescript.ts",
+		"./oxlint/constants": "./src/oxlint/constants.ts",
+		"./oxlint/rules/best-practice": "./src/oxlint/rules/best-practice.ts",
+		"./oxlint/rules/imports": "./src/oxlint/rules/imports.ts",
+		"./oxlint/rules/jsx-a11y": "./src/oxlint/rules/jsx-a11y.ts",
+		"./oxlint/rules/playwright-test": "./src/oxlint/rules/playwright-test.ts",
+		"./oxlint/rules/possible-errors": "./src/oxlint/rules/possible-errors.ts",
+		"./oxlint/rules/react": "./src/oxlint/rules/react.ts",
+		"./oxlint/rules/react-x": "./src/oxlint/rules/react-x.ts",
+		"./oxlint/rules/restriction": "./src/oxlint/rules/restriction.ts",
+		"./oxlint/rules/stylistic": "./src/oxlint/rules/stylistic.ts",
+		"./oxlint/rules/stylistic-jsx": "./src/oxlint/rules/stylistic-jsx.ts",
+		"./oxlint/rules/typescript": "./src/oxlint/rules/typescript/index.ts",
+		"./oxlint/rules/typescript/declaration-files": "./src/oxlint/rules/typescript/declaration-files.ts",
+		"./oxlint/rules/variables": "./src/oxlint/rules/variables.ts",
+		"./oxlint/utils/eslint-compat": "./src/oxlint/utils/eslint-compat.ts",
+		"./stylelint": "./src/stylelint/index.ts",
+		"./stylelint/modules": "./src/stylelint/modules.ts",
+		"./stylelint/standard": "./src/stylelint/standard.ts",
+		"./stylelint/tailwind": "./src/stylelint/tailwind.ts",
+		"./vite-plus": "./src/vite-plus/index.ts",
+		"./package.json": "./package.json",
+		"./typescript/*": "./src/typescript/tsconfig.*.json",
+		"./.editorconfig": "./src/editorconfig/.editorconfig"
+	},
+	"publishConfig": {
+		"exports": {
+			"./editorconfig": "./dist/editorconfig/index.js",
+			"./oxfmt": "./dist/oxfmt/index.js",
+			"./oxlint": "./dist/oxlint/index.js",
+			"./oxlint/configs/base": "./dist/oxlint/configs/base.js",
+			"./oxlint/configs/next": "./dist/oxlint/configs/next.js",
+			"./oxlint/configs/node": "./dist/oxlint/configs/node.js",
+			"./oxlint/configs/react": "./dist/oxlint/configs/react.js",
+			"./oxlint/configs/tanstack-router": "./dist/oxlint/configs/tanstack-router.js",
+			"./oxlint/configs/tanstack-start": "./dist/oxlint/configs/tanstack-start.js",
+			"./oxlint/configs/testing": "./dist/oxlint/configs/testing.js",
+			"./oxlint/configs/typescript": "./dist/oxlint/configs/typescript.js",
+			"./oxlint/constants": "./dist/oxlint/constants.js",
+			"./oxlint/rules/best-practice": "./dist/oxlint/rules/best-practice.js",
+			"./oxlint/rules/imports": "./dist/oxlint/rules/imports.js",
+			"./oxlint/rules/jsx-a11y": "./dist/oxlint/rules/jsx-a11y.js",
+			"./oxlint/rules/playwright-test": "./dist/oxlint/rules/playwright-test.js",
+			"./oxlint/rules/possible-errors": "./dist/oxlint/rules/possible-errors.js",
+			"./oxlint/rules/react": "./dist/oxlint/rules/react.js",
+			"./oxlint/rules/react-x": "./dist/oxlint/rules/react-x.js",
+			"./oxlint/rules/restriction": "./dist/oxlint/rules/restriction.js",
+			"./oxlint/rules/stylistic": "./dist/oxlint/rules/stylistic.js",
+			"./oxlint/rules/stylistic-jsx": "./dist/oxlint/rules/stylistic-jsx.js",
+			"./oxlint/rules/typescript": "./dist/oxlint/rules/typescript/index.js",
+			"./oxlint/rules/typescript/declaration-files": "./dist/oxlint/rules/typescript/declaration-files.js",
+			"./oxlint/rules/variables": "./dist/oxlint/rules/variables.js",
+			"./oxlint/utils/eslint-compat": "./dist/oxlint/utils/eslint-compat.js",
+			"./stylelint": "./dist/stylelint/index.js",
+			"./stylelint/modules": "./dist/stylelint/modules.js",
+			"./stylelint/standard": "./dist/stylelint/standard.js",
+			"./stylelint/tailwind": "./dist/stylelint/tailwind.js",
+			"./vite-plus": "./dist/vite-plus/index.js",
+			"./package.json": "./package.json",
+			"./typescript/*": "./dist/typescript/tsconfig.*.json",
+			"./.editorconfig": "./dist/editorconfig/.editorconfig"
+		},
+		"access": "public"
+	},
 	"scripts": {
-		"eslint-check": "eslint --max-warnings=0 .",
-		"format": "eslint --fix . && prettier --write .",
-		"prepare": "husky",
-		"prepublishOnly": "tsc",
-		"prettier-check": "prettier --check .",
-		"semantic-release": "semantic-release",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx,css,yml,yaml}": "pnpm prettier --write"
-	},
-	"prettier": "./prettier/index.js",
-	"stylelint": {
-		"extends": "./stylelint/index.js"
+		"build": "vp pack",
+		"check": "vp check",
+		"check:types": "vp check --no-fmt --no-lint",
+		"deps": "syncpack update --target minor",
+		"format": "vp check --fix",
+		"test": "vp test"
 	},
 	"dependencies": {
-		"@babel/core": "^7.26.9",
-		"@babel/eslint-parser": "^7.26.8",
-		"@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
-		"@eslint-react/eslint-plugin": "^2.3.13",
-		"@stylistic/eslint-plugin-jsx": "^4.2.0",
-		"eslint-config-prettier": "^10.0.1",
-		"eslint-import-resolver-alias": "^1.1.2",
-		"eslint-import-resolver-typescript": "^4.3.4",
-		"eslint-plugin-import-x": "^4.6.1",
-		"eslint-plugin-jsx-a11y": "^6.10.2",
-		"eslint-plugin-playwright": "^2.2.0",
-		"eslint-plugin-react": "^7.37.4",
-		"eslint-plugin-react-hooks": "^7.0.1",
-		"eslint-plugin-react-you-might-not-need-an-effect": "^0.11.1",
-		"eslint-plugin-regexp": "^2.7.0",
-		"eslint-plugin-simple-import-sort": "^12.1.1",
-		"eslint-plugin-testing-library": "^7.1.1",
-		"eslint-plugin-tsdoc": "^0.5.0",
-		"eslint-plugin-unicorn": "^62.0.0",
-		"postcss-html": "^1.8.0",
-		"prettier-plugin-packagejson": "^2.5.8",
-		"prettier-plugin-tailwindcss": "^0.8.0",
-		"stylelint-config-clean-order": "^8.0.0",
+		"@dreamsicle.io/stylelint-config-tailwindcss": "^1.2.2",
+		"@eslint-react/eslint-plugin": "^5.17.3",
+		"es-toolkit": "^1.49.0",
+		"eslint-plugin-react-you-might-not-need-an-effect": "^1.0.1",
+		"local-pkg": "^1.2.1",
+		"stylelint-config-clean-order": "^8.0.2",
 		"stylelint-config-html": "^1.1.0",
-		"stylelint-config-standard": "^39.0.1",
-		"stylelint-config-tailwindcss": "^1.0.0",
-		"stylelint-define-config": "^16.14.1",
-		"stylelint-order": "^7.0.0",
-		"typescript-eslint": "^8.40.0"
+		"stylelint-config-standard": "^40.0.0",
+		"stylelint-config-tailwindcss": "^1.0.1",
+		"stylelint-define-config": "^17.11.0"
 	},
 	"devDependencies": {
-		"@actions/core": "^2.0.1",
-		"@actions/exec": "^2.0.0",
-		"@actions/github": "^6.0.0",
-		"@commitlint/cli": "^20.2.0",
-		"@commitlint/config-conventional": "^20.2.0",
-		"@eslint/js": "^9.20.0",
-		"@next/eslint-plugin-next": "^15.1.7",
+		"@actions/core": "^3.0.1",
+		"@actions/exec": "^3.0.0",
+		"@actions/github": "^9.1.1",
+		"@arethetypeswrong/core": "^0.18.5",
+		"@commitlint/cli": "^21.2.1",
+		"@commitlint/config-conventional": "^21.2.0",
+		"@commitlint/types": "^21.2.0",
+		"@haltcase/style": "workspace:*",
 		"@octokit/types": "^16.0.0",
-		"@semantic-release/git": "^10.0.1",
-		"@types/eslint-config-prettier": "^6.11.3",
-		"@types/node": "22",
-		"@typescript-eslint/types": "^8.40.0",
-		"eslint": "^9.20.1",
-		"globals": "^16.0.0",
-		"husky": "^9.1.7",
-		"lint-staged": "^16.1.0",
-		"prettier": "^3.5.1",
-		"semantic-release": "^25.0.2",
-		"stylelint": "^16.14.1",
-		"typescript": "^5.9.3"
+		"@octokit/webhooks-types": "^7.6.1",
+		"@types/node": "^24",
+		"conventional-changelog-conventionalcommits": "^9.3.1",
+		"jsdom": "^29.1.1",
+		"oxfmt": "catalog:",
+		"oxlint": "catalog:",
+		"oxlint-tsgolint": "^7.0.2001",
+		"semantic-release": "^25.0.8",
+		"stylelint": "^17.14.1",
+		"syncpack": "^15.3.2",
+		"typescript": "npm:@typescript/typescript6@^6.0.2",
+		"typescript-7": "npm:typescript@^7.0.2",
+		"vite": "catalog:",
+		"vite-plus": "catalog:",
+		"vitest": "catalog:"
 	},
 	"peerDependencies": {
-		"@next/eslint-plugin-next": ">=15.0.0 <17",
-		"eslint": ">=9",
-		"prettier": ">=3.0.0 <4",
-		"stylelint": ">=16.3.1 <17",
-		"typescript": ">=5.0.0 <6"
+		"@tanstack/eslint-plugin-router": "^1.161.6",
+		"stylelint": "^17.0.0",
+		"typescript": "^6.0.0 || ^7.0.0",
+		"vite-plus": "^0.2.5"
 	},
 	"peerDependenciesMeta": {
-		"@next/eslint-plugin-next": {
+		"@tanstack/eslint-plugin-router": {
 			"optional": true
 		},
-		"eslint": {
-			"optional": true
-		},
-		"prettier": {
+		"typescript": {
 			"optional": true
 		},
 		"stylelint": {
 			"optional": true
 		},
-		"typescript": {
+		"vite-plus": {
 			"optional": true
 		}
 	},
-	"packageManager": "pnpm@10.25.0",
+	"stylelint": {
+		"extends": "@haltcase/style/stylelint"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "11.16.0",
+			"onFail": "download"
+		}
+	},
 	"engines": {
-		"node": ">=20",
-		"pnpm": ">=10"
+		"node": ">=22"
 	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"unrs-resolver"
-		]
-	}
+	"packageManager": "pnpm@11.16.0"
 }

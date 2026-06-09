@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
+		// Use `"module": "node20"` when TypeScript 5.9+ is widely used
+		"module": "nodenext",
+		"target": "es2022",
+		"moduleResolution": "node16",
+		"types": ["node"]
+	}
+}

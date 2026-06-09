@@ -1,0 +1,23 @@
+allowBuilds:
+  unrs-resolver: true
+
+catalog:
+  oxfmt: ^0.60.0
+  oxlint: ^1.75.0
+  vite: npm:@voidzero-dev/vite-plus-core@^0.2.5
+  vitest: ^4.1.10
+  vite-plus: ^0.2.5
+
+overrides:
+  vite: "catalog:"
+  vitest: "catalog:"
+  "vite-plus>oxfmt": "catalog:"
+  "vite-plus>oxlint": "catalog:"
+
+peerDependencyRules:
+  allowAny:
+    - vite
+    - vitest
+  allowedVersions:
+    vite: "*"
+    vitest: "*"

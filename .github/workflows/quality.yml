@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -24,27 +24,13 @@ jobs:
         run: pnpm commitlint -f ${{ github.event.pull_request.base.sha }}
 
   eslint:
-    name: "ESLint"
+    name: "Formatting, linting, and types"
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install
         uses: ./.github/composite-actions/install
 
-      - name: Run ESLint check
-        run: pnpm eslint-check
-
-  prettier:
-    name: "Prettier"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-
-      - name: Install
-        uses: ./.github/composite-actions/install
-
-      - name: Run Prettier check
-        run: pnpm prettier-check
+      - run: pnpm check

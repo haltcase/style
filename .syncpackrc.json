@@ -1,0 +1,30 @@
+{
+	"$schema": "./node_modules/syncpack/schema.json",
+	"indent": "\t",
+	"semverGroups": [
+		{
+			"dependencyTypes": ["prod", "dev"],
+			"range": "^"
+		}
+	],
+	"updateGroups": [
+		{
+			"target": "minor"
+		}
+	],
+	"versionGroups": [
+		{
+			"label": "Use workspace protocol for locally developed packages",
+			"dependencies": ["$LOCAL"],
+			"dependencyTypes": ["dev"],
+			"pinVersion": "workspace:*"
+		},
+
+		{
+			"label": "Match semver range for peer dependencies",
+			"packages": ["**"],
+			"dependencyTypes": ["peer"],
+			"policy": "sameRange"
+		}
+	]
+}

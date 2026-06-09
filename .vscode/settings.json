@@ -1,13 +1,89 @@
 {
+	"search.exclude": {
+		// Don't search lock files
+		"package-lock.json": true,
+		"pnpm-lock.yaml": true
+	},
+
+	"workbench.editor.customLabels.patterns": {
+		// Disambiguate generic filenames by including the folder name in the tab
+		"**/{page,layout,loading,error,route,template}.{jsx,tsx}": "${dirname}/${filename}",
+		"**/index.{html,js,jsx,ts,tsx}": "${dirname}/${filename}"
+	},
+
+	// General formatting
+	"editor.defaultFormatter": "oxc.oxc-vscode",
+	// Set oxc-vscode as the formatter for each language to ensure precedence over
+	// user-level settings
+	"[javascript]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[tailwindcss]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[yaml]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "always"
+	},
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "file",
+
+	"[svg]": {
+		"editor.defaultFormatter": "jock.svg"
+	},
+
+	"js/ts.tsdk.promptToUseWorkspaceVersion": true,
+	"js/ts.experimental.useTsgo": true,
+
+	// Tailwind & CSS
+	"cssModules.camelCase": true,
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"tailwindCSS.classAttributes": [
+		"class",
+		"className",
+		"classNames",
+		"ngClass",
+		".*Styles*",
+		".*ClassName"
+	],
+	"tailwindCSS.classFunctions": ["clsx", "cx", "twMerge"],
+	"tailwindCSS.experimental.classRegex": [":\\s*?[\"'`]([^\"'`]*).*?"],
+	"tailwindCSS.rootFontSize": 16,
+
+	// Stylelint
+	"stylelint.reportDescriptionlessDisables": true,
 	"stylelint.packageManager": "pnpm",
-	"stylelint.validate": [
-		"css",
-		"postcss",
-		"html",
-		"vue",
-		"astro",
-		"svelte",
-		"xml",
-		"php"
-	]
+	"stylelint.reportInvalidScopeDisables": true,
+	"stylelint.reportNeedlessDisables": true,
+	"stylelint.snippet": ["css", "postcss", "tailwindcss"],
+	"stylelint.validate": ["css", "postcss", "tailwindcss"]
 }

@@ -1,13 +1,12 @@
 {
 	"extends": "@haltcase/style/typescript/node",
 	"compilerOptions": {
-		"allowImportingTsExtensions": true,
 		"customConditions": ["development"],
 		"erasableSyntaxOnly": true,
 		"noEmit": true,
 		"noPropertyAccessFromIndexSignature": true,
 		"noUncheckedIndexedAccess": true
 	},
-	"include": ["src", "scripts", ".github/scripts", "*.ts"],
-	"exclude": ["node_modules", "dist"]
+	"include": ["**/*.ts", "*.ts"],
+	"exclude": ["node_modules", "src", "dist"]
 }
