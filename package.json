@@ -174,13 +174,6 @@
 	"stylelint": {
 		"extends": "@haltcase/style/stylelint"
 	},
-	"devEngines": {
-		"packageManager": {
-			"name": "pnpm",
-			"version": "11.16.0",
-			"onFail": "download"
-		}
-	},
 	"engines": {
 		"node": ">=22"
 	},
