@@ -115,6 +115,7 @@
 	"dependencies": {
 		"@dreamsicle.io/stylelint-config-tailwindcss": "^1.2.2",
 		"@eslint-react/eslint-plugin": "^5.17.3",
+		"@semantic-release/exec": "^7.1.0",
 		"es-toolkit": "^1.49.0",
 		"eslint-plugin-react-you-might-not-need-an-effect": "^1.0.1",
 		"local-pkg": "^1.2.1",
@@ -173,6 +174,13 @@
 	},
 	"stylelint": {
 		"extends": "@haltcase/style/stylelint"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "11.16.0",
+			"onFail": "download"
+		}
 	},
 	"engines": {
 		"node": ">=22"

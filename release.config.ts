@@ -1,5 +1,7 @@
 import type { Options } from "semantic-release";
 
+const isDryRun = process.env["DRY_RUN"] === "true";
+
 export default {
 	branches: [
 		"main",
@@ -22,7 +24,14 @@ export default {
 				preset: "conventionalcommits"
 			}
 		],
-		"@semantic-release/npm",
+		[
+			"@semantic-release/exec",
+			{
+				// oxlint-disable-next-line no-template-curly-in-string
+				prepareCmd: "pnpm version ${nextRelease.version} --no-git-tag-version",
+				publishCmd: `pnpm publish --no-git-checks ${isDryRun ? "--dry-run" : ""}`
+			}
+		],
 		"@semantic-release/github",
 		[
 			"@semantic-release/git",
