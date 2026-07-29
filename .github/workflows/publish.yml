@@ -36,6 +36,9 @@ jobs:
       - name: Verify provenance attestations and signatures
         run: pnpm audit signatures
 
+      - name: Build
+        run: pnpm build
+
       - name: Publish
         run: pnpm semantic-release
         env:
