@@ -138,7 +138,7 @@
 		"@octokit/webhooks-types": "^7.6.1",
 		"@semantic-release/git": "^11.0.0",
 		"@types/node": "^24",
-		"conventional-changelog-conventionalcommits": "^9.3.1",
+		"conventional-changelog-conventionalcommits": "^10.2.1",
 		"jsdom": "^29.1.1",
 		"oxfmt": "catalog:",
 		"oxlint": "catalog:",
