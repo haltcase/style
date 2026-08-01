@@ -239,7 +239,7 @@ importers:
         version: 1.162.0(@typescript/typescript6@6.0.2)(eslint@10.7.0(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)
       es-toolkit:
         specifier: ^1.49.0
-        version: 1.49.0
+        version: 1.50.0
       eslint-plugin-react-you-might-not-need-an-effect:
         specifier: ^1.0.1
         version: 1.0.1(eslint@10.7.0(jiti@2.7.0)(supports-color@10.2.2))
@@ -336,7 +336,7 @@ importers:
         version: 0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jiti@2.7.0)(jsdom@29.1.1)
       vitest:
         specifier: ^4.1.10
-        version: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(vitest@4.1.10))(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
+        version: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
 
 packages:
 
@@ -2000,8 +2000,8 @@ packages:
   es-module-lexer@2.3.1:
     resolution: {integrity: sha512-shc1dbU90Yl/xq1QrC7QRtfcwURZuVRfPhZbDoldJ1cn1gzDvBaBWlv0eFolj5+0znnPJz5TXLxsN77X/12KTA==}
 
-  es-toolkit@1.49.0:
-    resolution: {integrity: sha512-G5iZ6Pc/FNRY/soKZHC+TxGDD83rHUDXxzaWhGCX44vAv/tMs56WMusnm/KMNK+luUPsgA9U28cGr4RDlSzL2g==}
+  es-toolkit@1.50.0:
+    resolution: {integrity: sha512-OyZKhUVvEep9ITEiwHn8GKnMRQIVqoSIX7WnRbkWgJkllCujilqP2rD0u979tkl8wqyc8ICwlc1UBVv/Sl1G6w==}
 
   escalade@3.2.0:
     resolution: {integrity: sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==}
@@ -3873,7 +3873,7 @@ snapshots:
   '@commitlint/ensure@21.2.0':
     dependencies:
       '@commitlint/types': 21.2.0
-      es-toolkit: 1.49.0
+      es-toolkit: 1.50.0
 
   '@commitlint/execute-rule@21.0.1': {}
 
@@ -3902,7 +3902,7 @@ snapshots:
       '@commitlint/types': 21.2.0
       cosmiconfig: 9.0.2(@typescript/typescript6@6.0.2)
       cosmiconfig-typescript-loader: 6.3.0(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(cosmiconfig@9.0.2(@typescript/typescript6@6.0.2))
-      es-toolkit: 1.49.0
+      es-toolkit: 1.50.0
       is-plain-obj: 4.1.0
       picocolors: 1.1.1
     transitivePeerDependencies:
@@ -3931,7 +3931,7 @@ snapshots:
     dependencies:
       '@commitlint/config-validator': 21.2.0
       '@commitlint/types': 21.2.0
-      es-toolkit: 1.49.0
+      es-toolkit: 1.50.0
       global-directory: 5.0.0
       resolve-from: 5.0.0
 
@@ -4692,7 +4692,7 @@ snapshots:
       '@testing-library/dom': 10.4.1
       '@testing-library/user-event': 14.6.1(@testing-library/dom@10.4.1)
       '@vitest/browser': 4.1.10(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(vitest@4.1.10)
-      vitest: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(vitest@4.1.10))(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
+      vitest: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
     transitivePeerDependencies:
       - bufferutil
       - msw
@@ -4708,7 +4708,7 @@ snapshots:
       pngjs: 7.0.0
       sirv: 3.0.2
       tinyrainbow: 3.1.0
-      vitest: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(vitest@4.1.10))(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
+      vitest: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
       ws: 8.21.1
     transitivePeerDependencies:
       - bufferutil
@@ -5207,7 +5207,7 @@ snapshots:
 
   es-module-lexer@2.3.1: {}
 
-  es-toolkit@1.49.0: {}
+  es-toolkit@1.50.0: {}
 
   escalade@3.2.0: {}
 
@@ -6801,7 +6801,7 @@ snapshots:
       oxfmt: 0.60.0(vite-plus@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jiti@2.7.0)(jsdom@29.1.1))
       oxlint: 1.75.0(oxlint-tsgolint@0.24.0)(vite-plus@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jiti@2.7.0)(jsdom@29.1.1))
       oxlint-tsgolint: 0.24.0
-      vitest: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(vitest@4.1.10))(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
+      vitest: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1)
     optionalDependencies:
       '@voidzero-dev/vite-plus-darwin-arm64': 0.2.5
       '@voidzero-dev/vite-plus-darwin-x64': 0.2.5
@@ -6842,7 +6842,7 @@ snapshots:
       - vite
       - yaml
 
-  vitest@4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(vitest@4.1.10))(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1):
+  vitest@4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))(jsdom@29.1.1):
     dependencies:
       '@vitest/expect': 4.1.10
       '@vitest/mocker': 4.1.10(@voidzero-dev/vite-plus-core@0.2.5(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@typescript/typescript6@6.0.2)(jiti@2.7.0))
