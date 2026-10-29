@@ -42,7 +42,7 @@ export default defineConfig({
 		},
 		copy: ["src/typescript", "src/editorconfig/.editorconfig"],
 		deps: {
-			skipNodeModulesBundle: true
+			neverBundle: true
 		},
 		dts: true,
 		entry: ["src/**/*.{js,ts,jsx,tsx}"],
