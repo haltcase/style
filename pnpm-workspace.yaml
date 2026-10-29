@@ -4,12 +4,12 @@ allowBuilds:
   unrs-resolver: true
 
 catalog:
-  oxfmt: 0.60.0
-  oxlint: 1.87.0
+  oxfmt: 0.75.0
+  oxlint: 1.89.0
   oxlint-tsgolint: 7.0.2004
-  vite: npm:@voidzero-dev/vite-plus-core@0.2.9
-  vitest: 4.1.11
-  vite-plus: 0.2.9
+  vite: npm:@voidzero-dev/vite-plus-core@1.4.0
+  vitest: 5.0.5
+  vite-plus: 1.4.0
 
 overrides:
   vite: "catalog:"

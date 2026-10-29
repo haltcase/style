@@ -178,12 +178,12 @@
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "11.16.0",
+			"version": "12.16.1",
 			"onFail": "download"
 		}
 	},
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "pnpm@11.16.0"
+	"packageManager": "pnpm@12.16.1"
 }
