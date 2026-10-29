@@ -79,8 +79,8 @@ If you use Vite+, configure both Oxlint and Oxfmt in `vite.config.ts`:
 
 ```ts
 // vite.config.ts
-import { defineConfig } from "vite-plus";
 import { createOxfmtConfig, createOxlintConfig } from "@haltcase/style";
+import { defineConfig } from "vite-plus";
 
 export default defineConfig({
 	fmt: createOxfmtConfig(),
