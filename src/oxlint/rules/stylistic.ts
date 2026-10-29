@@ -19,6 +19,7 @@ const disabledRules = {
 } satisfies OxlintConfig["rules"];
 
 export const stylisticRules = {
+	"one-var": ["error", "never"],
 	...disabledRules,
 
 	/**
