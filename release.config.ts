@@ -27,8 +27,9 @@ export default {
 		[
 			"@semantic-release/exec",
 			{
+				// semantic-release manages the release commit and tag, including any build changes.
 				// oxlint-disable-next-line no-template-curly-in-string
-				prepareCmd: "pnpm version ${nextRelease.version} --no-git-tag-version",
+				prepareCmd: "pnpm version ${nextRelease.version} --no-git-tag-version --no-git-checks",
 				publishCmd: `pnpm publish --no-git-checks ${isDryRun ? "--dry-run" : ""}`
 			}
 		],

@@ -48,6 +48,7 @@ export default defineConfig({
 		entry: ["src/**/*.{js,ts,jsx,tsx}"],
 		exports: {
 			devExports: true,
+			exclude: ["oxfmt/utils"],
 			customExports: (exports, context) => {
 				exports["./typescript/*"] = packagePath(context.isPublish, "typescript/tsconfig.*.json");
 				exports["./.editorconfig"] = packagePath(context.isPublish, "editorconfig/.editorconfig");
