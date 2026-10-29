@@ -1,6 +1,7 @@
 import type { OxlintConfig } from "oxlint";
 
 import { configFiles, scriptFiles, sharedCategoryConfig } from "../constants.ts";
+import { typescriptDefaultRules } from "../rules/_typescript-defaults.ts";
 import { bestPracticeRules } from "../rules/best-practice.ts";
 import { importRules } from "../rules/imports.ts";
 import { possibleErrorsRules } from "../rules/possible-errors.ts";
@@ -30,6 +31,7 @@ export const baseConfig = [
 		],
 		plugins: ["eslint", "oxc", "import", "jsdoc", "promise", "unicorn"],
 		rules: {
+			...typescriptDefaultRules,
 			...bestPracticeRules,
 			...importRules,
 			...possibleErrorsRules,

@@ -21,13 +21,13 @@ Install `@haltcase/style` with your preferred package manager:
 pnpm add --save-dev @haltcase/style
 ```
 
-This package enables rules that require Oxlint v1.73.0+. If you're using Vite+, you may need to add
+This package enables rules that require Oxlint v1.87.0+. If you're using Vite+, you may need to add
 an override to ensure the correct version of Oxlint is used. For example, with pnpm, add the
 following to your `pnpm-workspace.yaml`:
 
 ```yaml
 overrides:
-  "vite-plus>oxlint": "^1.73.0"
+  "vite-plus>oxlint": "^1.87.0"
 ```
 
 Additionally, it uses ESLint `jsPlugins` that require TypeScript 6. If you otherwise use TypeScript
@@ -57,6 +57,10 @@ export default createOxlintConfig({
 ```
 
 Then, run `pnpm oxlint`.
+
+Native Oxlint rules are enabled explicitly. Upgrading Oxlint does not automatically enable newly
+added rules; those are adopted through updates to `@haltcase/style`. Existing rules can still change
+behavior when Oxlint is upgraded.
 
 ### Oxfmt
 

@@ -1,6 +1,7 @@
 import type { OxlintConfig } from "oxlint";
 
-const disabledRules = {
+// Preserve exclusions when a consumer enables these rules in `extends`.
+const inheritedRuleOverrides = {
 	"import/group-exports": "off",
 	"import/exports-last": "off",
 	"import/no-anonymous-default-export": "off",
@@ -11,8 +12,21 @@ const disabledRules = {
 } satisfies OxlintConfig["rules"];
 
 export const importRules = {
-	...disabledRules,
-
+	...inheritedRuleOverrides,
+	"import/consistent-type-specifier-style": "error",
+	"import/default": "error",
+	"import/extensions": "error",
+	"import/namespace": "error",
+	"import/no-amd": "error",
+	"import/no-commonjs": "error",
+	"import/no-dynamic-require": "error",
+	"import/no-empty-named-blocks": "error",
+	"import/no-named-as-default": "error",
+	"import/no-named-as-default-member": "error",
+	"import/no-named-default": "error",
+	"import/no-namespace": "error",
+	"import/no-webpack-loader-syntax": "error",
+	"import/unambiguous": "error",
 	/**
 	 * Disallow non-import statements appearing before import statements.
 	 */

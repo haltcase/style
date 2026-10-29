@@ -1,4 +1,4 @@
-import type { OxlintConfig } from "vite-plus/lint";
+import type { OxlintConfig } from "oxlint";
 
 export const commonJsOnlyFiles = ["**/*.cjs"];
 export const commonJsFiles = ["**/*.{c,}js"];
@@ -26,11 +26,12 @@ export const nextJsMetadataFiles = [
 
 export const allSupportedFiles = ["**/*.{c,m,}{js,ts}{x,}"];
 
+// Disable category defaults so Oxlint upgrades cannot enable new rules.
 export const sharedCategoryConfig = {
-	correctness: "error",
-	suspicious: "error",
-	pedantic: "error",
-	perf: "error",
-	restriction: "error",
-	style: "error"
+	correctness: "off",
+	suspicious: "off",
+	pedantic: "off",
+	perf: "off",
+	restriction: "off",
+	style: "off"
 } satisfies OxlintConfig["categories"];

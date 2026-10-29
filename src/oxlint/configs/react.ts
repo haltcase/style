@@ -5,6 +5,7 @@ import { reactXRules } from "@haltcase/style/oxlint/rules/react-x";
 import effectPlugin from "eslint-plugin-react-you-might-not-need-an-effect";
 import type { OxlintConfig } from "oxlint";
 
+import { jsxA11yRules } from "../rules/jsx-a11y.ts";
 import { resolveJsPlugin, resolveRuleMap } from "../utils/eslint-compat.ts";
 
 export const reactConfig: OxlintConfig[] = [
@@ -22,6 +23,7 @@ export const reactConfig: OxlintConfig[] = [
 			// The type-aware rules are tied specifically to `typescript-eslint`.
 			...resolveRuleMap(reactXPlugin.configs.strict.rules),
 			...resolveRuleMap(effectPlugin.configs.strict.rules),
+			...jsxA11yRules,
 			...reactRules,
 			...reactXRules
 		}

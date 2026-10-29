@@ -1,6 +1,8 @@
 import { resolveJsPlugin } from "@haltcase/style/oxlint/utils/eslint-compat";
 import type { OxlintConfig } from "oxlint";
 
+import { sharedCategoryConfig } from "../constants.ts";
+
 export const tanstackRouterConfig = [
 	{
 		plugins: [
@@ -8,9 +10,9 @@ export const tanstackRouterConfig = [
 			// plugin
 			"eslint"
 		],
-		jsPlugins: [resolveJsPlugin("@tanstack/eslint-plugin-router")],
+		jsPlugins: [resolveJsPlugin("@tanstack/router", "@tanstack/eslint-plugin-router")],
 		categories: {
-			correctness: "error"
+			...sharedCategoryConfig
 		},
 		// Note: this has no effect because Oxlint does not merge
 		// `ignorePatterns` in extended configs.

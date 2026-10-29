@@ -6,10 +6,14 @@ import {
 	nextJsPageFiles,
 	sharedCategoryConfig
 } from "../constants.ts";
+import { nextRules } from "../rules/_next.ts";
 
 export const nextConfig = [
 	{
 		plugins: ["nextjs"],
+		rules: {
+			...nextRules
+		},
 		categories: {
 			...sharedCategoryConfig
 		},

@@ -28,7 +28,7 @@ const disabledRules = {
 	"@eslint-react/no-unsafe-component-will-receive-props": "off",
 	"@eslint-react/no-unsafe-component-will-update": "off",
 
-	// Duplicated by Oxlint/React compiler (react/react-compiler)
+	// Duplicated by native Oxlint React Compiler rules
 	"@eslint-react/error-boundaries": "off",
 	"@eslint-react/globals": "off",
 	"@eslint-react/immutability": "off",
