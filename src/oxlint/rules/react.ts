@@ -8,6 +8,9 @@ const inheritedRuleOverrides = {
 	// Not needed since React 17 with the new JSX transform
 	"react/react-in-jsx-scope": "off",
 
+	// Disable deoptimization hints for unimplemented features
+	"react/todo": "off",
+
 	// Disabled for practicality, but can be reconsidered in the future
 	"react-perf/jsx-no-jsx-as-prop": "off",
 	"react/jsx-no-literals": "off",
@@ -89,7 +92,6 @@ export const reactRules = {
 	"react/static-components": "error",
 	"react/style-prop-object": "error",
 	"react/syntax": "error",
-	"react/todo": "error",
 	"react/unsupported-syntax": "error",
 	"react/use-memo": "error",
 	"react/void-dom-elements-no-children": "error",
