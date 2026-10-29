@@ -2,8 +2,12 @@ import { toMerged } from "es-toolkit";
 import { isPackageExists } from "local-pkg";
 import type { OxfmtConfig } from "oxfmt";
 
-const defaults: Required<OxfmtConfig> = {
+import type { RequiredExceptExperimental } from "./utils.ts";
+
+const defaults: RequiredExceptExperimental<OxfmtConfig> = {
 	arrowParens: "always",
+	associations: [],
+	astro: false,
 	bracketSameLine: true,
 	bracketSpacing: true,
 	embeddedLanguageFormatting: "auto",
