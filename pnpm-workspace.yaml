@@ -1,11 +1,14 @@
+saveExact: true
+
 allowBuilds:
   unrs-resolver: true
 
 catalog:
-  oxfmt: ^0.60.0
-  oxlint: ^1.75.0
+  oxfmt: 0.60.0
+  oxlint: 1.87.0
+  oxlint-tsgolint: 7.0.2004
   vite: npm:@voidzero-dev/vite-plus-core@0.2.9
-  vitest: ^4.1.11
+  vitest: 4.1.11
   vite-plus: 0.2.9
 
 overrides:
@@ -13,6 +16,7 @@ overrides:
   vitest: "catalog:"
   "vite-plus>oxfmt": "catalog:"
   "vite-plus>oxlint": "catalog:"
+  "vite-plus>oxlint-tsgolint": "catalog:"
 
 peerDependencyRules:
   allowAny:

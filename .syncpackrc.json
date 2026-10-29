@@ -4,7 +4,7 @@
 	"semverGroups": [
 		{
 			"dependencyTypes": ["prod", "dev"],
-			"range": "^"
+			"range": ""
 		}
 	],
 	"updateGroups": [
@@ -19,7 +19,6 @@
 			"dependencyTypes": ["dev"],
 			"pinVersion": "workspace:*"
 		},
-
 		{
 			"label": "Match semver range for peer dependencies",
 			"packages": ["**"],

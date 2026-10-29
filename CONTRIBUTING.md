@@ -153,3 +153,19 @@ flag which conveniently updates `package.json`.
 
 When updating packages, it's important to read the release notes for every updated package,
 including minor updates, as rules and extended configs may have changed.
+
+## Dependency version policy
+
+Use exact versions for direct runtime and development dependencies, including catalog entries. Keep
+peer dependencies as compatibility ranges, and keep workspace dependencies on the workspace
+protocol. `saveExact` and Syncpack enforce this policy for future changes. Update versions through
+reviewed dependency commits and commit the resulting lockfile.
+
+Oxlint is a development dependency here: its pin controls this repository’s validation toolchain,
+not the version installed by consumers. Runtime plugins and shared presets are pinned because they
+contribute to the configuration delivered to consumers. The explicit native rule lists prevent a
+consumer’s Oxlint upgrade from automatically enabling new rules; existing rule behavior can still
+change with the consumer’s lint engine.
+
+When overriding Vite+’s Oxlint version, also align its `oxlint-tsgolint` dependency with the version
+used by this repository.
