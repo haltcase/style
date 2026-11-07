@@ -64,6 +64,7 @@ export const createOxlintConfig = (options: CreateOxlintConfigOptions = {}): Oxl
 		ignorePatterns: userIgnores = [],
 		options: lintOptions,
 		overrides = [],
+		rules,
 		settings,
 
 		typescript: isTypescriptEnabled = typescriptPackages.some((pkg) => isPackageExists(pkg)),
@@ -80,11 +81,17 @@ export const createOxlintConfig = (options: CreateOxlintConfigOptions = {}): Oxl
 	const configs: OxlintConfig[] = [...userExtends, ...baseConfig];
 
 	if (isTypescriptEnabled) configs.push(...typescriptConfig);
+
 	if (isReactEnabled) configs.push(...reactConfig);
+
 	if (isNodeEnabled) configs.push(...nodeConfig);
+
 	if (isTestingEnabled) configs.push(...testingConfig);
+
 	if (isNextEnabled) configs.push(...nextConfig);
+
 	if (isTanstackRouterEnabled) configs.push(...tanstackRouterConfig);
+
 	if (isTanstackStartEnabled) configs.push(...tanstackStartConfig);
 
 	const ignorePatterns = [...userIgnores];
@@ -100,6 +107,7 @@ export const createOxlintConfig = (options: CreateOxlintConfigOptions = {}): Oxl
 			typeCheck: isTypescriptEnabled,
 			...lintOptions
 		},
+		rules,
 		settings
 	};
 };

@@ -49,7 +49,7 @@ Additionally, it uses ESLint `jsPlugins` that require TypeScript 6. If you other
 
 ```js
 // oxlint.config.ts
-import createOxlintConfig from "@haltcase/style/oxlint";
+import { createOxlintConfig } from "@haltcase/style/oxlint";
 
 export default createOxlintConfig({
 	node: true

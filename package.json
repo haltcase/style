@@ -20,7 +20,8 @@
 		"url": "https://github.com/haltcase/style.git"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"THIRD-PARTY-NOTICES"
 	],
 	"type": "module",
 	"imports": {
@@ -42,6 +43,7 @@
 		"./oxlint/configs/testing": "./src/oxlint/configs/testing.ts",
 		"./oxlint/configs/typescript": "./src/oxlint/configs/typescript.ts",
 		"./oxlint/constants": "./src/oxlint/constants.ts",
+		"./oxlint/plugin": "./src/oxlint/plugin.ts",
 		"./oxlint/rules/best-practice": "./src/oxlint/rules/best-practice.ts",
 		"./oxlint/rules/imports": "./src/oxlint/rules/imports.ts",
 		"./oxlint/rules/jsx-a11y": "./src/oxlint/rules/jsx-a11y.ts",
@@ -79,6 +81,7 @@
 			"./oxlint/configs/testing": "./dist/oxlint/configs/testing.js",
 			"./oxlint/configs/typescript": "./dist/oxlint/configs/typescript.js",
 			"./oxlint/constants": "./dist/oxlint/constants.js",
+			"./oxlint/plugin": "./dist/oxlint/plugin.js",
 			"./oxlint/rules/best-practice": "./dist/oxlint/rules/best-practice.js",
 			"./oxlint/rules/imports": "./dist/oxlint/rules/imports.js",
 			"./oxlint/rules/jsx-a11y": "./dist/oxlint/rules/jsx-a11y.js",
@@ -115,6 +118,7 @@
 	"dependencies": {
 		"@dreamsicle.io/stylelint-config-tailwindcss": "1.2.2",
 		"@eslint-react/eslint-plugin": "5.17.3",
+		"@oxlint/plugins": "1.89.0",
 		"@semantic-release/exec": "7.1.0",
 		"es-toolkit": "1.52.0",
 		"eslint-plugin-react-you-might-not-need-an-effect": "1.0.1",

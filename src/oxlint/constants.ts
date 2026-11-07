@@ -12,10 +12,12 @@ export const configFiles = ["**/*.config.{m,}{js,ts}", ".*rc.{js,ts}"];
 export const scriptFiles = ["**/scripts/*", "**/prisma/*", "**/zenstack/*"];
 
 export const nextJsPageFiles = ["**/{pages,app}/**/*.{m,}{js,ts}x"];
+
 export const nextJsApiRouteFiles = [
 	"**/pages/api/**/*.{m,}{js,ts}",
 	"**/app/**/route.{m,}{js,ts}x"
 ];
+
 export const nextJsMetadataFiles = [
 	"**/app/{apple-,}icon.{js,ts}x",
 	"**/app/manifest.{js,ts}",

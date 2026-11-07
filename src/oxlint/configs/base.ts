@@ -8,6 +8,7 @@ import { possibleErrorsRules } from "../rules/possible-errors.ts";
 import { restrictionRules } from "../rules/restriction.ts";
 import { stylisticRules } from "../rules/stylistic.ts";
 import { variablesRules } from "../rules/variables.ts";
+import { resolveJsPlugin } from "../utils/eslint-compat.ts";
 
 export const baseConfig = [
 	{
@@ -30,6 +31,7 @@ export const baseConfig = [
 			}
 		],
 		plugins: ["eslint", "oxc", "import", "jsdoc", "promise", "unicorn"],
+		jsPlugins: [resolveJsPlugin("haltcase", "@haltcase/style/oxlint/plugin")],
 		rules: {
 			...typescriptDefaultRules,
 			...bestPracticeRules,
@@ -37,7 +39,8 @@ export const baseConfig = [
 			...possibleErrorsRules,
 			...stylisticRules,
 			...restrictionRules,
-			...variablesRules
+			...variablesRules,
+			"haltcase/padding-between-statements": "error"
 		}
 	}
 ] satisfies OxlintConfig[];

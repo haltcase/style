@@ -17,6 +17,7 @@ export const resolveRuleMap = (rules: PartialRuleMap): DummyRuleMap => {
 
 			if (Array.isArray(ruleConfig)) {
 				const [_firstElement, ...rest] = ruleConfig;
+
 				resolvedRuleConfig = ["error", ...rest];
 			} else {
 				// Keep disabled rules disabled

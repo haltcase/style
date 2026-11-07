@@ -132,6 +132,7 @@ const verifyCheckSuccess = async ({
 
 	if (pending.length > 0) {
 		const jsonSummary = formatSummary(JSON.stringify(pending, undefined, "\t"));
+
 		return {
 			isOk: false,
 			message: `
@@ -277,6 +278,7 @@ export const releaseViaComment = async ({
 `);
 
 		core.setFailed("Pull request is not in a merge-ready state.");
+
 		return;
 	}
 
@@ -304,6 +306,7 @@ export const releaseViaComment = async ({
 `);
 
 		core.setFailed("Pull request is not mergeable.");
+
 		return;
 	}
 
@@ -315,6 +318,7 @@ export const releaseViaComment = async ({
 `);
 
 		core.setFailed(`Cannot merge ${message}`);
+
 		return;
 	}
 

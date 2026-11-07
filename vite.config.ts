@@ -9,15 +9,27 @@ export const packagePath = (isPublish: boolean, subPath: string): string =>
 
 const browserPatterns = ["packages/**/{browser,*.browser}.test.ts"];
 const nodeModulesPatterns = ["**/node_modules/**"];
+// Keep vendored source identical to the pinned upstream revision.
+const vendoredOxlintFiles = ["src/oxlint/vendor/**"];
 
 export default defineConfig({
 	resolve: {
 		tsconfigPaths: true
 	},
-	fmt: createOxfmtConfig(),
+	fmt: createOxfmtConfig((defaults) => ({
+		...defaults,
+		ignorePatterns: [...(defaults.ignorePatterns ?? []), ...vendoredOxlintFiles]
+	})),
 	lint: createOxlintConfig({
 		node: true,
+		ignorePatterns: vendoredOxlintFiles,
 		overrides: [
+			{
+				files: ["src/oxlint/plugin.ts"],
+				rules: {
+					"import/no-default-export": "off"
+				}
+			},
 			{
 				files: [".github/scripts/**/*.ts", "scripts/**/*.ts"],
 				rules: {
@@ -54,9 +66,8 @@ export default defineConfig({
 				exports["./.editorconfig"] = packagePath(context.isPublish, "editorconfig/.editorconfig");
 
 				for (const entrypoint in exports) {
-					// Treat entrypoint filenames that start with an underscore as
-					// private and do not export
-					if (basename(entrypoint).startsWith("_")) {
+					// Keep private modules and vendored implementation files out of the exports.
+					if (basename(entrypoint).startsWith("_") || entrypoint.startsWith("./oxlint/vendor/")) {
 						delete exports[entrypoint];
 					}
 				}
