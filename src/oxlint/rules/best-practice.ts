@@ -94,9 +94,9 @@ export const bestPracticeRules = {
 	 */
 	"block-scoped-var": "error",
 	/**
-	 * Require curly braces for multiline blocks.
+	 * Require curly braces around control statement bodies.
 	 */
-	curly: ["error", "multi-line"],
+	curly: ["error", "all"],
 	/**
 	 * Require default clauses in switch statements to be last (if used).
 	 */
