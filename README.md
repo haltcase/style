@@ -62,6 +62,13 @@ Native Oxlint rules are enabled explicitly. Upgrading Oxlint does not automatica
 added rules; those are adopted through updates to `@haltcase/style`. Existing rules can still change
 behavior when Oxlint is upgraded.
 
+Use `rules` to customize rules for all files and `overrides` to customize rules for matching files.
+Top-level rules are applied in order from `extends` to presets (such as `node` or `react`) to
+`rules`. Matching `overrides` take precedence over top-level rules, and user overrides take
+precedence over preset overrides. Use `plugins` to add native plugins alongside the default and
+preset plugins, and `jsPlugins` to load JavaScript plugins. `createOxlintConfig` supports explicit
+rules instead of the `categories` option so new rules are enabled through preset updates.
+
 ### Oxfmt
 
 ```js

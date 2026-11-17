@@ -28,7 +28,10 @@ export const tanstackPackages = [
 
 const typescriptPackages = ["@typescript/native-preview", "typescript"] as const;
 
-type OxlintPassthroughOptions = Omit<OxlintConfig, "overrides">;
+type OxlintPassthroughOptions = Omit<
+	OxlintConfig,
+	"categories" | "overrides" | "plugins" | "rules"
+>;
 
 export interface CreateOxlintConfigOptions extends OxlintPassthroughOptions {
 	typescript?: boolean;
@@ -50,8 +53,17 @@ export interface CreateOxlintConfigOptions extends OxlintPassthroughOptions {
 	node?: boolean;
 	testing?: boolean;
 	/**
+	 * Enable additional native plugins alongside the default and preset plugins.
+	 */
+	plugins?: OxlintConfig["plugins"];
+	/**
+	 * Configure rules for all files. These take precedence over rules set at the top level of
+	 * extended configs and presets. Matching overrides take precedence over these rules.
+	 */
+	rules?: OxlintConfig["rules"];
+	/**
 	 * Add, remove, or otherwise reconfigure rules for specific files or groups of files.
-	 * These overrides supercede any rules configured by preset options (e.g., `node` or `react`).
+	 * These overrides take precedence over matching preset overrides and top-level rules.
 	 */
 	overrides?: OxlintOverride[];
 }
@@ -62,8 +74,10 @@ export const createOxlintConfig = (options: CreateOxlintConfigOptions = {}): Oxl
 		extends: userExtends = [],
 		globals,
 		ignorePatterns: userIgnores = [],
+		jsPlugins,
 		options: lintOptions,
 		overrides = [],
+		plugins: userPlugins,
 		rules,
 		settings,
 
@@ -108,6 +122,10 @@ export const createOxlintConfig = (options: CreateOxlintConfigOptions = {}): Oxl
 		configs.push(...tanstackStartConfig);
 	}
 
+	if (userPlugins) {
+		configs.push({ plugins: userPlugins });
+	}
+
 	const ignorePatterns = [...userIgnores];
 
 	return {
@@ -115,6 +133,7 @@ export const createOxlintConfig = (options: CreateOxlintConfigOptions = {}): Oxl
 		extends: configs,
 		globals,
 		ignorePatterns,
+		jsPlugins,
 		overrides,
 		options: {
 			typeAware: isTypescriptEnabled,
