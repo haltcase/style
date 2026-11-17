@@ -160,7 +160,7 @@
 		"@tanstack/eslint-plugin-router": "^1.161.6",
 		"stylelint": "^17.0.0",
 		"typescript": "^6.0.0 || ^7.0.0",
-		"vite-plus": "^0.2.5"
+		"vite-plus": "^1.0.0"
 	},
 	"peerDependenciesMeta": {
 		"@tanstack/eslint-plugin-router": {
