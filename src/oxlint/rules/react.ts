@@ -31,7 +31,13 @@ export const reactRules = {
 	"react/forbid-dom-props": "error",
 	"react/forbid-elements": "error",
 	"react/forward-ref-uses-ref": "error",
-	"react/function-component-definition": "error",
+	"react/function-component-definition": [
+		"error",
+		{
+			namedComponents: "arrow-function",
+			unnamedComponents: "arrow-function"
+		}
+	],
 	"react/globals": "error",
 	"react/hook-use-state": "error",
 	"react/hooks": "error",

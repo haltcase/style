@@ -23,7 +23,13 @@ export const stylisticRules = {
 	...inheritedRuleOverrides,
 	"arrow-body-style": "error",
 	"func-name-matching": "error",
-	"func-style": "error",
+	"func-style": [
+		"error",
+		"expression",
+		{
+			allowArrowFunctions: true
+		}
+	],
 	"guard-for-in": "error",
 	"id-denylist": "error",
 	"id-match": "error",
