@@ -28,8 +28,6 @@ export const stylisticRules = {
 	"id-denylist": "error",
 	"id-match": "error",
 	"jsdoc/no-blank-blocks": "error",
-	"jsdoc/require-throws-description": "error",
-	"jsdoc/require-yields-description": "error",
 	"logical-assignment-operators": "error",
 	"no-multi-str": "error",
 	"no-useless-computed-key": "error",

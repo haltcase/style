@@ -2,11 +2,11 @@ import type { OxlintConfig } from "oxlint";
 
 const disabledRules = {
 	// Unnecessary or less useful when using TypeScript
-	"jsdoc/require-param": "off",
 	"jsdoc/require-param-type": "off",
-	"jsdoc/require-property": "off",
-	"jsdoc/require-returns": "off",
+	"jsdoc/require-property-type": "off",
 	"jsdoc/require-returns-type": "off",
+	"jsdoc/require-throws-type": "off",
+	"jsdoc/require-yields-type": "off",
 
 	// `typescript/require-await` is more reliable since it can use type info
 	"require-await": "off",
