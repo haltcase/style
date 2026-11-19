@@ -40,7 +40,7 @@ export const restrictionRules = {
 	"no-restricted-globals": "error",
 	"no-restricted-imports": "error",
 	"no-restricted-properties": "error",
-	"no-use-before-define": "error",
+	"no-use-before-define": ["error", { functions: false, allowNamedExports: true }],
 	"no-var": "error",
 	"oxc/bad-bitwise-operator": "error",
 	"oxc/no-barrel-file": "error",
